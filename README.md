@@ -25,12 +25,11 @@
 
 body {
     align-items:center;
-    text-align:center;
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
     min-height: 100vh;
-    min-width:100000px;
+    min-width:10000px;
 }
 
 /* Анимированный фон для всего сайта */
