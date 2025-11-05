@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +29,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
-    min-height: 100vh;
+    min-height: 500vh;
 }
 
 /* Анимированный фон для всего сайта */
@@ -1304,4 +1303,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });</script>
 </body>
-</html>
