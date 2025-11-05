@@ -24,8 +24,8 @@
 }
 
 body {
-    
-    
+    align-items:center;
+    text-align:center;
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
