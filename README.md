@@ -24,8 +24,8 @@
 }
 
 body {
-    background-color: #f9f9f9;
-    color: #333;
+    
+    
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
