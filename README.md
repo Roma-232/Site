@@ -25,10 +25,10 @@
 
 body {
     line-height: 1.6;
+    position:left;
     overflow-x: hidden;
-    position: relative;
     min-height: 100vh;
-    min-width:10000px;
+    min-width:1000px;
 }
 
 /* Анимированный фон для всего сайта */
