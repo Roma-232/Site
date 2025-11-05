@@ -30,7 +30,7 @@ body {
     overflow-x: hidden;
     position: relative;
     min-height: 100vh;
-    min-width:1000px;
+    min-width:100000px;
 }
 
 /* Анимированный фон для всего сайта */
