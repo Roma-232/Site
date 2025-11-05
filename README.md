@@ -26,10 +26,11 @@
 body {
     background-color: #f9f9f9;
     color: #333;
-    line-height: 15;
+    line-height: 1.6;
     overflow-x: hidden;
     position: relative;
-    min-height: 10000000vh;
+    min-height: 100vh;
+    min-width:100000px;
 }
 
 /* Анимированный фон для всего сайта */
