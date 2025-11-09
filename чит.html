@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы веб-разработки</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .card h2 {
+            color: #4dabf7;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card h2 i {
+            margin-right: 15px;
+            font-size: 2rem;
+        }
+        
+        .card p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            border-left: 4px solid #4dabf7;
+        }
+        
+        .code-comment {
+            color: #a0aec0;
+        }
+        
+        .code-tag {
+            color: #63b3ed;
+        }
+        
+        .code-attr {
+            color: #fbb6ce;
+        }
+        
+        .code-value {
+            color: #68d391;
+        }
+        
+        .workflow {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .workflow h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: #4dabf7;
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .step {
+            background: rgba(77, 171, 247, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            background: rgba(77, 171, 247, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #4dabf7;
+            border-radius: 50%;
+            line-height: 40px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Основы веб-разработки</h1>
+            <p class="subtitle">Изучите фундаментальные технологии, которые используются для создания современных веб-сайтов и приложений</p>
+        </header>
+        
+        <div class="content-grid">
+            <div class="card">
+                <h2><i class="fas fa-code"></i> HTML</h2>
+                <p><strong>HTML (HyperText Markup Language)</strong> - это стандартный язык разметки для создания веб-страниц. Он определяет структуру и содержание веб-страницы.</p>
+                <p>HTML использует элементы (теги) для обозначения различных частей содержимого, таких как заголовки, абзацы, ссылки, изображения и т.д.</p>
+                <div class="code-block">
+                    <span class="code-comment">&lt;!-- Простой пример HTML-документа --&gt;</span><br>
+                    <span class="code-tag">&lt;!DOCTYPE html&gt;</span><br>
+                    <span class="code-tag">&lt;html&gt;</span><br>
+                    <span class="code-tag">&lt;head&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;title&gt;</span>Моя первая страница<span class="code-tag">&lt;/title&gt;</span><br>
+                    <span class="code-tag">&lt;/head&gt;</span><br>
+                    <span class="code-tag">&lt;body&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;h1&gt;</span>Привет, мир!<span class="code-tag">&lt;/h1&gt;</span><br>
+                    &nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>Это мой первый HTML-документ.<span class="code-tag">&lt;/p&gt;</span><br>
+                    <span class="code-tag">&lt;/body&gt;</span><br>
+                    <span class="code-tag">&lt;/html&gt;</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-palette"></i> CSS</h2>
+                <p><strong>CSS (Cascading Style Sheets)</strong> - это язык стилей, используемый для описания внешнего вида документа, написанного на HTML.</p>
+                <p>CSS позволяет контролировать макет, цвета, шрифты, анимацию и другие визуальные аспекты веб-страницы.</p>
+                <div class="code-block">
+                    <span class="code-comment">/* Пример CSS-стилей */</span><br>
+                    <span class="code-tag">body</span> {<br>
+                    &nbsp;&nbsp;<span class="code-attr">font-family</span>: <span class="code-value">Arial, sans-serif</span>;<br>
+                    &nbsp;&nbsp;<span class="code-attr">background-color</span>: <span class="code-value">#f0f0f0</span>;<br>
+                    &nbsp;&nbsp;<span class="code-attr">margin</span>: <span class="code-value">0</span>;<br>
+                    &nbsp;&nbsp;<span class="code-attr">padding</span>: <span class="code-value">20px</span>;<br>
+                    }<br><br>
+                    
+                    <span class="code-tag">h1</span> {<br>
+                    &nbsp;&nbsp;<span class="code-attr">color</span>: <span class="code-value">#2c3e50</span>;<br>
+                    &nbsp;&nbsp;<span class="code-attr">text-align</span>: <span class="code-value">center</span>;<br>
+                    }<br><br>
+                    
+                    <span class="code-tag">.container</span> {<br>
+                    &nbsp;&nbsp;<span class="code-attr">max-width</span>: <span class="code-value">1200px</span>;<br>
+                    &nbsp;&nbsp;<span class="code-attr">margin</span>: <span class="code-value">0 auto</span>;<br>
+                    }
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-cogs"></i> JavaScript</h2>
+                <p><strong>JavaScript</strong> - это язык программирования, который позволяет создавать интерактивные веб-страницы.</p>
+                <p>С помощью JavaScript можно добавлять динамическое поведение на страницу, обрабатывать события, работать с данными и многое другое.</p>
+                <div class="code-block">
+                    <span class="code-comment">// Простой пример JavaScript</span><br>
+                    <span class="code-tag">const</span> button = document.<span class="code-attr">querySelector</span>(<span class="code-value">'#myButton'</span>);<br>
+                    <span class="code-tag">const</span> message = document.<span class="code-attr">querySelector</span>(<span class="code-value">'#message'</span>);<br><br>
+                    
+                    button.<span class="code-attr">addEventListener</span>(<span class="code-value">'click'</span>, <span class="code-tag">function</span>() {<br>
+                    &nbsp;&nbsp;message.<span class="code-attr">textContent</span> = <span class="code-value">'Кнопка была нажата!'</span>;<br>
+                    &nbsp;&nbsp;message.<span class="code-attr">style</span>.<span class="code-attr">color</span> = <span class="code-value">'green'</span>;<br>
+                    });
+                </div>
+            </div>
+        </div>
+        
+        <div class="workflow">
+            <h2>Процесс веб-разработки</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Планирование</h3>
+                    <p>Определение целей, целевой аудитории и функциональности</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Дизайн</h3>
+                    <p>Создание макетов и прототипов будущего сайта</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Разработка</h3>
+                    <p>Написание кода на HTML, CSS и JavaScript</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Тестирование</h3>
+                    <p>Проверка функциональности на разных устройствах и браузерах</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Запуск</h3>
+                    <p>Размещение сайта на хостинге и его публикация</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Изучение веб-разработки - это увлекательное путешествие, которое открывает множество возможностей!</p>
+            <p>Начните с основ и постепенно осваивайте более сложные концепции и технологии.</p>
+        </footer>
+    </div>
+</body>
+</html>

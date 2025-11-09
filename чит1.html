@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интернет-маркетинг - Полное руководство</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+            filter: blur(1px);
+        }
+        
+        .bg-element:nth-child(1) {
+            width: 150px;
+            height: 150px;
+            background: #ff6b6b;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 25s;
+        }
+        
+        .bg-element:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background: #4ecdc4;
+            top: 60%;
+            left: 80%;
+            animation-delay: 3s;
+            animation-duration: 30s;
+        }
+        
+        .bg-element:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            background: #ffe66d;
+            top: 80%;
+            left: 20%;
+            animation-delay: 6s;
+            animation-duration: 22s;
+        }
+        
+        .bg-element:nth-child(4) {
+            width: 180px;
+            height: 180px;
+            background: #ff9ff3;
+            top: 30%;
+            left: 50%;
+            animation-delay: 9s;
+            animation-duration: 28s;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #ffe66d, #ff9ff3);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            
+            -webkit-text-fill-color: #f0f0f0;
+            text-shadow: 2px 2px 4px;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 180px;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #ffe66d, #ff9ff3);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card h2 i {
+            margin-right: 15px;
+            font-size: 2rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .card p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .card ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .card li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .card li::before {
+            content: '✓';
+            color: #4ecdc4;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .strategy-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .strategy-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: #333;
+        }
+        
+        .strategy-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .step {
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            width: 250px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .step:hover {
+            border-color: #667eea;
+            transform: scale(1.05);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            line-height: 50px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .step h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .tools-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tools-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: #333;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0f0f0;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .tool-card h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-top: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(40px, -60px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-30px, 30px) rotate(240deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .strategy-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="animated-bg">
+        <div class="bg-element"></div>
+        <div class="bg-element"></div>
+        <div class="bg-element"></div>
+        <div class="bg-element"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>Интернет-маркетинг</h1>
+            <p class="subtitle">Полное руководство по продвижению бизнеса в цифровой среде. Изучите ключевые стратегии, инструменты и тренды для достижения успеха онлайн.</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">4.9 млрд</span>
+                    <span class="stat-label">пользователей интернета в мире</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">63%</span>
+                    <span class="stat-label">бизнесов увеличили бюджеты на digital-маркетинг</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5.3 часа</span>
+                    <span class="stat-label">среднее время в интернете в день</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="content-grid">
+            <div class="card">
+                <h2><i class="fas fa-bullseye"></i> Что такое интернет-маркетинг?</h2>
+                <p><strong>Интернет-маркетинг</strong> — это практика использования интернет-каналов для продвижения продуктов, услуг или брендов. Это комплексный подход, который включает стратегическое планирование, реализацию и анализ онлайн-активностей.</p>
+                <p>Основные цели интернет-маркетинга:</p>
+                <ul>
+                    <li>Привлечение целевой аудитории</li>
+                    <li>Генерация лидов и продаж</li>
+                    <li>Увеличение узнаваемости бренда</li>
+                    <li>Удержание клиентов</li>
+                    <li>Повышение лояльности</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-chart-line"></i> Ключевые преимущества</h2>
+                <p>Интернет-маркетинг предоставляет уникальные возможности, недоступные в традиционном маркетинге:</p>
+                <ul>
+                    <li><strong>Глобальный охват</strong> - возможность выхода на международные рынки</li>
+                    <li><strong>Точное таргетирование</strong> - направление рекламы на конкретную аудиторию</li>
+                    <li><strong>Измеримость результатов</strong> - точный анализ эффективности кампаний</li>
+                    <li><strong>Гибкость</strong> - быстрая корректировка стратегий</li>
+                    <li><strong>Стоимость</strong> - более низкие затраты по сравнению с традиционными методами</li>
+                    <li><strong>Интерактивность</strong> - прямое взаимодействие с аудиторией</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-chart-line"></i> Основные каналы</h2>
+                <p>Современный интернет-маркетинг включает множество каналов продвижения:</p>
+                <ul>
+                    <li><strong>Поисковая оптимизация (SEO)</strong> - улучшение видимости в поисковых системах</li>
+                    <li><strong>Контекстная реклама (PPC)</strong> - платное размещение в поисковых системах</li>
+                    <li><strong>Маркетинг в социальных сетях (SMM)</strong> - продвижение через социальные платформы</li>
+                    <li><strong>Email-маркетинг</strong> - рассылки для привлечения и удержания клиентов</li>
+                    <li><strong>Контент-маркетинг</strong> - создание ценного контента для привлечения аудитории</li>
+                    <li><strong>Партнерский маркетинг</strong> - сотрудничество с партнерами для продвижения</li>
+                    <li><strong>Влияние (Influencer marketing)</strong> - работа с лидерами мнений</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="strategy-section">
+            <h2>Стратегия интернет-маркетинга</h2>
+            <div class="strategy-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Анализ и исследование</h3>
+                    <p>Изучение рынка, конкурентов и целевой аудитории. Определение целей и KPI.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Планирование</h3>
+                    <p>Разработка комплексной стратегии, выбор каналов продвижения, составление контент-плана.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Реализация</h3>
+                    <p>Запуск рекламных кампаний, создание и публикация контента, техническая оптимизация.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Анализ и оптимизация</h3>
+                    <p>Мониторинг результатов, A/B тестирование, корректировка стратегии для улучшения эффективности.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tools-section">
+            <h2>Популярные инструменты</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <i class="fab fa-google tool-icon" style="color: #4285F4;"></i>
+                    <h3>Google Analytics</h3>
+                    <p>Анализ веб-трафика и поведения пользователей</p>
+                </div>
+                <div class="tool-card">
+                    <i class="fab fa-facebook tool-icon" style="color: #1877F2;"></i>
+                    <h3>Facebook Ads</h3>
+                    <p>Рекламная платформа для таргетированной рекламы</p>
+                </div>
+                <div class="tool-card">
+                    <i class="fas fa-envelope tool-icon" style="color: #EA4335;"></i>
+                    <h3>Mailchimp</h3>
+                    <p>Платформа для email-маркетинга и автоматизации</p>
+                </div>
+                <div class="tool-card">
+                    <i class="fab fa-hubspot tool-icon" style="color: #FF7A59;"></i>
+                    <h3>HubSpot</h3>
+                    <p>Комплексная платформа для inbound-маркетинга</p>
+                </div>
+                <div class="tool-card">
+                    <i class="fab fa-wordpress tool-icon" style="color: #21759B;"></i>
+                    <h3>WordPress + Yoast SEO</h3>
+                    <p>Система управления контентом с инструментами SEO</p>
+                </div>
+                <div class="tool-card">
+                    <i class="fab fa-buffer tool-icon" style="color: #168EEA;"></i>
+                    <h3>Buffer</h3>
+                    <p>Планирование публикаций в социальных сетях</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Интернет-маркетинг продолжает развиваться быстрыми темпами, предлагая новые возможности для бизнеса любого размера.</p>
+            <p>Начните внедрять digital-стратегии уже сегодня, чтобы оставаться конкурентоспособными в современном мире!</p>
+        </footer>
+    </div>
+</body>
+</html>
