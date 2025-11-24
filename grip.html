@@ -20,8 +20,7 @@
 
         .presentation {
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            position: relative;
         }
 
         .slide {
@@ -29,18 +28,21 @@
             min-height: 100vh;
             padding: 50px;
             animation: fadeIn 0.8s ease-in-out;
+            position: relative;
         }
 
         .slide.active {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            display: block;
         }
 
         .title-slide {
             text-align: center;
             background: linear-gradient(45deg, #8B0000, #B22222, #8B0000);
             color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .general-slide {
@@ -84,7 +86,8 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            align-items: center;
+            align-items: start;
+            margin-top: 20px;
         }
 
         .text-content {
@@ -97,25 +100,31 @@
             padding: 25px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
         }
 
         .general-image {
             text-align: center;
         }
 
-        .general-image img {
-            max-width: 100%;
+        .portrait-placeholder {
+            width: 100%;
+            max-width: 300px;
             height: 400px;
-            object-fit: cover;
             border: 5px solid #8B0000;
             border-radius: 10px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0 auto;
         }
 
         .caption {
             font-style: italic;
             margin-top: 10px;
             color: #666;
+            text-align: center;
         }
 
         .battles-list {
@@ -137,6 +146,7 @@
             right: 30px;
             display: flex;
             gap: 15px;
+            z-index: 1000;
         }
 
         .nav-btn {
@@ -148,11 +158,16 @@
             cursor: pointer;
             font-size: 1.1em;
             transition: all 0.3s ease;
+            font-family: inherit;
         }
 
         .nav-btn:hover {
             background: #A52A2A;
             transform: translateY(-2px);
+        }
+
+        .nav-btn:active {
+            transform: translateY(0);
         }
 
         .slide-counter {
@@ -162,6 +177,11 @@
             font-size: 1.2em;
             color: #8B0000;
             font-weight: bold;
+            z-index: 1000;
+            background: rgba(255,255,255,0.9);
+            padding: 8px 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .quote {
@@ -174,6 +194,9 @@
             color: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .timeline {
@@ -181,6 +204,8 @@
             justify-content: space-between;
             margin: 30px 0;
             position: relative;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .timeline::before {
@@ -192,6 +217,7 @@
             height: 3px;
             background: #8B0000;
             transform: translateY(-50%);
+            z-index: 0;
         }
 
         .timeline-item {
@@ -203,23 +229,100 @@
             position: relative;
             z-index: 1;
             min-width: 150px;
+            flex: 1;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .general-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .general-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid #8B0000;
+        }
+
+        .general-card h3 {
+            margin-top: 0;
+            color: #8B0000;
         }
 
         @media (max-width: 768px) {
             .content {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
             
-            h1 { font-size: 2.5em; }
-            h2 { font-size: 2em; }
+            .general-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 { 
+                font-size: 2.5em; 
+            }
+            h2 { 
+                font-size: 2em; 
+            }
             
             .slide {
                 padding: 30px 20px;
+            }
+            
+            .timeline {
+                flex-direction: column;
+            }
+            
+            .timeline::before {
+                display: none;
+            }
+            
+            .timeline-item {
+                min-width: auto;
+            }
+            
+            .portrait-placeholder {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.6em;
+            }
+            
+            .navigation {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .slide-counter {
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .nav-btn {
+                padding: 10px 20px;
+                font-size: 1em;
             }
         }
     </style>
@@ -252,13 +355,11 @@
                         <li>Принял решение оставить Москву для сохранения армии</li>
                         <li>Разработал стратегию изматывания противника</li>
                         <li>Командовал в Бородинском сражении</li>
+                        <li>Организовал Тарутинский манёвр</li>
                     </ul>
                 </div>
                 <div class="general-image">
-                    <!-- Здесь должна быть картинка -->
-                    <div style="width:300px;height:400px;background:#ddd;display:flex;align-items:center;justify-content:center;border:5px solid #8B0000;border-radius:10px;background-image:url(https://bendery-fortress.com/wp-content/uploads/2023/08/M_I_Kutuzov-480x253.jpg);Background-repeat:no-repeat;">
-                        
-                    </div>
+                    <div class="portrait-placeholder" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mikhail_Kutuzov_%281845%29.jpg/800px-Mikhail_Kutuzov_%281845%29.jpg');"></div>
                     <div class="caption">М.И. Кутузов - главнокомандующий русской армией</div>
                 </div>
             </div>
@@ -281,12 +382,11 @@
                         <li>Бой под Смоленском</li>
                         <li>Сражение при Шевардино</li>
                         <li>Оборона Багратионовых флешей</li>
+                        <li>Смертельно ранен в Бородинской битве</li>
                     </ul>
                 </div>
                 <div class="general-image">
-                    <div style="width:300px;height:400px;background:#ddd;display:flex;align-items:center;justify-content:center;border:5px solid #8B0000;border-radius:10px;background-image:url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/George_Dawe_-_Portrait_of_General_Pyotr_Bagration_%281765-1812%29_-_Google_Art_Project.jpg/960px-George_Dawe_-_Portrait_of_General_Pyotr_Bagration_%281765-1812%29_-_Google_Art_Project.jpg);Background-repeat:no-repeat;">
-                        
-                    </div>
+                    <div class="portrait-placeholder" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/George_Dawe_-_Portrait_of_General_Pyotr_Bagration_%281765-1812%29_-_Google_Art_Project.jpg/800px-George_Dawe_-_Portrait_of_General_Pyotr_Bagration_%281765-1812%29_-_Google_Art_Project.jpg');"></div>
                     <div class="caption">П.И. Багратион - любимец солдат</div>
                 </div>
             </div>
@@ -309,12 +409,11 @@
                         <li>Успешно командовал в Бородинском сражении</li>
                         <li>Участвовал в заграничных походах русской армии</li>
                         <li>Взял Париж в 1814 году</li>
+                        <li>Один из самых образованных генералов своего времени</li>
                     </ul>
                 </div>
                 <div class="general-image">
-                    <div style="width:300px;height:400px;background:#ddd;display:flex;align-items:center;justify-content:center;border:5px solid #8B0000;border-radius:10px;background-image:url(https://cs17.pikabu.ru/s/2025/09/14/09/sfsvklxf_s.jpg);Background-repeat:no-repeat;">
-                        
-                    </div>
+                    <div class="portrait-placeholder" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Barcley_de_Tolly.jpg/800px-Barcley_de_Tolly.jpg');"></div>
                     <div class="caption">М.Б. Барклай-де-Толли - стратег и тактик</div>
                 </div>
             </div>
@@ -323,21 +422,31 @@
         <!-- Слайд 5: Другие выдающиеся генералы -->
         <div class="slide general-slide" id="slide5">
             <h2>Другие выдающиеся генералы</h2>
-            <div class="content">
-                <div class="text-content">
+            <div class="general-grid">
+                <div class="general-card">
                     <h3>Алексей Петрович Ермолов</h3>
-                    <p>Генерал от инфантерии, начальник Главного штаба 1-й Западной армии. Отличился в Бородинском сражении.</p>
-                    
+                    <p>Генерал от инфантерии, начальник Главного штаба 1-й Западной армии. Отличился в Бородинском сражении, руководил обороной батареи.</p>
+                    <p><strong>Годы жизни:</strong> 1777-1861</p>
+                </div>
+                
+                <div class="general-card">
                     <h3>Михаил Андреевич Милорадович</h3>
                     <p>Генерал от инфантерии, командовал арьергардом при отступлении и авангардом при преследовании французов.</p>
-                    
-                    <h3>Николай Николаевич Раевский</h3>
-                    <p>Генерал от кавалерии, прославился обороной батареи Раевского под Бородино.</p>
-                    
-                    <h3>Александр Иванович Кутайсов</h3>
-                    <p>Генерал-майор, начальник артиллерии 1-й Западной армии. Погиб в Бородинском сражении.</p>
+                    <p><strong>Годы жизни:</strong> 1771-1825</p>
                 </div>
-        </div>
+                
+                <div class="general-card">
+                    <h3>Николай Николаевич Раевский</h3>
+                    <p>Генерал от кавалерии, прославился обороной батареи Раевского под Бородино. Герой сражения при Салтановке.</p>
+                    <p><strong>Годы жизни:</strong> 1771-1829</p>
+                </div>
+                
+                <div class="general-card">
+                    <h3>Александр Иванович Кутайсов</h3>
+                    <p>Генерал-майор, начальник артиллерии 1-й Западной армии. Погиб в Бородинском сражении в возрасте 28 лет.</p>
+                    <p><strong>Годы жизни:</strong> 1784-1812</p>
+                </div>
+            </div>
         </div>
 
         <!-- Слайд 6: Хронология ключевых событий -->
@@ -377,6 +486,7 @@
                 <li>Освобождение территории России</li>
                 <li>Начало заграничных походов русской армии</li>
                 <li>Укрепление международного авторитета России</li>
+                <li>Гибель более 500 тысяч солдат наполеоновской армии</li>
             </ul>
         </div>
 
@@ -388,13 +498,14 @@
                 "Недаром помнит вся Россия про день Бородина!"
                 <br>- М.Ю. Лермонтов
             </div>
-            <div style="margin-top: 50px; font-size: 1.2em;">
+            <div style="margin-top: 50px; font-size: 1.2em; max-width: 800px;">
                 <p>Подвиги русских генералов в Отечественной войне 1812 года стали:</p>
                 <ul style="list-style: none; margin-top: 20px;">
                     <li>✓ Примером воинской доблести и стратегического гения</li>
                     <li>✓ Символом патриотизма и самопожертвования</li>
                     <li>✓ Основой русской военной школы</li>
                     <li>✓ Источником национальной гордости</li>
+                    <li>✓ Вдохновением для будущих поколений</li>
                 </ul>
             </div>
         </div>
@@ -419,12 +530,18 @@
             });
             
             // Показать текущий слайд
-            document.getElementById(`slide${n}`).classList.add('active');
-            
-            // Обновить счетчик
-            document.getElementById('slideCounter').textContent = `Слайд ${n} из ${totalSlides}`;
-            
-            currentSlide = n;
+            const targetSlide = document.getElementById(`slide${n}`);
+            if (targetSlide) {
+                targetSlide.classList.add('active');
+                
+                // Обновить счетчик
+                document.getElementById('slideCounter').textContent = `Слайд ${n} из ${totalSlides}`;
+                
+                currentSlide = n;
+                
+                // Прокрутка к верху страницы
+                window.scrollTo(0, 0);
+            }
         }
 
         function nextSlide() {
@@ -441,12 +558,40 @@
 
         // Обработка клавиатуры
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'ArrowRight') {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
                 nextSlide();
             } else if (event.key === 'ArrowLeft') {
                 prevSlide();
             }
         });
+
+        // Обработка свайпов для мобильных устройств
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Свайп влево - следующий слайд
+                    nextSlide();
+                } else {
+                    // Свайп вправо - предыдущий слайд
+                    prevSlide();
+                }
+            }
+        }
 
         // Инициализация
         showSlide(1);
