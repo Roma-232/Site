@@ -1,1 +1,241 @@
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Русские генералы Отечественной войны 1812 года</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(to right, #8B0000, #B22222);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 5px solid #FFD700;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .intro {
+            padding: 30px;
+            text-align: center;
+            line-height: 1.6;
+            font-size: 1.2rem;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .generals-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 30px;
+            gap: 30px;
+        }
+        
+        .general-card {
+            width: 350px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .general-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .general-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 3px solid #8B0000;
+        }
+        
+        .general-info {
+            padding: 20px;
+        }
+        
+        .general-name {
+            font-size: 1.6rem;
+            color: #8B0000;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 5px;
+        }
+        
+        .general-dates {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .general-description {
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        .highlight {
+            color: #8B0000;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to right, #8B0000, #B22222);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .general-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Русские генералы Отечественной войны 1812 года</h1>
+            <p class="subtitle">Великие полководцы, защитившие Россию от наполеоновского нашествия</p>
+        </header>
+        
+        <section class="intro">
+            <p>Отечественная война 1812 года стала одним из важнейших событий в истории России. 
+            Противостояние с Великой армией Наполеона потребовало от русской армии невероятных усилий, 
+            а от её командующих — стратегического гения и личного мужества. В этой презентации 
+            представлены выдающиеся русские генералы, чьи имена навсегда вписаны в историю.</p>
+        </section>
+        
+        <div class="generals-container">
+            <!-- Михаил Кутузов -->
+            <div class="general-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Mikhail_Kutuzov_%281845_engraving%29.jpg/800px-Mikhail_Kutuzov_%281845_engraving%29.jpg" alt="Портрет Михаила Кутузова" class="general-img">
+                <div class="general-info">
+                    <h2 class="general-name">Михаил Илларионович Кутузов</h2>
+                    <p class="general-dates">1745-1813</p>
+                    <p class="general-description">Главнокомандующий русской армией во время Отечественной войны 1812 года. 
+                    Прославился своей стратегией изматывания противника. Под его руководством русская армия 
+                    одержала победу в <span class="highlight">Бородинском сражении</span> и изгнала Наполеона из России. 
+                    Полный кавалер ордена Святого Георгия.</p>
+                </div>
+            </div>
+            
+            <!-- Михаил Барклай-де-Толли -->
+            <div class="general-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Barclay_de_Tolly.jpg/800px-Barclay_de_Tolly.jpg" alt="Портрет Михаила Барклая-де-Толли" class="general-img">
+                <div class="general-info">
+                    <h2 class="general-name">Михаил Богданович Барклай-де-Толли</h2>
+                    <p class="general-dates">1761-1818</p>
+                    <p class="general-description">Военный министр и командующий 1-й Западной армией в начале войны. 
+                    Разработал и реализовал стратегию отступления, которая позволила сохранить армию и 
+                    измотать противника. Несмотря на критику, его тактика оказалась верной и 
+                    способствовала конечной победе.</p>
+                </div>
+            </div>
+            
+            <!-- Петр Багратион -->
+            <div class="general-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Pyotr_Bagration.jpg/800px-Pyotr_Bagration.jpg" alt="Портрет Петра Багратиона" class="general-img">
+                <div class="general-info">
+                    <h2 class="general-name">Пётр Иванович Багратион</h2>
+                    <p class="general-dates">1765-1812</p>
+                    <p class="general-description">Командующий 2-й Западной армией, любимец солдат. 
+                    Прославился мужеством и решительностью в бою. Героически оборонялся в <span class="highlight">Смоленском сражении</span>. 
+                    Получил смертельное ранение в Бородинской битве, где руководил обороной левого фланга.</p>
+                </div>
+            </div>
+            
+            <!-- Алексей Ермолов -->
+            <div class="general-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Yermakov2.jpg/800px-Yermakov2.jpg" alt="Портрет Алексея Ермолова" class="general-img">
+                <div class="general-info">
+                    <h2 class="general-name">Алексей Петрович Ермолов</h2>
+                    <p class="general-dates">1777-1861</p>
+                    <p class="general-description">Талантливый генерал, начальник штаба 1-й Западной армии. 
+                    Отличился в <span class="highlight">Бородинском сражении</span>, где лично водил войска в атаку. 
+                    Участвовал в сражениях при Малоярославце и под Красным. После войны стал главнокомандующим 
+                    на Кавказе.</p>
+                </div>
+            </div>
+            
+            <!-- Николай Раевский -->
+            <div class="general-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Raevsky.jpg/800px-Raevsky.jpg" alt="Портрет Николая Раевского" class="general-img">
+                <div class="general-info">
+                    <h2 class="general-name">Николай Николаевич Раевский</h2>
+                    <p class="general-dates">1771-1829</p>
+                    <p class="general-description">Командир 7-го пехотного корпуса, герой <span class="highlight">Бородинской битвы</span>. 
+                    Прославился обороной центральной позиции — батареи Раевского. Его корпус выдержал 
+                    многочасовой штурм превосходящих сил французов. Участвовал в заграничных походах 
+                    русской армии 1813-1814 годов.</p>
+                </div>
+            </div>
+            
+            <!-- Матвей Платов -->
+            <div class="general-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Platov.jpg/800px-Platov.jpg" alt="Портрет Матвея Платова" class="general-img">
+                <div class="general-info">
+                    <h2 class="general-name">Матвей Иванович Платов</h2>
+                    <p class="general-dates">1753-1818</p>
+                    <p class="general-description">Атаман Донского казачьего войска, генерал от кавалерии. 
+                    Казаки под его командованием наносили значительный урон коммуникациям французской армии. 
+                    Отличился в сражениях под Миром, Смоленском и на Березине. Прославился как мастер 
+                    партизанской войны.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Презентация подготовлена в ознакомительных целях | Русские генералы Отечественной войны 1812 года</p>
+        </footer>
+    </div>
+</body>
+</html>
