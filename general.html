@@ -17,12 +17,13 @@
             color: #333;
             overflow-x: hidden;
             min-height: 100vh;
+            padding: 20px;
         }
         
         .presentation-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            position: relative;
         }
         
         .slide {
@@ -117,6 +118,13 @@
             background-color: #A52A2A;
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
         
         .slide-counter {
@@ -230,6 +238,14 @@
             .timeline-item::after {
                 left: 20px !important;
             }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
@@ -244,7 +260,10 @@
                 мужество и самоотверженность привели к победе над армией Наполеона.</p>
             </div>
             <div class="general-image">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Battle_of_Borodino_1812.png/800px-Battle_of_Borodino_1812.png" alt="Бородинское сражение">
+                <!-- Заменим изображение на более надежное -->
+                <div style="width: 100%; height: 300px; background: #8B0000; border-radius: 10px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.5rem;">
+                    Бородинское сражение
+                </div>
             </div>
             <div class="quote">
                 "Славный год сей минул, но не пройдут содеянные в нём подвиги"
@@ -270,7 +289,10 @@
                     наполеоновские войска с территории России.</p>
                 </div>
                 <div class="general-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Kutuzov_by_Volkov.jpg/399px-Kutuzov_by_Volkov.jpg" alt="Портрет Кутузова">
+                    <!-- Заменим изображение на цветной блок -->
+                    <div style="width: 100%; height: 400px; background: #8B0000; border-radius: 10px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.5rem;">
+                        Портрет М.И. Кутузова
+                    </div>
                 </div>
             </div>
         </div>
@@ -293,7 +315,9 @@
                     что стало большой потерей для русской армии.</p>
                 </div>
                 <div class="general-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Bagration_by_Dow.jpg/399px-Bagration_by_Dow.jpg" alt="Портрет Багратиона">
+                    <div style="width: 100%; height: 400px; background: #8B0000; border-radius: 10px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.5rem;">
+                        Портрет П.И. Багратиона
+                    </div>
                 </div>
             </div>
         </div>
@@ -316,7 +340,9 @@
                     сражении и проявив личную храбрость.</p>
                 </div>
                 <div class="general-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Barclay_de_Tolly_by_Dow.jpg/399px-Barclay_de_Tolly_by_Dow.jpg" alt="Портрет Барклая-де-Толли">
+                    <div style="width: 100%; height: 400px; background: #8B0000; border-radius: 10px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.5rem;">
+                        Портрет М.Б. Барклая-де-Толли
+                    </div>
                 </div>
             </div>
         </div>
@@ -340,7 +366,9 @@
                     поддерживал дружеские отношения с Пушкиным.</p>
                 </div>
                 <div class="general-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Raevsky_by_Dow.jpg/399px-Raevsky_by_Dow.jpg" alt="Портрет Раевского">
+                    <div style="width: 100%; height: 400px; background: #8B0000; border-radius: 10px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.5rem;">
+                        Портрет Н.Н. Раевского
+                    </div>
                 </div>
             </div>
         </div>
@@ -364,7 +392,9 @@
                     для деморализованной Великой армии.</p>
                 </div>
                 <div class="general-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Platov_by_Dow.jpg/399px-Platov_by_Dow.jpg" alt="Портрет Платова">
+                    <div style="width: 100%; height: 400px; background: #8B0000; border-radius: 10px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.5rem;">
+                        Портрет М.И. Платова
+                    </div>
                 </div>
             </div>
         </div>
@@ -387,7 +417,9 @@
                     был награждён золотой саблей с надписью "За освобождение Вереи".</p>
                 </div>
                 <div class="general-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Dorokhov_I.S.jpg/399px-Dorokhov_I.S.jpg" alt="Портрет Дорохова">
+                    <div style="width: 100%; height: 400px; background: #8B0000; border-radius: 10px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.5rem;">
+                        Портрет И.С. Дорохова
+                    </div>
                 </div>
             </div>
         </div>
@@ -461,8 +493,10 @@
             let currentSlide = 0;
             const totalSlides = slides.length;
             
+            // Устанавливаем общее количество слайдов
             totalSlidesElement.textContent = totalSlides;
             
+            // Функция для показа слайда
             function showSlide(index) {
                 // Скрываем все слайды
                 slides.forEach(slide => {
@@ -480,6 +514,7 @@
                 nextBtn.disabled = index === totalSlides - 1;
             }
             
+            // Функция для перехода к следующему слайду
             function nextSlide() {
                 if (currentSlide < totalSlides - 1) {
                     currentSlide++;
@@ -487,6 +522,7 @@
                 }
             }
             
+            // Функция для перехода к предыдущему слайду
             function prevSlide() {
                 if (currentSlide > 0) {
                     currentSlide--;
@@ -500,14 +536,14 @@
             
             // Обработчики событий для клавиатуры
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowRight') {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
                     nextSlide();
                 } else if (e.key === 'ArrowLeft') {
                     prevSlide();
                 }
             });
             
-            // Инициализация
+            // Инициализация презентации
             showSlide(currentSlide);
         });
     </script>
