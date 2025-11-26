@@ -15,497 +15,501 @@
         body {
             background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
             color: #333;
+            overflow-x: hidden;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
         }
         
         .presentation-container {
-            width: 100%;
             max-width: 1200px;
-            height: 700px;
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .slides-container {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
+            margin: 0 auto;
+            padding: 20px;
         }
         
         .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-            display: flex;
-            flex-direction: column;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             padding: 40px;
+            margin-bottom: 40px;
+            display: none;
+            animation: fadeIn 1s ease;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
         }
         
         .slide.active {
-            opacity: 1;
+            display: block;
         }
         
-        .slide-header {
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            color: #8B0000;
             text-align: center;
             margin-bottom: 30px;
-            padding-bottom: 15px;
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             border-bottom: 3px solid #8B0000;
+            padding-bottom: 15px;
         }
         
-        .slide-title {
-            font-size: 2.5rem;
+        h2 {
             color: #8B0000;
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            text-align: center;
         }
         
-        .slide-subtitle {
-            font-size: 1.4rem;
-            color: #666;
-            font-style: italic;
+        p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            text-align: justify;
         }
         
-        .slide-content {
+        .general-info {
             display: flex;
-            flex: 1;
-            gap: 40px;
-            align-items: center;
+            gap: 30px;
+            margin-top: 30px;
         }
         
-        .general-portrait {
-            flex: 0 0 40%;
-            height: 400px;
+        .general-text {
+            flex: 1;
+        }
+        
+        .general-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        .general-image img {
+            max-width: 100%;
             border-radius: 10px;
-            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             border: 5px solid #8B0000;
         }
         
-        .general-portrait img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .general-info {
-            flex: 1;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .general-name {
-            font-size: 2rem;
-            color: #8B0000;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #FFD700;
-        }
-        
-        .general-dates {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: #666;
-            margin-bottom: 20px;
-        }
-        
-        .general-description {
-            line-height: 1.6;
-            font-size: 1.1rem;
-        }
-        
-        .highlight {
-            color: #8B0000;
-            font-weight: bold;
-        }
-        
         .navigation {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            z-index: 10;
+            justify-content: space-between;
+            margin-top: 30px;
         }
         
-        .nav-btn {
-            background: #8B0000;
+        button {
+            background-color: #8B0000;
             color: white;
             border: none;
             padding: 12px 25px;
-            border-radius: 30px;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
-        .nav-btn:hover {
-            background: #B22222;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
-        }
-        
-        .nav-btn:active {
-            transform: translateY(1px);
-        }
-        
-        .slide-indicators {
-            position: absolute;
-            bottom: 80px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ccc;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .indicator.active {
-            background: #8B0000;
-            transform: scale(1.2);
-        }
-        
-        .progress-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 5px;
-            background: #8B0000;
-            width: 0%;
-            transition: width 0.3s ease;
+        button:hover {
+            background-color: #A52A2A;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
         
         .slide-counter {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(139, 0, 0, 0.8);
+            text-align: center;
             color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 1.2rem;
+            margin-top: 10px;
         }
         
-        @media (max-width: 900px) {
-            .slide-content {
+        .intro-text {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .quote {
+            font-style: italic;
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: rgba(139, 0, 0, 0.1);
+            border-left: 5px solid #8B0000;
+            font-size: 1.3rem;
+        }
+        
+        .conclusion {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-top: 40px;
+            color: #8B0000;
+        }
+        
+        .timeline {
+            margin-top: 30px;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #8B0000;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+            width: 50%;
+            padding: 0 40px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #8B0000;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #8B0000;
+            border-radius: 50%;
+            top: 20px;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        @media (max-width: 768px) {
+            .general-info {
                 flex-direction: column;
-                overflow-y: auto;
             }
             
-            .general-portrait {
-                flex: 0 0 auto;
-                height: 300px;
-                width: 300px;
+            .timeline::before {
+                left: 30px;
             }
             
-            .slide-title {
-                font-size: 2rem;
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
             }
             
-            .general-name {
-                font-size: 1.7rem;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
+            .timeline-item:nth-child(even) {
+                left: 0;
             }
             
-            .presentation-container {
-                height: 600px;
-            }
-            
-            .slide {
-                padding: 20px;
-            }
-            
-            .slide-title {
-                font-size: 1.7rem;
-            }
-            
-            .general-portrait {
-                height: 250px;
-                width: 250px;
-            }
-            
-            .general-name {
-                font-size: 1.5rem;
+            .timeline-item::after {
+                left: 20px !important;
             }
         }
     </style>
 </head>
 <body>
     <div class="presentation-container">
-        <div class="progress-bar"></div>
-        <div class="slide-counter">1/7</div>
+        <!-- Слайд 1: Титульный -->
+        <div class="slide active" id="slide1">
+            <h1>Русские генералы Отечественной войны 1812 года</h1>
+            <div class="intro-text">
+                <p>Отечественная война 1812 года стала одним из важнейших событий в истории России. 
+                В этой презентации мы расскажем о выдающихся русских генералах, чьи стратегии, 
+                мужество и самоотверженность привели к победе над армией Наполеона.</p>
+            </div>
+            <div class="general-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Battle_of_Borodino_1812.png/800px-Battle_of_Borodino_1812.png" alt="Бородинское сражение">
+            </div>
+            <div class="quote">
+                "Славный год сей минул, но не пройдут содеянные в нём подвиги"
+                <br>- Александр I
+            </div>
+        </div>
         
-        <div class="slides-container">
-            <!-- Слайд 1: Заглавный -->
-            <div class="slide active">
-                <div class="slide-header">
-                    <h1 class="slide-title">Русские генералы Отечественной войны 1812 года</h1>
-                    <p class="slide-subtitle">Великие полководцы, защитившие Россию от наполеоновского нашествия</p>
+        <!-- Слайд 2: Кутузов -->
+        <div class="slide" id="slide2">
+            <h2>Михаил Илларионович Кутузов</h2>
+            <div class="general-info">
+                <div class="general-text">
+                    <p><strong>Годы жизни:</strong> 1745-1813</p>
+                    <p><strong>Звание:</strong> Генерал-фельдмаршал</p>
+                    <p><strong>Роль в войне:</strong> Главнокомандующий русской армией</p>
+                    <p>Михаил Кутузов - один из самых знаменитых русских полководцев, ученик Суворова. 
+                    Он принял командование русской армией в критический момент, когда французы 
+                    уже заняли Смоленск.</p>
+                    <p>Его стратегия изматывания противника, отступление с целью сохранения армии 
+                    и знаменитое Бородинское сражение стали ключевыми моментами войны. 
+                    Решение оставить Москву было одним из самых трудных, но стратегически верных.</p>
+                    <p>Под его руководством русская армия перешла в контрнаступление и изгнала 
+                    наполеоновские войска с территории России.</p>
                 </div>
-                <div class="slide-content" style="justify-content: center; text-align: center;">
-                    <div style="max-width: 800px; margin: 0 auto;">
-                        <p style="font-size: 1.4rem; line-height: 1.8; margin-bottom: 30px;">
-                            Отечественная война 1812 года стала одним из важнейших событий в истории России. 
-                            Противостояние с Великой армией Наполеона потребовало от русской армии невероятных усилий, 
-                            а от её командующих — стратегического гения и личного мужества.
-                        </p>
-                        <p style="font-size: 1.4rem; line-height: 1.8;">
-                            В этой презентации представлены выдающиеся русские генералы, чьи имена навсегда вписаны в историю.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Слайд 2: Кутузов -->
-            <div class="slide">
-                <div class="slide-header">
-                    <h1 class="slide-title">Главнокомандующие русской армии</h1>
-                    <p class="slide-subtitle">Стратегия и тактика победы над Наполеоном</p>
-                </div>
-                <div class="slide-content">
-                    <div class="general-portrait">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Mikhail_Kutuzov_%281845_engraving%29.jpg/800px-Mikhail_Kutuzov_%281845_engraving%29.jpg" alt="Портрет Михаила Кутузова">
-                    </div>
-                    <div class="general-info">
-                        <h2 class="general-name">Михаил Илларионович Кутузов</h2>
-                        <p class="general-dates">1745-1813</p>
-                        <p class="general-description">
-                            Главнокомандующий русской армией во время Отечественной войны 1812 года. 
-                            Прославился своей стратегией изматывания противника. Под его руководством русская армия 
-                            одержала победу в <span class="highlight">Бородинском сражении</span> и изгнала Наполеона из России. 
-                            Полный кавалер ордена Святого Георгия. Кутузов умело использовал тактику выжженной земли 
-                            и партизанскую войну, что в конечном итоге привело к гибели Великой армии Наполеона.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Слайд 3: Барклай-де-Толли -->
-            <div class="slide">
-                <div class="slide-header">
-                    <h1 class="slide-title">Военные министры и стратеги</h1>
-                    <p class="slide-subtitle">Планирование и организация обороны</p>
-                </div>
-                <div class="slide-content">
-                    <div class="general-portrait">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Barclay_de_Tolly.jpg/800px-Barclay_de_Tolly.jpg" alt="Портрет Михаила Барклая-де-Толли">
-                    </div>
-                    <div class="general-info">
-                        <h2 class="general-name">Михаил Богданович Барклай-де-Толли</h2>
-                        <p class="general-dates">1761-1818</p>
-                        <p class="general-description">
-                            Военный министр и командующий 1-й Западной армией в начале войны. 
-                            Разработал и реализовал стратегию отступления, которая позволила сохранить армию и 
-                            измотать противника. Несмотря на критику, его тактика оказалась верной и 
-                            способствовала конечной победе. После соединения армий добровольно передал командование 
-                            Кутузову, проявив редкое самоотречение. В 1813-1814 годах командовал русскими войсками 
-                            в Заграничном походе.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Слайд 4: Багратион -->
-            <div class="slide">
-                <div class="slide-header">
-                    <h1 class="slide-title">Герои обороны</h1>
-                    <p class="slide-subtitle">Мужество и самопожертвование на поле боя</p>
-                </div>
-                <div class="slide-content">
-                    <div class="general-portrait">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Pyotr_Bagration.jpg/800px-Pyotr_Bagration.jpg" alt="Портрет Петра Багратиона">
-                    </div>
-                    <div class="general-info">
-                        <h2 class="general-name">Пётр Иванович Багратион</h2>
-                        <p class="general-dates">1765-1812</p>
-                        <p class="general-description">
-                            Командующий 2-й Западной армией, любимец солдат. 
-                            Прославился мужеством и решительностью в бою. Героически оборонялся в <span class="highlight">Смоленском сражении</span>. 
-                            Получил смертельное ранение в Бородинской битве, где руководил обороной левого фланга.
-                            Багратион был учеником Суворова, участвовал в Итальянском и Швейцарском походах.
-                            Его смерть стала большой потерей для русской армии.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Слайд 5: Ермолов -->
-            <div class="slide">
-                <div class="slide-header">
-                    <h1 class="slide-title">Генералы-артиллеристы</h1>
-                    <p class="slide-subtitle">Мастера артиллерийского дела</p>
-                </div>
-                <div class="slide-content">
-                    <div class="general-portrait">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Yermakov2.jpg/800px-Yermakov2.jpg" alt="Портрет Алексея Ермолова">
-                    </div>
-                    <div class="general-info">
-                        <h2 class="general-name">Алексей Петрович Ермолов</h2>
-                        <p class="general-dates">1777-1861</p>
-                        <p class="general-description">
-                            Талантливый генерал, начальник штаба 1-й Западной армии. 
-                            Отличился в <span class="highlight">Бородинском сражении</span>, где лично водил войска в атаку. 
-                            Участвовал в сражениях при Малоярославце и под Красным. После войны стал главнокомандующим 
-                            на Кавказе. Ермолов был известен своей решительностью и независимостью суждений.
-                            Его артиллерия сыграла важную роль в ключевых сражениях войны.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Слайд 6: Раевский -->
-            <div class="slide">
-                <div class="slide-header">
-                    <h1 class="slide-title">Герои Бородинской битвы</h1>
-                    <p class="slide-subtitle">Оборона ключевых позиций</p>
-                </div>
-                <div class="slide-content">
-                    <div class="general-portrait">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Raevsky.jpg/800px-Raevsky.jpg" alt="Портрет Николая Раевского">
-                    </div>
-                    <div class="general-info">
-                        <h2 class="general-name">Николай Николаевич Раевский</h2>
-                        <p class="general-dates">1771-1829</p>
-                        <p class="general-description">
-                            Командир 7-го пехотного корпуса, герой <span class="highlight">Бородинской битвы</span>. 
-                            Прославился обороной центральной позиции — батареи Раевского. Его корпус выдержал 
-                            многочасовой штурм превосходящих сил французов. Участвовал в заграничных походах 
-                            русской армии 1813-1814 годов. Раевский был известен своей заботой о солдатах
-                            и пользовался огромным уважением в армии.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Слайд 7: Платов -->
-            <div class="slide">
-                <div class="slide-header">
-                    <h1 class="slide-title">Казачьи командиры</h1>
-                    <p class="slide-subtitle">Мастера маневренной войны</p>
-                </div>
-                <div class="slide-content">
-                    <div class="general-portrait">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Platov.jpg/800px-Platov.jpg" alt="Портрет Матвея Платова">
-                    </div>
-                    <div class="general-info">
-                        <h2 class="general-name">Матвей Иванович Платов</h2>
-                        <p class="general-dates">1753-1818</p>
-                        <p class="general-description">
-                            Атаман Донского казачьего войска, генерал от кавалерии. 
-                            Казаки под его командованием наносили значительный урон коммуникациям французской армии. 
-                            Отличился в сражениях под Миром, Смоленском и на Березине. Прославился как мастер 
-                            партизанской войны. Платов был одним из самых популярных военачальников той эпохи,
-                            его казаки вызывали страх у французских солдат.
-                        </p>
-                    </div>
+                <div class="general-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Kutuzov_by_Volkov.jpg/399px-Kutuzov_by_Volkov.jpg" alt="Портрет Кутузова">
                 </div>
             </div>
         </div>
         
-        <div class="slide-indicators">
-            <div class="indicator active" data-slide="0"></div>
-            <div class="indicator" data-slide="1"></div>
-            <div class="indicator" data-slide="2"></div>
-            <div class="indicator" data-slide="3"></div>
-            <div class="indicator" data-slide="4"></div>
-            <div class="indicator" data-slide="5"></div>
-            <div class="indicator" data-slide="6"></div>
+        <!-- Слайд 3: Багратион -->
+        <div class="slide" id="slide3">
+            <h2>Пётр Иванович Багратион</h2>
+            <div class="general-info">
+                <div class="general-text">
+                    <p><strong>Годы жизни:</strong> 1765-1812</p>
+                    <p><strong>Звание:</strong> Генерал от инфантерии</p>
+                    <p><strong>Роль в войне:</strong> Командующий 2-й Западной армией</p>
+                    <p>Пётр Багратион - потомок грузинского царского рода, любимый ученик Суворова. 
+                    Он прославился как мастер арьергардных боёв и быстрых маневров.</p>
+                    <p>В начале войны его армия успешно отступала, уклоняясь от окружения 
+                    превосходящими силами противника, и соединилась с армией Барклая-де-Толли 
+                    под Смоленском.</p>
+                    <p>В Бородинском сражении Багратион командовал левым флангом, где шли 
+                    самые ожесточённые бои. Он был смертельно ранен в этом сражении, 
+                    что стало большой потерей для русской армии.</p>
+                </div>
+                <div class="general-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Bagration_by_Dow.jpg/399px-Bagration_by_Dow.jpg" alt="Портрет Багратиона">
+                </div>
+            </div>
         </div>
         
+        <!-- Слайд 4: Барклай-де-Толли -->
+        <div class="slide" id="slide4">
+            <h2>Михаил Богданович Барклай-де-Толли</h2>
+            <div class="general-info">
+                <div class="general-text">
+                    <p><strong>Годы жизни:</strong> 1761-1818</p>
+                    <p><strong>Звание:</strong> Генерал-фельдмаршал</p>
+                    <p><strong>Роль в войне:</strong> Военный министр, командующий 1-й Западной армией</p>
+                    <p>Барклай-де-Толли разработал стратегию отступления, которая позволила 
+                    сохранить русскую армию в начале войны. Он понимал, что прямое столкновение 
+                    с Великой армией Наполеона приведёт к неминуемому поражению.</p>
+                    <p>Несмотря на критику и непонимание со стороны общества и армии, 
+                    он последовательно проводил свою стратегию, изматывая противника.</p>
+                    <p>После назначения Кутузова главнокомандующим Барклай-де-Толли 
+                    продолжал добросовестно служить, командуя правым флангом в Бородинском 
+                    сражении и проявив личную храбрость.</p>
+                </div>
+                <div class="general-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Barclay_de_Tolly_by_Dow.jpg/399px-Barclay_de_Tolly_by_Dow.jpg" alt="Портрет Барклая-де-Толли">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Слайд 5: Раевский -->
+        <div class="slide" id="slide5">
+            <h2>Николай Николаевич Раевский</h2>
+            <div class="general-info">
+                <div class="general-text">
+                    <p><strong>Годы жизни:</strong> 1771-1829</p>
+                    <p><strong>Звание:</strong> Генерал от кавалерии</p>
+                    <p><strong>Роль в войне:</strong> Командир 7-го пехотного корпуса</p>
+                    <p>Николай Раевский прославился героической обороной Смоленска и 
+                    ключевой позиции в Бородинском сражении - батареи Раевского.</p>
+                    <p>Под Салтановкой он лично повёл солдат в атаку вместе со своими 
+                    сыновьями, что стало легендой русской армии.</p>
+                    <p>В Бородинском сражении его батарея стала центром обороны, 
+                    выдержав несколько атак французской кавалерии и пехоты. 
+                    Раевский был ранен, но остался в строю.</p>
+                    <p>После войны он стал членом Государственного совета и 
+                    поддерживал дружеские отношения с Пушкиным.</p>
+                </div>
+                <div class="general-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Raevsky_by_Dow.jpg/399px-Raevsky_by_Dow.jpg" alt="Портрет Раевского">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Слайд 6: Платов -->
+        <div class="slide" id="slide6">
+            <h2>Матрвей Иванович Платов</h2>
+            <div class="general-info">
+                <div class="general-text">
+                    <p><strong>Годы жизни:</strong> 1753-1818</p>
+                    <p><strong>Звание:</strong> Генерал от кавалерии</p>
+                    <p><strong>Роль в войне:</strong> Атаман Донского казачьего войска</p>
+                    <p>Матрвей Платов - легендарный атаман донских казаков, чьи отряды 
+                    сыграли важную роль в партизанской войне против наполеоновской армии.</p>
+                    <p>Казаки Платова постоянно тревожили фланги и тылы французской армии, 
+                    нападали на обозы, захватывали пленных и не давали противнику покоя.</p>
+                    <p>В Бородинском сражении казаки Платова совершили рейд в тыл 
+                    французской армии, что заставило Наполеона приостановить атаки 
+                    на несколько часов.</p>
+                    <p>Во время отступления французов казаки стали главной угрозой 
+                    для деморализованной Великой армии.</p>
+                </div>
+                <div class="general-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Platov_by_Dow.jpg/399px-Platov_by_Dow.jpg" alt="Портрет Платова">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Слайд 7: Дорохов -->
+        <div class="slide" id="slide7">
+            <h2>Иван Семёнович Дорохов</h2>
+            <div class="general-info">
+                <div class="general-text">
+                    <p><strong>Годы жизни:</strong> 1762-1815</p>
+                    <p><strong>Звание:</strong> Генерал-лейтенант</p>
+                    <p><strong>Роль в войне:</strong> Командир арьергарда, партизанский отряд</p>
+                    <p>Иван Дорохов прославился как мастер арьергардных боёв и партизанских действий.</p>
+                    <p>В начале войны он успешно прикрывал отступление русской армии, 
+                    нанося чувствительные удары по авангарду французов.</p>
+                    <p>После Бородинского сражения Дорохов возглавил партизанский отряд, 
+                    который действовал на коммуникациях французской армии.</p>
+                    <p>28 сентября 1812 года его отряд освободил город Верею - 
+                    первый город, отбитый у французов. За эту операцию Дорохов 
+                    был награждён золотой саблей с надписью "За освобождение Вереи".</p>
+                </div>
+                <div class="general-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Dorokhov_I.S.jpg/399px-Dorokhov_I.S.jpg" alt="Портрет Дорохова">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Слайд 8: Заключение -->
+        <div class="slide" id="slide8">
+            <h2>Наследие генералов 1812 года</h2>
+            <div class="intro-text">
+                <p>Русские генералы Отечественной войны 1812 года оставили неизгладимый след 
+                в истории военного искусства. Их стратегии, тактические решения и личное 
+                мужество стали примером для будущих поколений военачальников.</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Стратегия изматывания</h3>
+                        <p>Барклай-де-Толли и Кутузов разработали и реализовали стратегию 
+                        отступления с целью сохранения армии и изматывания противника</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Партизанская война</h3>
+                        <p>Платов, Дорохов и другие командиры развили тактику партизанской 
+                        войны, ставшей важным фактором победы</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Личный пример</h3>
+                        <p>Багратион, Раевский и другие генералы личным примером вдохновляли 
+                        солдат, разделяя с ними все тяготы войны</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Единство цели</h3>
+                        <p>Несмотря на разногласия, все генералы были объединены общей 
+                        целью - защитой Отечества</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conclusion">
+                <p>Подвиги русских генералов в Отечественной войне 1812 года навсегда 
+                вписаны в историю России и служат примером патриотизма, мужества и 
+                военного искусства.</p>
+            </div>
+        </div>
+        
+        <!-- Навигация -->
         <div class="navigation">
-            <button class="nav-btn prev-btn">Назад</button>
-            <button class="nav-btn next-btn">Вперед</button>
+            <button id="prevBtn">Предыдущий слайд</button>
+            <button id="nextBtn">Следующий слайд</button>
+        </div>
+        
+        <div class="slide-counter">
+            Слайд <span id="currentSlide">1</span> из <span id="totalSlides">8</span>
         </div>
     </div>
-</body>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const slides = document.querySelectorAll('.slide');
-            const indicators = document.querySelectorAll('.indicator');
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-            const progressBar = document.querySelector('.progress-bar');
-            const slideCounter = document.querySelector('.slide-counter');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const currentSlideElement = document.getElementById('currentSlide');
+            const totalSlidesElement = document.getElementById('totalSlides');
             
             let currentSlide = 0;
             const totalSlides = slides.length;
             
-            // Функция обновления слайда
-            function updateSlide() {
+            totalSlidesElement.textContent = totalSlides;
+            
+            function showSlide(index) {
                 // Скрываем все слайды
                 slides.forEach(slide => {
                     slide.classList.remove('active');
                 });
                 
                 // Показываем текущий слайд
-                slides[currentSlide].classList.add('active');
+                slides[index].classList.add('active');
                 
-                // Обновляем индикаторы
-                indicators.forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === currentSlide);
-                });
+                // Обновляем счетчик
+                currentSlideElement.textContent = index + 1;
                 
-                // Обновляем прогресс-бар
-                progressBar.style.width = `${(currentSlide / (totalSlides - 1)) * 100}%`;
-                
-                // Обновляем счетчик слайдов
-                slideCounter.textContent = `${currentSlide + 1}/${totalSlides}`;
+                // Обновляем состояние кнопок
+                prevBtn.disabled = index === 0;
+                nextBtn.disabled = index === totalSlides - 1;
             }
             
-            // Переход к следующему слайду
             function nextSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateSlide();
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
             }
             
-            // Переход к предыдущему слайду
             function prevSlide() {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                updateSlide();
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
             }
             
             // Обработчики событий для кнопок
             nextBtn.addEventListener('click', nextSlide);
             prevBtn.addEventListener('click', prevSlide);
             
-            // Обработчики событий для индикаторов
-            indicators.forEach(indicator => {
-                indicator.addEventListener('click', function() {
-                    currentSlide = parseInt(this.getAttribute('data-slide'));
-                    updateSlide();
-                });
+            // Обработчики событий для клавиатуры
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                }
             });
             
-            // Обработчики событий для клавиатуры
-            </script>
-</head>
+            // Инициализация
+            showSlide(currentSlide);
+        });
+    </script>
+</body>
 </html>
