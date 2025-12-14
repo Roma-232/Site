@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профессия Fullstack-разработчик | SkillUp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #4cc9f0;
+            --border-radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: #f9fafc;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--success);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--success);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: var(--border-radius);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #e11575;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(247, 37, 133, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 80px;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .course-badge {
+            display: inline-block;
+            background-color: var(--light);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .course-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .image-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* Course Details */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-light {
+            background-color: var(--light);
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .module-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .module-number {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--light-gray);
+            color: var(--gray);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            border-bottom-left-radius: var(--border-radius);
+        }
+
+        .module-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .module-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .module-card ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .module-card li {
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--light-gray);
+            display: flex;
+            align-items: center;
+        }
+
+        .module-card li:last-child {
+            border-bottom: none;
+        }
+
+        .module-card li i {
+            color: var(--success);
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Price Section */
+        .price-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .price-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            border: 2px solid var(--light-gray);
+            transition: var(--transition);
+        }
+
+        .price-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .price-card.featured::before {
+            content: 'ПОПУЛЯРНЫЙ';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .price-card:hover {
+            border-color: var(--primary);
+        }
+
+        .price-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .price-amount {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1;
+        }
+
+        .price-period {
+            color: var(--gray);
+            margin-top: 10px;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .price-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+        }
+
+        .price-features li:last-child {
+            border-bottom: none;
+        }
+
+        .price-features li i {
+            margin-right: 15px;
+            color: var(--success);
+        }
+
+        .price-features li.disabled {
+            color: var(--gray);
+        }
+
+        .price-features li.disabled i {
+            color: var(--light-gray);
+        }
+
+        .btn-block {
+            width: 100%;
+            justify-content: center;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Instructors */
+        .instructors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .instructor-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .instructor-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .instructor-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .instructor-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .instructor-card:hover .instructor-img img {
+            transform: scale(1.05);
+        }
+
+        .instructor-info {
+            padding: 25px;
+        }
+
+        .instructor-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .instructor-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .instructor-bio {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: var(--light);
+        }
+
+        .faq-question i {
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-question {
+            background-color: var(--light);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px 30px 30px;
+            max-height: 500px;
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .btn-cta {
+            background-color: white;
+            color: var(--primary);
+            font-size: 1.1rem;
+            padding: 15px 40px;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-logo i {
+            color: var(--accent);
+        }
+
+        .footer-about p {
+            color: #adb5bd;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4::after, .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-contact p {
+            color: #adb5bd;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .price-card.featured {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .course-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero {
+                padding: 60px 0 40px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .price-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .price-card {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .module-card {
+                padding: 20px;
+            }
+            
+            .faq-question {
+                padding: 15px 20px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>SkillUp</span>
+                </div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#course">Курс</a></li>
+                        <li><a href="#program">Программа</a></li>
+                        <li><a href="#instructors">Преподаватели</a></li>
+                        <li><a href="#price">Стоимость</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <button class="btn btn-outline">
+                        <i class="fas fa-user"></i> Войти
+                    </button>
+                    <button class="btn btn-primary" onclick="openEnrollmentModal()">
+                        <i class="fas fa-rocket"></i> Начать учиться
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="course-badge">
+                        <i class="fas fa-code"></i> Fullstack-разработка
+                    </div>
+                    <h1>Стань Fullstack-разработчиком с нуля за 8 месяцев</h1>
+                    <p>Освойте востребованные технологии: JavaScript, React, Node.js, базы данных и DevOps. Создавайте современные веб-приложения от фронтенда до бэкенда.</p>
+                    
+                    <div class="course-stats">
+                        <div class="stat">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">месяцев</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">120+</span>
+                            <span class="stat-label">часов практики</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">6</span>
+                            <span class="stat-label">реальных проектов</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary" style="margin-top: 30px; padding: 15px 30px;">
+                        <i class="fas fa-play-circle"></i> Начать обучение
+                    </button>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fullstack разработка">
+                    <div class="image-badge">
+                        <div style="font-size: 1.5rem; font-weight: 700;">-30%</div>
+                        <div style="font-size: 0.9rem;">до конца недели</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Modules -->
+    <section class="section" id="program">
+        <div class="container">
+            <div class="section-title">
+                <h2>Программа курса</h2>
+            </div>
+            
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-number">01</div>
+                    <div class="module-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3>Основы веб-разработки</h3>
+                    <p>HTML5, CSS3, адаптивная вёрстка, Git и базовый JavaScript.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Создание современных макетов</li>
+                        <li><i class="fas fa-check-circle"></i> Адаптивность под все устройства</li>
+                        <li><i class="fas fa-check-circle"></i> Основы программирования</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-number">02</div>
+                    <div class="module-icon">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <h3>Продвинутый JavaScript</h3>
+                    <p>ES6+, асинхронное программирование, работа с API, паттерны.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Современный синтаксис ES6+</li>
+                        <li><i class="fas fa-check-circle"></i> Асинхронные запросы (fetch, async/await)</li>
+                        <li><i class="fas fa-check-circle"></i> Архитектура приложений</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-number">03</div>
+                    <div class="module-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3>Frontend с React</h3>
+                    <p>React, хуки, Redux, Next.js и современные инструменты разработки.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Компонентный подход</li>
+                        <li><i class="fas fa-check-circle"></i> Управление состоянием</li>
+                        <li><i class="fas fa-check-circle"></i> Server-side rendering</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-number">04</div>
+                    <div class="module-icon">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <h3>Backend с Node.js</h3>
+                    <p>Node.js, Express, REST API, аутентификация и авторизация.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Создание RESTful API</li>
+                        <li><i class="fas fa-check-circle"></i> Работа с базами данных</li>
+                        <li><i class="fas fa-check-circle"></i> JWT и безопасность</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-number">05</div>
+                    <div class="module-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Базы данных</h3>
+                    <p>MongoDB, PostgreSQL, ORM, проектирование и оптимизация запросов.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> SQL и NoSQL базы данных</li>
+                        <li><i class="fas fa-check-circle"></i> Проектирование схем</li>
+                        <li><i class="fas fa-check-circle"></i> Оптимизация производительности</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-number">06</div>
+                    <div class="module-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>DevOps & Deployment</h3>
+                    <p>Docker, CI/CD, облачные платформы, мониторинг и масштабирование.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Контейнеризация с Docker</li>
+                        <li><i class="fas fa-check-circle"></i> Развёртывание на AWS/Vercel</li>
+                        <li><i class="fas fa-check-circle"></i> Автоматизация процессов</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructors -->
+    <section class="section section-light" id="instructors">
+        <div class="container">
+            <div class="section-title">
+                <h2>Преподаватели</h2>
+            </div>
+            
+            <div class="instructors-grid">
+                <div class="instructor-card">
+                    <div class="instructor-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Алексей Петров">
+                    </div>
+                    <div class="instructor-info">
+                        <h4>Алексей Петров</h4>
+                        <div class="instructor-title">Lead Frontend Developer в Яндекс</div>
+                        <p class="instructor-bio">8+ лет в разработке. Специализируется на React и современном JavaScript. Участвовал в разработке крупных проектов.</p>
+                    </div>
+                </div>
+                
+                <div class="instructor-card">
+                    <div class="instructor-img">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80" alt="Мария Сидорова">
+                    </div>
+                    <div class="instructor-info">
+                        <h4>Мария Сидорова</h4>
+                        <div class="instructor-title">Senior Backend Engineer в Tinkoff</div>
+                        <p class="instructor-bio">Эксперт по Node.js и микросервисной архитектуре. Автор статей и докладчик на IT-конференциях.</p>
+                    </div>
+                </div>
+                
+                <div class="instructor-card">
+                    <div class="instructor-img">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Иван Козлов">
+                    </div>
+                    <div class="instructor-info">
+                        <h4>Иван Козлов</h4>
+                        <div class="instructor-title">DevOps Engineer в Avito</div>
+                        <p class="instructor-bio">Специалист по облачным технологиям и автоматизации процессов. Помогал масштабировать проекты на миллионы пользователей.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="price">
+        <div class="container">
+            <div class="section-title">
+                <h2>Стоимость обучения</h2>
+            </div>
+            
+            <div class="price-container">
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Самостоятельный</h3>
+                        <div class="price-amount">24 900 ₽</div>
+                        <div class="price-period">за весь курс</div>
+                    </div>
+                    
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> Доступ ко всем урокам</li>
+                        <li><i class="fas fa-check"></i> Практические задания</li>
+                        <li><i class="fas fa-check"></i> Доступ к комьюнити</li>
+                        <li><i class="fas fa-check"></i> Сертификат об окончании</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Проверка домашних работ</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Личный наставник</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Карьерная консультация</li>
+                    </ul>
+                    
+                    <button class="btn btn-outline btn-block" onclick="selectPlan('basic')">
+                        Выбрать план
+                    </button>
+                </div>
+                
+                <div class="price-card featured">
+                    <div class="price-header">
+                        <h3>С наставником</h3>
+                        <div class="price-amount">49 900 ₽</div>
+                        <div class="price-period">или 6 237 ₽/мес</div>
+                    </div>
+                    
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> Доступ ко всем урокам</li>
+                        <li><i class="fas fa-check"></i> Практические задания</li>
+                        <li><i class="fas fa-check"></i> Доступ к комьюнити</li>
+                        <li><i class="fas fa-check"></i> Сертификат об окончании</li>
+                        <li><i class="fas fa-check"></i> Проверка домашних работ</li>
+                        <li><i class="fas fa-check"></i> Личный наставник</li>
+                        <li><i class="fas fa-check"></i> Карьерная консультация</li>
+                    </ul>
+                    
+                    <button class="btn btn-primary btn-block" onclick="selectPlan('premium')">
+                        <i class="fas fa-star"></i> Начать обучение
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-light" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Частые вопросы</h2>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(0)">
+                        <span>Нужны ли начальные знания программирования?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Нет, курс рассчитан на начинающих с нуля. Первые модули посвящены основам программирования и веб-технологиям. Мы постепенно переходим от простого к сложному.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(1)">
+                        <span>Сколько времени нужно уделять обучению?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Мы рекомендуем уделять 10-15 часов в неделю. Курс рассчитан на 8 месяцев при таком графике. Вы можете учиться в своём темпе — доступ к материалам остаётся навсегда.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(2)">
+                        <span>Помогаете ли с трудоустройством?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Да, для студентов плана "С наставником" мы предоставляем карьерные консультации, помогаем составить резюме и портфолио, а также делимся вакансиями от наших партнёров.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(3)">
+                        <span>Какие проекты будут в портфолио?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Вы создадите 6 реальных проектов: интернет-магазин, социальную сеть, API для мобильного приложения, панель администратора и полноценное веб-приложение с фронтендом и бэкендом.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Готовы стать разработчиком?</h2>
+            <p>Присоединяйтесь к 2000+ студентов, которые уже начали карьеру в IT после нашего курса. Первые 3 урока — бесплатно!</p>
+            <button class="btn btn-cta" onclick="openEnrollmentModal()">
+                <i class="fas fa-play-circle"></i> Начать бесплатно
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>SkillUp</span>
+                    </div>
+                    <p>Современные онлайн-курсы с практическим подходом. Помогаем освоить востребованные профессии с нуля до трудоустройства.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Курсы</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Fullstack-разработка</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Data Science</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> iOS-разработка</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> UX/UI дизайн</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Маркетинг</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-envelope"></i> hello@skillup.com</p>
+                    <p><i class="fas fa-phone"></i> 8 (800) 123-45-67</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Тверская, 15</p>
+                    <p><i class="fas fa-clock"></i> Пн-Пт: 9:00-21:00</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2024 SkillUp. Все права защищены. 
+                <a href="#" style="color: #adb5bd; margin-left: 20px;">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple Modal -->
+    <div id="enrollmentModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:2000; justify-content:center; align-items:center;">
+        <div style="background:white; padding:40px; border-radius:var(--border-radius); max-width:500px; width:90%; position:relative;">
+            <button onclick="closeEnrollmentModal()" style="position:absolute; top:15px; right:15px; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--gray);">&times;</button>
+            <h2 style="margin-bottom:20px; color:var(--dark);">Начать обучение</h2>
+            <p style="margin-bottom:30px; color:var(--gray);">Заполните форму, и мы вышлем вам доступ к первым урокам и информацию о курсе.</p>
+            
+            <form id="enrollmentForm" style="display:flex; flex-direction:column; gap:20px;">
+                <input type="text" placeholder="Ваше имя" required style="padding:15px; border:1px solid var(--light-gray); border-radius:var(--border-radius); font-size:1rem;">
+                <input type="email" placeholder="Email" required style="padding:15px; border:1px solid var(--light-gray); border-radius:var(--border-radius); font-size:1rem;">
+                <input type="tel" placeholder="Телефон" style="padding:15px; border:1px solid var(--light-gray); border-radius:var(--border-radius); font-size:1rem;">
+                <button type="submit" class="btn btn-primary" style="padding:15px; font-size:1.1rem;">
+                    <i class="fas fa-paper-plane"></i> Получить доступ
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // FAQ Toggle
+        function toggleFAQ(index) {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems[index].classList.toggle('active');
+        }
+
+        // Enrollment Modal
+        function openEnrollmentModal() {
+            document.getElementById('enrollmentModal').style.display = 'flex';
+        }
+
+        function closeEnrollmentModal() {
+            document.getElementById('enrollmentModal').style.display = 'none';
+        }
+
+        // Plan Selection
+        function selectPlan(plan) {
+            openEnrollmentModal();
+            // В реальном приложении здесь была бы логика выбора плана
+            console.log(`Выбран план: ${plan}`);
+        }
+
+        // Form Submission
+        document.getElementById('enrollmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
+            closeEnrollmentModal();
+            this.reset();
+        });
+
+        // Close modal on outside click
+        document.getElementById('enrollmentModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeEnrollmentModal();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
