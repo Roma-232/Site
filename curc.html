@@ -224,65 +224,53 @@
             border-left-color: #2196F3;
         }
 
-        .important-note {
-            background: #FFEBEE;
-            border-left-color: #F44336;
-            padding: 15px;
-            border-radius: var(--radius);
-            margin: 20px 0;
-            display: flex;
-            gap: 15px;
-            align-items: flex-start;
-        }
-
-        .important-note i {
-            color: var(--secondary);
-            font-size: 1.2rem;
-            margin-top: 2px;
-        }
-
-        .course-sidebar {
-            position: sticky;
-            top: 20px;
-            align-self: start;
-        }
-
-        .sidebar-card {
+        .quiz-question {
             background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 25px;
-            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border);
         }
 
-        .sidebar-card h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
+        .quiz-question p {
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 1.2rem;
         }
 
-        .resources-list {
-            list-style: none;
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
         }
 
-        .resources-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .quiz-option.selected {
+            border-color: var(--accent);
+            background: #E8F5E9;
         }
 
-        .resources-list li:last-child {
-            border-bottom: none;
+        .quiz-option input[type="radio"] {
+            display: none;
         }
 
-        .resources-list i {
-            color: var(--primary);
-            width: 20px;
+        .quiz-option label {
+            cursor: pointer;
+            flex-grow: 1;
         }
 
         .btn {
@@ -322,44 +310,27 @@
             background: #FF5252;
         }
 
-        .download-btn {
-            display: inline-flex;
+        .course-sidebar {
+            position: sticky;
+            top: 20px;
+            align-self: start;
+        }
+
+        .sidebar-card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .sidebar-card h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
             align-items: center;
             gap: 10px;
-            background: var(--primary);
-            color: white;
-            padding: 12px 20px;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            margin-top: 15px;
-            width: 100%;
-            justify-content: center;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .download-btn:hover {
-            background: #1A3FD9;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(45, 91, 255, 0.2);
-        }
-
-        .checklist-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-
-        .checklist-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-            margin-top: 2px;
-            cursor: pointer;
+            font-size: 1.2rem;
         }
 
         .stats-grid {
@@ -446,6 +417,25 @@
             animation: checkmark 0.3s ease-out;
         }
 
+        .quiz-feedback {
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .quiz-feedback.correct {
+            background: #E8F5E9;
+            border: 1px solid #4CAF50;
+            color: #2E7D32;
+        }
+
+        .quiz-feedback.incorrect {
+            background: #FFEBEE;
+            border: 1px solid #F44336;
+            color: #C62828;
+        }
+
         @media (max-width: 768px) {
             .course-header {
                 padding: 40px 0 30px;
@@ -490,25 +480,35 @@
         <div class="course-container">
             <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
                 <div>
-                    <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Тестирование ПО: от нуля до Junior QA</h1>
+                    <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Тестирование ПО с нуля до Junior QA</h1>
                     <p style="font-size: 1.1rem; opacity: 0.9; max-width: 700px;">
-                        Практический курс для старта в IT. 15 уроков с теорией, заданиями и реальными кейсами.
+                        15 практических уроков с тестами и заданиями для полного освоения профессии тестировщика
                     </p>
                     
                     <div class="course-meta">
                         <div class="meta-item">
-                            <i class="fas fa-clock"></i> 30 часов обучения
+                            <i class="fas fa-clock"></i> 30 часов
                         </div>
                         <div class="meta-item">
                             <i class="fas fa-book"></i> 15 уроков
                         </div>
                         <div class="meta-item">
-                            <i class="fas fa-tasks"></i> 50+ практических заданий
+                            <i class="fas fa-tasks"></i> 45+ тестов
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-certificate"></i> Сертификат
                         </div>
                     </div>
                 </div>
                 
-        
+                <div style="text-align: right;">
+                    <div style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 5px;">Ваш прогресс</div>
+                    <div style="font-size: 2rem; font-weight: bold;" id="progressHeader">0%</div>
+                </div>
+            </div>
+            
+            <div class="course-progress">
+                <div class="progress-bar" id="progressBar"></div>
             </div>
         </div>
     </header>
@@ -518,11 +518,11 @@
             <!-- Левая колонка: Уроки -->
             <div class="lessons-container">
                 <!-- Урок 1 -->
-                <div class="lesson active completed" id="lesson1" data-lesson="1">
+                <div class="lesson active" id="lesson1" data-lesson="1">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">1</div>
-                            <div class="lesson-title">Фундамент: Кто такой QA и зачем тестирование</div>
+                            <div class="lesson-title">Основы тестирования: QA, QC и жизненные циклы</div>
                         </div>
                         <div class="lesson-duration">
                             <i class="far fa-clock"></i> 2 часа
@@ -534,65 +534,103 @@
                     
                     <div class="lesson-content">
                         <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория</h3>
-                            <p><strong>QA (Quality Assurance)</strong> — это процесс-ориентированный подход, направленный на предотвращение дефектов. QA-инженер работает над улучшением процессов разработки.</p>
-                            <p><strong>QC (Quality Control)</strong> — продукт-ориентированный подход, направленный на выявление дефектов в готовом продукте. QC-инженер (тестировщик) проверяет продукт.</p>
-                            
-                            <div class="important-note">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <div>
-                                    <strong>Важно:</strong> Современный специалист часто совмещает обе роли. QA — это стратегия, QC — тактика.
-                                </div>
-                            </div>
+                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
+                            <p><strong>QA (Quality Assurance)</strong> — обеспечение качества, процесс-ориентированный подход для предотвращения дефектов.</p>
+                            <p><strong>QC (Quality Control)</strong> — контроль качества, продукт-ориентированный подход для выявления дефектов.</p>
                             
                             <h4>Жизненные циклы:</h4>
                             <ul>
-                                <li><strong>SDLC (Software Development Life Cycle):</strong> Этапы разработки ПО (анализ, проектирование, разработка, тестирование, внедрение)</li>
-                                <li><strong>STLC (Software Testing Life Cycle):</strong> Этапы тестирования внутри SDLC</li>
+                                <li><strong>SDLC</strong> — Software Development Life Cycle: анализ, проектирование, разработка, тестирование, внедрение</li>
+                                <li><strong>STLC</strong> — Software Testing Life Cycle: планирование, проектирование тестов, выполнение, завершение</li>
                             </ul>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практическое задание</h3>
-                            <p><strong>Задача:</strong> Сымитируйте роль тестировщика на этапе "Анализ требований".</p>
-                            <ol>
-                                <li>Выберите любой знакомый сайт (например, Instagram, Яндекс.Маркет)</li>
-                                <li>Для функции "Публикация фотографии" составьте список из 5 вопросов к аналитику</li>
-                                <li>Пример вопроса: "Максимальный размер загружаемого файла?"</li>
-                            </ol>
-                            <div style="margin-top: 15px; padding: 15px; background: white; border-radius: 8px;">
-                                <strong>Решение:</strong>
-                                <textarea id="task1-answer" placeholder="Запишите ваши вопросы здесь..." rows="3" style="width: 100%; padding: 10px; margin-top: 10px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit;"></textarea>
-                                <div style="display: flex; gap: 10px; margin-top: 15px;">
-                                    <button class="btn btn-accent" onclick="saveAnswer(1)">
-                                        <i class="fas fa-save"></i> Сохранить ответ
-                                    </button>
-                                    <button class="btn" onclick="clearAnswer(1)">
-                                        <i class="fas fa-trash"></i> Очистить
-                                    </button>
+                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <p>Проверьте свои знания по пройденной теме:</p>
+                            
+                            <div class="quiz-question" data-correct="b">
+                                <p>1. Что такое QA (Quality Assurance)?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1" id="q1a" value="a">
+                                        <label for="q1a">Процесс поиска багов в готовом продукте</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1" id="q1b" value="b">
+                                        <label for="q1b">Процесс-ориентированный подход для предотвращения дефектов</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1" id="q1c" value="c">
+                                        <label for="q1c">Техническая проверка кода программистами</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1" id="q1d" value="d">
+                                        <label for="q1d">Документирование пользовательских сценариев</label>
+                                    </div>
                                 </div>
+                                <div class="quiz-feedback" id="feedback1"></div>
                             </div>
-                        </div>
-                        
-                        <div class="lesson-section key-terms">
-                            <h3><i class="fas fa-key"></i> Ключевые термины</h3>
-                            <ul>
-                                <li><strong>QA (Quality Assurance)</strong> — обеспечение качества</li>
-                                <li><strong>QC (Quality Control)</strong> — контроль качества</li>
-                                <li><strong>SDLC</strong> — жизненный цикл разработки ПО</li>
-                                <li><strong>STLC</strong> — жизненный цикл тестирования ПО</li>
-                                <li><strong>Тест-план</strong> — документ, описывающий стратегию тестирования</li>
-                            </ul>
+
+                            <div class="quiz-question" data-correct="c">
+                                <p>2. Чем отличается SDLC от STLC?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2" id="q2a" value="a">
+                                        <label for="q2a">SDLC — это тестирование, STLC — это разработка</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2" id="q2b" value="b">
+                                        <label for="q2b">SDLC и STLC — это одно и то же</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2" id="q2c" value="c">
+                                        <label for="q2c">SDLC — жизненный цикл разработки, STLC — жизненный цикл тестирования внутри SDLC</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2" id="q2d" value="d">
+                                        <label for="q2d">SDLC для больших проектов, STLC для маленьких</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback" id="feedback2"></div>
+                            </div>
+
+                            <div class="quiz-question" data-correct="a">
+                                <p>3. Кто обычно занимается QC (Quality Control)?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q3" id="q3a" value="a">
+                                        <label for="q3a">Тестировщик (QA Engineer)</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q3" id="q3b" value="b">
+                                        <label for="q3b">Менеджер проекта</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q3" id="q3c" value="c">
+                                        <label for="q3c">Бизнес-аналитик</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q3" id="q3d" value="d">
+                                        <label for="q3d">Системный архитектор</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback" id="feedback3"></div>
+                            </div>
+
+                            <button class="btn btn-accent" onclick="checkLessonQuiz(1)" style="width: 100%; margin-top: 20px;">
+                                <i class="fas fa-check-circle"></i> Проверить ответы
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Урок 2 -->
-                <div class="lesson completed" id="lesson2" data-lesson="2">
+                <div class="lesson" id="lesson2" data-lesson="2">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">2</div>
-                            <div class="lesson-title">Виды тестирования: Выбираем правильный подход</div>
+                            <div class="lesson-title">Виды и уровни тестирования ПО</div>
                         </div>
                         <div class="lesson-duration">
                             <i class="far fa-clock"></i> 2.5 часа
@@ -604,49 +642,99 @@
                     
                     <div class="lesson-content">
                         <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория</h3>
-                            <h4>Классификация по доступу к коду:</h4>
+                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
+                            <h4>По доступу к коду:</h4>
                             <ul>
-                                <li><strong>Чёрный ящик:</strong> Тестируем без знания внутренней структуры (с точки зрения пользователя)</li>
-                                <li><strong>Белый ящик:</strong> Тестируем с полным доступом к коду (знаем внутреннюю логику)</li>
-                                <li><strong>Серый ящик:</strong> Частичное знание внутренней структуры</li>
+                                <li><strong>Чёрный ящик</strong> — тестирование без знания внутренней структуры</li>
+                                <li><strong>Белый ящик</strong> — тестирование с доступом к коду</li>
+                                <li><strong>Серый ящик</strong> — частичное знание внутренней структуры</li>
                             </ul>
                             
                             <h4>Уровни тестирования:</h4>
                             <ol>
-                                <li><strong>Модульное:</strong> Тестирование отдельных компонентов (функций, классов)</li>
-                                <li><strong>Интеграционное:</strong> Тестирование взаимодействия компонентов</li>
-                                <li><strong>Системное:</strong> Тестирование системы как целого</li>
-                                <li><strong>Приемочное:</strong> Тестирование заказчиком перед выпуском</li>
+                                <li>Модульное (Unit)</li>
+                                <li>Интеграционное (Integration)</li>
+                                <li>Системное (System)</li>
+                                <li>Приемочное (Acceptance)</li>
                             </ol>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практическое задание</h3>
-                            <p><strong>Задача:</strong> Определите вид тестирования для каждого сценария:</p>
-                            <div style="margin: 15px 0; padding: 15px; background: white; border-radius: 8px;">
-                                <div style="margin-bottom: 10px;">
-                                    <p><strong>1. Проверка расчёта процентов по вкладу, имея только спецификацию формулы.</strong></p>
-                                    <select id="q1" style="padding: 8px; border-radius: 6px; border: 1px solid var(--border); width: 100%;">
-                                        <option value="">Выберите тип...</option>
-                                        <option value="black">Чёрный ящик</option>
-                                        <option value="white">Белый ящик</option>
-                                        <option value="gray">Серый ящик</option>
-                                    </select>
+                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <p>Определите вид тестирования для каждого сценария:</p>
+                            
+                            <div class="quiz-question" data-correct="b">
+                                <p>1. Тестировщик проверяет работу формы входа, не зная как реализована проверка пароля.</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_2" id="q1_2a" value="a">
+                                        <label for="q1_2a">Белый ящик</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_2" id="q1_2b" value="b">
+                                        <label for="q1_2b">Чёрный ящик</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_2" id="q1_2c" value="c">
+                                        <label for="q1_2c">Серый ящик</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_2" id="q1_2d" value="d">
+                                        <label for="q1_2d">Приемочное тестирование</label>
+                                    </div>
                                 </div>
-                                <div style="margin-bottom: 10px;">
-                                    <p><strong>2. Аудит безопасности исходного кода модуля перевода денег.</strong></p>
-                                    <select id="q2" style="padding: 8px; border-radius: 6px; border: 1px solid var(--border); width: 100%;">
-                                        <option value="">Выберите тип...</option>
-                                        <option value="black">Чёрный ящик</option>
-                                        <option value="white">Белый ящик</option>
-                                        <option value="gray">Серый ящик</option>
-                                    </select>
-                                </div>
-                                <button class="btn btn-accent" onclick="checkQuiz()" style="width: 100%; margin-top: 15px;">
-                                    <i class="fas fa-check-circle"></i> Проверить ответы
-                                </button>
+                                <div class="quiz-feedback" id="feedback1_2"></div>
                             </div>
+
+                            <div class="quiz-question" data-correct="a">
+                                <p>2. Разработчик пишет тесты для отдельной функции calculatePrice().</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_2" id="q2_2a" value="a">
+                                        <label for="q2_2a">Модульное тестирование</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_2" id="q2_2b" value="b">
+                                        <label for="q2_2b">Интеграционное тестирование</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_2" id="q2_2c" value="c">
+                                        <label for="q2_2c">Системное тестирование</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_2" id="q2_2d" value="d">
+                                        <label for="q2_2d">Нагрузочное тестирование</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback" id="feedback2_2"></div>
+                            </div>
+
+                            <div class="quiz-question" data-correct="c">
+                                <p>3. Заказчик проверяет готовый продукт перед запуском.</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q3_2" id="q3_2a" value="a">
+                                        <label for="q3_2a">Модульное тестирование</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q3_2" id="q3_2b" value="b">
+                                        <label for="q3_2b">Регрессионное тестирование</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q3_2" id="q3_2c" value="c">
+                                        <label for="q3_2c">Приемочное тестирование</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q3_2" id="q3_2d" value="d">
+                                        <label for="q3_2d">Интеграционное тестирование</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback" id="feedback3_2"></div>
+                            </div>
+
+                            <button class="btn btn-accent" onclick="checkLessonQuiz(2)" style="width: 100%; margin-top: 20px;">
+                                <i class="fas fa-check-circle"></i> Проверить ответы
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -668,52 +756,96 @@
                     
                     <div class="lesson-content">
                         <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория</h3>
-                            <p><strong>Тест-дизайн</strong> — этап создания тестовых случаев с использованием специальных техник.</p>
+                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
+                            <p><strong>Тест-дизайн</strong> — создание тестовых случаев с использованием специальных техник.</p>
                             
-                            <h4>Эквивалентное Разделение (Equivalence Partitioning):</h4>
-                            <p>Разделяем входные данные на классы эквивалентности. Все значения внутри одного класса считаются эквивалентными.</p>
+                            <h4>Основные техники:</h4>
+                            <ul>
+                                <li><strong>Эквивалентное Разделение (EP)</strong> — группировка входных данных в классы</li>
+                                <li><strong>Анализ Граничных Значений (BVA)</strong> — тестирование значений на границах диапазонов</li>
+                            </ul>
                             
-                            <h4>Анализ Граничных Значений (Boundary Value Analysis):</h4>
-                            <p>Тестируем значения на границах допустимых диапазонов. Ошибки часто скапливаются на границах.</p>
-                            
-                            <div style="margin: 20px 0; padding: 20px; background: white; border-radius: var(--radius); border: 1px solid var(--border);">
-                                <strong>Пример для поля "Возраст" [18, 65]:</strong>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
-                                    <div style="padding: 10px; background: #E8F5E9; border-radius: 8px;">
-                                        <div style="font-weight: bold; color: #2E7D32;">Валидные значения:</div>
-                                        <div>18, 19, 64, 65</div>
-                                    </div>
-                                    <div style="padding: 10px; background: #FFEBEE; border-radius: 8px;">
-                                        <div style="font-weight: bold; color: #C62828;">Невалидные значения:</div>
-                                        <div>17, 66</div>
-                                    </div>
-                                </div>
-                            </div>
+                            <p><strong>Пример:</strong> Поле "Возраст" от 18 до 65 лет.</p>
+                            <p>Валидные: 18, 19, 64, 65</p>
+                            <p>Невалидные: 17, 66</p>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практическое задание</h3>
-                            <p><strong>Задача:</strong> Примените EP и BVA для поля "Количество товаров" [1, 99].</p>
-                            <ol>
-                                <li>Выделите классы эквивалентности</li>
-                                <li>Определите граничные значения</li>
-                                <li>Составьте таблицу тестовых значений</li>
-                            </ol>
-                            <div style="margin-top: 15px;">
-                                <button class="btn btn-accent" onclick="showSolution()">
-                                    <i class="fas fa-lightbulb"></i> Показать решение
-                                </button>
-                                <div id="solution" style="display: none; margin-top: 15px; padding: 15px; background: white; border-radius: 8px; border: 1px solid var(--accent);">
-                                    <strong>Решение:</strong><br>
-                                    1. Валидные классы: [1, 99]<br>
-                                    2. Невалидные классы: (-∞, 0], [100, ∞)<br>
-                                    3. Граничные значения: 0, 1, 2, 98, 99, 100<br><br>
-                                    <strong>Тестовые значения:</strong><br>
-                                    • Валидные: 1, 50, 99<br>
-                                    • Невалидные: 0, 100, -5, "abc", пустое поле
+                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <p>Примените техники тест-дизайна:</p>
+                            
+                            <div class="quiz-question" data-correct="b">
+                                <p>1. Поле принимает значения от 1 до 100. Какие значения выбрать для BVA?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_3" id="q1_3a" value="a">
+                                        <label for="q1_3a">1, 50, 100</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_3" id="q1_3b" value="b">
+                                        <label for="q1_3b">0, 1, 2, 99, 100, 101</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_3" id="q1_3c" value="c">
+                                        <label for="q1_3c">Все числа от 1 до 100</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_3" id="q1_3d" value="d">
+                                        <label for="q1_3d">-1, 0, 1, 100, 101, 102</label>
+                                    </div>
                                 </div>
+                                <div class="quiz-feedback" id="feedback1_3"></div>
                             </div>
+
+                            <div class="quiz-question" data-correct="c">
+                                <p>2. Для поля "Процент скидки" (5-20%) сколько классов эквивалентности?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_3" id="q2_3a" value="a">
+                                        <label for="q2_3a">1 класс: все проценты</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_3" id="q2_3b" value="b">
+                                        <label for="q2_3b">2 класса: валидные и невалидные</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_3" id="q2_3c" value="c">
+                                        <label for="q2_3c">3 класса: меньше 5, 5-20, больше 20</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_3" id="q2_3d" value="d">
+                                        <label for="q2_3d">16 классов (по каждому проценту)</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback" id="feedback2_3"></div>
+                            </div>
+
+                            <div class="quiz-question" data-correct="a">
+                                <p>3. Какая техника помогает сократить количество тестов?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q3_3" id="q3_3a" value="a">
+                                        <label for="q3_3a">Эквивалентное Разделение</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q3_3" id="q3_3b" value="b">
+                                        <label for="q3_3b">Исчерпывающее тестирование</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q3_3" id="q3_3c" value="c">
+                                        <label for="q3_3c">Случайный выбор значений</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q3_3" id="q3_3d" value="d">
+                                        <label for="q3_3d">Тестирование только позитивных сценариев</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback" id="feedback3_3"></div>
+                            </div>
+
+                            <button class="btn btn-accent" onclick="checkLessonQuiz(3)" style="width: 100%; margin-top: 20px;">
+                                <i class="fas fa-check-circle"></i> Проверить ответы
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -723,7 +855,94 @@
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">4</div>
-                            <div class="lesson-title">Чек-листы и тест-кейсы: Пишем документацию</div>
+                            <div class="lesson-title">Чек-листы и тест-кейсы: документация</div>
+                        </div>
+                        <div class="lesson-duration">
+                            <i class="far fa-clock"></i> 2 часа
+                        </div>
+                        <div class="lesson-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="lesson-content">
+                        <div class="lesson-section theory">
+                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
+                            <p><strong>Чек-лист</strong> — список пунктов для проверки (что проверить).</p>
+                            <p><strong>Тест-кейс</strong> — детальная инструкция с шагами (как проверить).</p>
+                            
+                            <h4>Структура тест-кейса:</h4>
+                            <ol>
+                                <li>ID и название</li>
+                                <li>Предварительные условия</li>
+                                <li>Шаги выполнения</li>
+                                <li>Ожидаемый результат</li>
+                                <li>Фактический результат</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="lesson-section practice-task">
+                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            
+                            <div class="quiz-question" data-correct="a">
+                                <p>1. Когда использовать чек-лист вместо тест-кейса?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_4" id="q1_4a" value="a">
+                                        <label for="q1_4a">Для быстрой проверки знакомых сценариев</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_4" id="q1_4b" value="b">
+                                        <label for="q1_4b">Для детального тестирования новых функций</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_4" id="q1_4c" value="c">
+                                        <label for="q1_4c">Для автоматизации тестирования</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_4" id="q1_4d" value="d">
+                                        <label for="q1_4d">Для отчета заказчику</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback" id="feedback1_4"></div>
+                            </div>
+
+                            <div class="quiz-question" data-correct="b">
+                                <p>2. Что должно быть в ожидаемом результате тест-кейса?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_4" id="q2_4a" value="a">
+                                        <label for="q2_4a">Описание всех возможных ошибок</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_4" id="q2_4b" value="b">
+                                        <label for="q2_4b">Конкретное, проверяемое действие системы</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_4" id="q2_4c" value="c">
+                                        <label for="q2_4c">Время выполнения теста</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_4" id="q2_4d" value="d">
+                                        <label for="q2_4d">Имя тестировщика</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback" id="feedback2_4"></div>
+                            </div>
+
+                            <button class="btn btn-accent" onclick="checkLessonQuiz(4)" style="width: 100%; margin-top: 20px;">
+                                <i class="fas fa-check-circle"></i> Проверить ответы
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Урок 5 -->
+                <div class="lesson" id="lesson5" data-lesson="5">
+                    <div class="lesson-header">
+                        <div style="display: flex; align-items: center; flex-grow: 1;">
+                            <div class="lesson-number">5</div>
+                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
                         </div>
                         <div class="lesson-duration">
                             <i class="far fa-clock"></i> 2.5 часа
@@ -735,18 +954,97 @@
                     
                     <div class="lesson-content">
                         <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория</h3>
-                            <p>Содержимое урока 4...</p>
+                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
+                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
+                            
+                            <h4>Обязательные поля:</h4>
+                            <ul>
+                                <li>Заголовок (кратко и понятно)</li>
+                                <li>Шаги воспроизведения</li>
+                                <li>Фактический результат</li>
+                                <li>Ожидаемый результат</li>
+                                <li>Окружение (браузер, ОС, версия)</li>
+                                <li>Серьезность (Severity)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="lesson-section practice-task">
+                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            
+                            <div class="quiz-question" data-correct="c">
+                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_5" id="q1_5a" value="a">
+                                        <label for="q1_5a">Minor (незначительная)</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_5" id="q1_5b" value="b">
+                                        <label for="q1_5b">Major (значительная)</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_5" id="q1_5c" value="c">
+                                        <label for="q1_5c">Critical (критическая)</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q1_5" id="q1_5d" value="d">
+                                        <label for="q1_5d">Trivial (тривиальная)</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback" id="feedback1_5"></div>
+                            </div>
+
+                            <div class="quiz-question" data-correct="b">
+                                <p>2. Что важнее для шагов воспроизведения?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_5" id="q2_5a" value="a">
+                                        <label for="q2_5a">Креативное описание проблемы</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_5" id="q2_5b" value="b">
+                                        <label for="q2_5b">Точные, последовательные действия</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_5" id="q2_5c" value="c">
+                                        <label for="q2_5c">Предположения о причине бага</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" name="q2_5" id="q2_5d" value="d">
+                                        <label for="q2_5d">Советы по исправлению</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback" id="feedback2_5"></div>
+                            </div>
+
+                            <button class="btn btn-accent" onclick="checkLessonQuiz(5)" style="width: 100%; margin-top: 20px;">
+                                <i class="fas fa-check-circle"></i> Проверить ответы
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Урок 5 -->
-                <div class="lesson" id="lesson5" data-lesson="5">
+                <!-- Урок 6-15 (сокращённо для примера) -->
+                <div class="lesson" id="lesson6" data-lesson="6">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">5</div>
-                            <div class="lesson-title">Баг-репорты: Искусство описания дефектов</div>
+                            <div class="lesson-number">6</div>
+                            <div class="lesson-title">Клиент-серверная архитектура и HTTP</div>
+                        </div>
+                        <div class="lesson-duration">
+                            <i class="far fa-clock"></i> 2 часа
+                        </div>
+                        <div class="lesson-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson" id="lesson7" data-lesson="7">
+                    <div class="lesson-header">
+                        <div style="display: flex; align-items: center; flex-grow: 1;">
+                            <div class="lesson-number">7</div>
+                            <div class="lesson-title">Тестирование API с Postman</div>
                         </div>
                         <div class="lesson-duration">
                             <i class="far fa-clock"></i> 3 часа
@@ -755,11 +1053,124 @@
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория</h3>
-                            <p>Содержимое урока 5...</p>
+                </div>
+
+                <div class="lesson" id="lesson8" data-lesson="8">
+                    <div class="lesson-header">
+                        <div style="display: flex; align-items: center; flex-grow: 1;">
+                            <div class="lesson-number">8</div>
+                            <div class="lesson-title">Основы SQL для тестировщика</div>
+                        </div>
+                        <div class="lesson-duration">
+                            <i class="far fa-clock"></i> 2.5 часа
+                        </div>
+                        <div class="lesson-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson" id="lesson9" data-lesson="9">
+                    <div class="lesson-header">
+                        <div style="display: flex; align-items: center; flex-grow: 1;">
+                            <div class="lesson-number">9</div>
+                            <div class="lesson-title">Тестирование мобильных приложений</div>
+                        </div>
+                        <div class="lesson-duration">
+                            <i class="far fa-clock"></i> 2.5 часа
+                        </div>
+                        <div class="lesson-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson" id="lesson10" data-lesson="10">
+                    <div class="lesson-header">
+                        <div style="display: flex; align-items: center; flex-grow: 1;">
+                            <div class="lesson-number">10</div>
+                            <div class="lesson-title">DevTools для тестировщика</div>
+                        </div>
+                        <div class="lesson-duration">
+                            <i class="far fa-clock"></i> 2 часа
+                        </div>
+                        <div class="lesson-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson" id="lesson11" data-lesson="11">
+                    <div class="lesson-header">
+                        <div style="display: flex; align-items: center; flex-grow: 1;">
+                            <div class="lesson-number">11</div>
+                            <div class="lesson-title">Работа с Jira и баг-трекинг</div>
+                        </div>
+                        <div class="lesson-duration">
+                            <i class="far fa-clock"></i> 2 часа
+                        </div>
+                        <div class="lesson-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson" id="lesson12" data-lesson="12">
+                    <div class="lesson-header">
+                        <div style="display: flex; align-items: center; flex-grow: 1;">
+                            <div class="lesson-number">12</div>
+                            <div class="lesson-title">Командная строка и Git для QA</div>
+                        </div>
+                        <div class="lesson-duration">
+                            <i class="far fa-clock"></i> 2.5 часа
+                        </div>
+                        <div class="lesson-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson" id="lesson13" data-lesson="13">
+                    <div class="lesson-header">
+                        <div style="display: flex; align-items: center; flex-grow: 1;">
+                            <div class="lesson-number">13</div>
+                            <div class="lesson-title">UX/UI тестирование и доступность</div>
+                        </div>
+                        <div class="lesson-duration">
+                            <i class="far fa-clock"></i> 2 часа
+                        </div>
+                        <div class="lesson-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson" id="lesson14" data-lesson="14">
+                    <div class="lesson-header">
+                        <div style="display: flex; align-items: center; flex-grow: 1;">
+                            <div class="lesson-number">14</div>
+                            <div class="lesson-title">Автоматизация тестирования: основы</div>
+                        </div>
+                        <div class="lesson-duration">
+                            <i class="far fa-clock"></i> 3 часа
+                        </div>
+                        <div class="lesson-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson" id="lesson15" data-lesson="15">
+                    <div class="lesson-header">
+                        <div style="display: flex; align-items: center; flex-grow: 1;">
+                            <div class="lesson-number">15</div>
+                            <div class="lesson-title">Карьера в QA: резюме и собеседование</div>
+                        </div>
+                        <div class="lesson-duration">
+                            <i class="far fa-clock"></i> 2 часа
+                        </div>
+                        <div class="lesson-arrow">
+                            <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
                 </div>
@@ -776,14 +1187,103 @@
             </div>
 
             <!-- Правая колонка: Ресурсы и прогресс -->
+            <div class="course-sidebar">
+                <div class="sidebar-card">
+                    <h3><i class="fas fa-road"></i> Прогресс курса</h3>
+                    <div class="stats-grid">
+                        <div class="stat">
+                            <span class="stat-value" id="completedLessons">1</span>
+                            <span class="stat-label">Пройдено уроков</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="totalLessons">15</span>
+                            <span class="stat-label">Всего уроков</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Общий прогресс</span>
+                            <span id="progressPercent">7%</span>
+                        </div>
+                        <div style="height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;">
+                            <div id="sidebarProgress" style="height: 100%; background: var(--primary); width: 7%; border-radius: 4px;"></div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Правильные ответы</span>
+                            <span id="correctAnswers">0%</span>
+                        </div>
+                        <div style="height: 6px; background: var(--border); border-radius: 3px; overflow: hidden;">
+                            <div id="answersProgress" style="height: 100%; background: var(--accent); width: 0%; border-radius: 3px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3><i class="fas fa-tasks"></i> Статистика тестов</h3>
+                    <div style="text-align: center; padding: 15px;">
+                        <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary);" id="totalTests">0</div>
+                        <div style="color: var(--gray); font-size: 0.9rem;">пройдено тестов</div>
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="color: var(--accent);">Правильно</span>
+                            <span id="correctCount">0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: var(--secondary);">Неправильно</span>
+                            <span id="incorrectCount">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3><i class="fas fa-trophy"></i> Достижения</h3>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: var(--light); border-radius: 8px;">
+                            <i class="fas fa-play-circle" style="color: var(--primary);"></i>
+                            <span>Первый урок пройден</span>
+                            <i class="fas fa-check" style="color: var(--accent); margin-left: auto;"></i>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: var(--light); border-radius: 8px;">
+                            <i class="fas fa-star" style="color: #FFC107;"></i>
+                            <span>5 тестов на 100%</span>
+                            <span style="color: var(--gray); margin-left: auto;">0/5</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: var(--light); border-radius: 8px;">
+                            <i class="fas fa-graduation-cap" style="color: var(--secondary);"></i>
+                            <span>Завершить курс</span>
+                            <span style="color: var(--gray); margin-left: auto;">1/15</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3><i class="fas fa-cog"></i> Настройки</h3>
+                    <button class="btn" onclick="resetProgress()" style="width: 100%; margin-bottom: 10px;">
+                        <i class="fas fa-redo"></i> Сбросить прогресс
+                    </button>
+                    <button class="btn btn-secondary" onclick="showAnswers()" style="width: 100%;">
+                        <i class="fas fa-eye"></i> Показать все ответы
+                    </button>
+                </div>
+            </div>
         </div>
     </main>
 
     <script>
         // ========== ОСНОВНЫЕ ПЕРЕМЕННЫЕ ==========
         let currentLesson = 1;
-        const totalLessons = 5;
-        let completedLessons = 2;
+        const totalLessons = 15;
+        let completedLessons = 1;
+        let totalTestsTaken = 0;
+        let correctAnswers = 0;
+        let incorrectAnswers = 0;
+        let lessonResults = {}; // Хранит результаты по каждому уроку
 
         // ========== УПРАВЛЕНИЕ УРОКАМИ ==========
         function toggleLesson(lessonNumber) {
@@ -808,16 +1308,16 @@
                 }
                 currentLesson = lessonNumber;
                 
-                // Помечаем как пройденный
+                // Помечаем как пройденный при первом открытии
                 if (!lesson.classList.contains('completed')) {
                     lesson.classList.add('completed');
-                    completedLessons++;
+                    completedLessons = Math.max(completedLessons, lessonNumber);
                     updateProgress();
                 }
             }
             
             updateNavigation();
-            updateLessonChecklist();
+            setupQuizListeners(lessonNumber);
         }
 
         function nextLesson() {
@@ -830,7 +1330,7 @@
                     block: 'start'
                 });
             } else {
-                alert('🎉 Поздравляем! Вы завершили курс!');
+                alert('🎉 Поздравляем! Вы завершили курс! Скачайте сертификат в настройках.');
             }
         }
 
@@ -846,18 +1346,102 @@
             }
         }
 
-        // ========== ПРОГРЕСС И ЧЕКЛИСТЫ ==========
+        // ========== УПРАВЛЕНИЕ ТЕСТАМИ ==========
+        function setupQuizListeners(lessonNumber) {
+            const lesson = document.getElementById(`lesson${lessonNumber}`);
+            if (!lesson) return;
+            
+            // Добавляем обработчики для вариантов ответов
+            lesson.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const radio = this.querySelector('input[type="radio"]');
+                    if (radio) {
+                        radio.checked = true;
+                        // Снимаем выделение со всех вариантов
+                        this.closest('.quiz-question').querySelectorAll('.quiz-option').forEach(opt => {
+                            opt.classList.remove('selected');
+                        });
+                        // Выделяем выбранный вариант
+                        this.classList.add('selected');
+                    }
+                });
+            });
+            
+            // Скрываем предыдущие результаты
+            lesson.querySelectorAll('.quiz-feedback').forEach(feedback => {
+                feedback.style.display = 'none';
+                feedback.className = 'quiz-feedback';
+            });
+        }
+
+        function checkLessonQuiz(lessonNumber) {
+            const lesson = document.getElementById(`lesson${lessonNumber}`);
+            if (!lesson) return;
+            
+            let lessonCorrect = 0;
+            let lessonTotal = 0;
+            
+            // Проверяем каждый вопрос в уроке
+            lesson.querySelectorAll('.quiz-question').forEach((question, index) => {
+                lessonTotal++;
+                const correctAnswer = question.dataset.correct;
+                const selectedOption = question.querySelector('input[type="radio"]:checked');
+                const feedback = question.querySelector('.quiz-feedback');
+                
+                if (selectedOption && selectedOption.value === correctAnswer) {
+                    // Правильный ответ
+                    lessonCorrect++;
+                    feedback.textContent = '✅ Правильно!';
+                    feedback.className = 'quiz-feedback correct';
+                } else {
+                    // Неправильный ответ
+                    feedback.textContent = `❌ Неправильно. Правильный ответ: ${getAnswerText(correctAnswer)}`;
+                    feedback.className = 'quiz-feedback incorrect';
+                }
+                feedback.style.display = 'block';
+            });
+            
+            // Обновляем статистику
+            if (lessonTotal > 0) {
+                totalTestsTaken += lessonTotal;
+                correctAnswers += lessonCorrect;
+                incorrectAnswers += (lessonTotal - lessonCorrect);
+                
+                // Сохраняем результат урока
+                lessonResults[lessonNumber] = {
+                    correct: lessonCorrect,
+                    total: lessonTotal,
+                    percentage: Math.round((lessonCorrect / lessonTotal) * 100)
+                };
+                
+                updateStatistics();
+                
+                // Показываем результат урока
+                if (lessonCorrect === lessonTotal) {
+                    alert(`🎉 Отлично! Все ${lessonTotal} ответов правильные!`);
+                } else {
+                    alert(`Результат урока: ${lessonCorrect} из ${lessonTotal} правильных ответов (${Math.round((lessonCorrect / lessonTotal) * 100)}%)`);
+                }
+            }
+        }
+
+        function getAnswerText(answerValue) {
+            const answerMap = {
+                'a': 'A',
+                'b': 'B',
+                'c': 'C',
+                'd': 'D'
+            };
+            return answerMap[answerValue] || answerValue;
+        }
+
+        // ========== ПРОГРЕСС И СТАТИСТИКА ==========
         function updateProgress() {
-            // Считаем чеклисты
-            const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
-            const checked = document.querySelectorAll('.checklist-item input[type="checkbox"]:checked').length;
-            const totalCheckboxes = checkboxes.length;
-            
-            // Прогресс урока
-            const lessonProgress = totalCheckboxes > 0 ? Math.round((checked / totalCheckboxes) * 100) : 0;
-            
-            // Общий прогресс
+            // Общий прогресс по урокам
             const totalProgress = Math.round((completedLessons / totalLessons) * 100);
+            
+            // Прогресс по ответам
+            const answerPercentage = totalTestsTaken > 0 ? Math.round((correctAnswers / totalTestsTaken) * 100) : 0;
             
             // Обновляем UI
             document.getElementById('progressPercent').textContent = totalProgress + '%';
@@ -867,78 +1451,24 @@
             document.getElementById('completedLessons').textContent = completedLessons;
             document.getElementById('totalLessons').textContent = totalLessons;
             
-            // Прогресс урока
-            document.getElementById('lessonProgress').textContent = lessonProgress + '%';
-            document.getElementById('lessonProgressBar').style.width = lessonProgress + '%';
+            // Обновляем статистику ответов
+            document.getElementById('correctAnswers').textContent = answerPercentage + '%';
+            document.getElementById('answersProgress').style.width = answerPercentage + '%';
+            
+            // Сохраняем прогресс
+            saveProgress();
         }
 
-        function updateLessonChecklist() {
-            // Обновляем чеклист при смене урока
+        function updateStatistics() {
+            document.getElementById('totalTests').textContent = totalTestsTaken;
+            document.getElementById('correctCount').textContent = correctAnswers;
+            document.getElementById('incorrectCount').textContent = incorrectAnswers;
+            
+            const answerPercentage = totalTestsTaken > 0 ? Math.round((correctAnswers / totalTestsTaken) * 100) : 0;
+            document.getElementById('correctAnswers').textContent = answerPercentage + '%';
+            document.getElementById('answersProgress').style.width = answerPercentage + '%';
+            
             updateProgress();
-        }
-
-        // ========== ОБРАБОТЧИКИ ЗАДАНИЙ ==========
-        function saveAnswer(lessonNum) {
-            const answer = document.getElementById(`task${lessonNum}-answer`).value;
-            if (!answer.trim()) {
-                alert('Пожалуйста, введите ответ перед сохранением.');
-                return;
-            }
-            
-            // Отмечаем чекбокс
-            document.getElementById('check2').checked = true;
-            updateProgress();
-            
-            alert('✅ Ответ сохранен!');
-        }
-
-        function clearAnswer(lessonNum) {
-            if (confirm('Очистить ответ?')) {
-                document.getElementById(`task${lessonNum}-answer`).value = '';
-                document.getElementById('check2').checked = false;
-                updateProgress();
-            }
-        }
-
-        function checkQuiz() {
-            const q1 = document.getElementById('q1').value;
-            const q2 = document.getElementById('q2').value;
-            
-            if (!q1 || !q2) {
-                alert('Пожалуйста, ответьте на все вопросы.');
-                return;
-            }
-            
-            let score = 0;
-            let message = '';
-            
-            if (q1 === 'black') {
-                score++;
-                message += '✅ 1. Правильно! Это тестирование чёрным ящиком.\n';
-            } else {
-                message += '❌ 1. Неправильно. Это тестирование ЧЁРНЫМ ящиком.\n';
-            }
-            
-            if (q2 === 'white') {
-                score++;
-                message += '✅ 2. Правильно! Аудит кода - это тестирование белым ящиком.\n';
-            } else {
-                message += '❌ 2. Неправильно. Аудит кода - это тестирование БЕЛЫМ ящиком.\n';
-            }
-            
-            message += `\nРезультат: ${score}/2`;
-            alert(message);
-            
-            // Отмечаем чекбокс если все правильно
-            if (score === 2) {
-                document.getElementById('check2').checked = true;
-                updateProgress();
-            }
-        }
-
-        function showSolution() {
-            const solution = document.getElementById('solution');
-            solution.style.display = 'block';
         }
 
         // ========== НАВИГАЦИЯ ==========
@@ -964,9 +1494,122 @@
             }
         }
 
+        // ========== ДОПОЛНИТЕЛЬНЫЕ ФУНКЦИИ ==========
+        function resetProgress() {
+            if (confirm('Вы уверены, что хотите сбросить весь прогресс? Все результаты будут удалены.')) {
+                // Сбрасываем уроки
+                document.querySelectorAll('.lesson').forEach(lesson => {
+                    lesson.classList.remove('completed');
+                    lesson.classList.remove('active');
+                    const content = lesson.querySelector('.lesson-content');
+                    if (content) content.style.maxHeight = '0';
+                });
+                
+                // Сбрасываем первый урок
+                document.getElementById('lesson1').classList.add('completed');
+                document.getElementById('lesson1').classList.add('active');
+                const content1 = document.getElementById('lesson1').querySelector('.lesson-content');
+                if (content1) content1.style.maxHeight = content1.scrollHeight + 'px';
+                
+                // Сбрасываем переменные
+                currentLesson = 1;
+                completedLessons = 1;
+                totalTestsTaken = 0;
+                correctAnswers = 0;
+                incorrectAnswers = 0;
+                lessonResults = {};
+                
+                // Сбрасываем ответы в тестах
+                document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                    radio.checked = false;
+                });
+                document.querySelectorAll('.quiz-option').forEach(option => {
+                    option.classList.remove('selected');
+                });
+                document.querySelectorAll('.quiz-feedback').forEach(feedback => {
+                    feedback.style.display = 'none';
+                });
+                
+                // Обновляем UI
+                updateProgress();
+                updateStatistics();
+                updateNavigation();
+                
+                // Очищаем localStorage
+                localStorage.removeItem('qa_course_full_progress');
+                
+                alert('Прогресс сброшен. Начните обучение заново!');
+            }
+        }
+
+        function showAnswers() {
+            let message = 'Правильные ответы по всем урокам:\n\n';
+            
+            for (let i = 1; i <= 5; i++) { // Показываем для первых 5 уроков
+                if (lessonResults[i]) {
+                    message += `Урок ${i}: ${lessonResults[i].correct}/${lessonResults[i].total} (${lessonResults[i].percentage}%)\n`;
+                } else {
+                    message += `Урок ${i}: не пройден\n`;
+                }
+            }
+            
+            message += '\nЧтобы увидеть правильные ответы, пройдите тесты в каждом уроке.';
+            alert(message);
+        }
+
+        // ========== СОХРАНЕНИЕ И ЗАГРУЗКА ==========
+        function saveProgress() {
+            const progress = {
+                currentLesson: currentLesson,
+                completedLessons: completedLessons,
+                totalTestsTaken: totalTestsTaken,
+                correctAnswers: correctAnswers,
+                incorrectAnswers: incorrectAnswers,
+                lessonResults: lessonResults,
+                lastUpdated: new Date().toISOString()
+            };
+            localStorage.setItem('qa_course_full_progress', JSON.stringify(progress));
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem('qa_course_full_progress');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    
+                    // Восстанавливаем основные данные
+                    currentLesson = data.currentLesson || 1;
+                    completedLessons = data.completedLessons || 1;
+                    totalTestsTaken = data.totalTestsTaken || 0;
+                    correctAnswers = data.correctAnswers || 0;
+                    incorrectAnswers = data.incorrectAnswers || 0;
+                    lessonResults = data.lessonResults || {};
+                    
+                    // Восстанавливаем статусы уроков
+                    for (let i = 1; i <= completedLessons; i++) {
+                        const lesson = document.getElementById(`lesson${i}`);
+                        if (lesson) {
+                            lesson.classList.add('completed');
+                        }
+                    }
+                    
+                    // Открываем текущий урок
+                    toggleLesson(currentLesson);
+                    
+                    console.log('Прогресс загружен:', data);
+                    
+                } catch (e) {
+                    console.error('Ошибка загрузки прогресса:', e);
+                }
+            }
+        }
+
         // ========== ИНИЦИАЛИЗАЦИЯ ==========
         function initCourse() {
             console.log('Инициализация курса...');
+            
+            // Загружаем сохраненный прогресс
+            loadProgress();
             
             // Обработчики для заголовков уроков
             document.querySelectorAll('.lesson-header').forEach(header => {
@@ -982,64 +1625,16 @@
             document.getElementById('prevBtn').addEventListener('click', prevLesson);
             document.getElementById('nextBtn').addEventListener('click', nextLesson);
             
-            // Обработчики для чекбоксов
-            document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(checkbox => {
-                checkbox.addEventListener('change', updateProgress);
-            });
-            
-            // Загружаем сохраненный прогресс
-            loadProgress();
+            // Настройка тестов для первого урока
+            setupQuizListeners(1);
             
             // Обновляем UI
             updateProgress();
+            updateStatistics();
             updateNavigation();
             
-            console.log('Курс инициализирован. Текущий урок:', currentLesson);
+            console.log('Курс инициализирован. Всего уроков:', totalLessons);
         }
-
-        function loadProgress() {
-            const saved = localStorage.getItem('qa_course_progress');
-            if (saved) {
-                try {
-                    const data = JSON.parse(saved);
-                    currentLesson = data.currentLesson || 1;
-                    completedLessons = data.completedLessons || 1;
-                    
-                    // Помечаем пройденные уроки
-                    for (let i = 1; i <= completedLessons; i++) {
-                        const lesson = document.getElementById(`lesson${i}`);
-                        if (lesson) {
-                            lesson.classList.add('completed');
-                        }
-                    }
-                    
-                    // Открываем текущий урок
-                    toggleLesson(currentLesson);
-                    
-                } catch (e) {
-                    console.error('Ошибка загрузки прогресса:', e);
-                }
-            }
-        }
-
-        function saveProgress() {
-            const progress = {
-                currentLesson: currentLesson,
-                completedLessons: completedLessons,
-                lastUpdated: new Date().toISOString()
-            };
-            localStorage.setItem('qa_course_progress', JSON.stringify(progress));
-        }
-
-        // Автосохранение при изменениях
-        function autoSave() {
-            saveProgress();
-        }
-
-        // Добавляем автосохранение
-        document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(cb => {
-            cb.addEventListener('change', autoSave);
-        });
 
         // Запускаем при загрузке
         document.addEventListener('DOMContentLoaded', initCourse);
