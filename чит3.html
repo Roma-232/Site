@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python блог | Программирование на Python</title>
+    <title>Декораторы в Python: полное руководство | Python блог</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
     <style>
@@ -23,6 +23,7 @@
             --card-bg: #ffffff;
             --text-color: #333333;
             --text-light: #666666;
+            --border-color: #eaeaea;
             --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             --radius: 10px;
             --transition: all 0.3s ease;
@@ -42,23 +43,21 @@
             --shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             --text-color: #f0f0f0;
             --text-light: #cccccc;
+            --border-color: #3a3a52;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Header & Navigation */
+        /* Header */
         header {
             background: linear-gradient(135deg, var(--python-dark) 0%, var(--python-blue) 100%);
             color: white;
-            padding: 20px 0;
+            padding: 25px 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
 
         .header-container {
@@ -70,52 +69,19 @@
         .logo {
             display: flex;
             align-items: center;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
         }
 
         .logo i {
             color: var(--python-yellow);
             margin-right: 10px;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav li {
-            margin-left: 30px;
-        }
-
-        nav a {
+        .logo a {
             color: white;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            padding: 5px 0;
-            position: relative;
-        }
-
-        nav a:hover {
-            color: var(--python-yellow);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background-color: var(--python-yellow);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
         }
 
         .theme-toggle {
@@ -128,7 +94,6 @@
             cursor: pointer;
             font-size: 1.2rem;
             transition: var(--transition);
-            margin-left: 20px;
         }
 
         .theme-toggle:hover {
@@ -136,343 +101,357 @@
             transform: rotate(30deg);
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 80px 0;
+        /* Article Header */
+        .article-header {
+            padding: 60px 0 40px;
             text-align: center;
-            background: linear-gradient(rgba(55, 118, 171, 0.1), rgba(48, 105, 152, 0.05));
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        body.dark-mode .hero {
-            background: linear-gradient(rgba(55, 118, 171, 0.15), rgba(48, 105, 152, 0.1));
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .hero h1 {
-            font-size: 3.2rem;
-            margin-bottom: 20px;
-            color: var(--python-dark);
-        }
-
-        body.dark-mode .hero h1 {
-            color: var(--python-yellow);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            color: var(--text-light);
-        }
-
-        .python-badge {
+        .article-category {
             display: inline-block;
             background-color: var(--python-blue);
             color: white;
             padding: 8px 20px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: var(--shadow);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Blog Posts */
-        .blog-section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.5rem;
+        .article-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
             color: var(--python-dark);
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
         }
 
-        body.dark-mode .section-title {
+        body.dark-mode .article-title {
             color: var(--python-yellow);
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 70%;
-            height: 4px;
-            background: linear-gradient(to right, var(--python-blue), var(--python-yellow));
-            bottom: -10px;
-            left: 15%;
-            border-radius: 2px;
-        }
-
-        .posts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 30px;
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 10px;
         }
 
-        .post-card {
+        .article-meta i {
+            margin-right: 8px;
+            color: var(--python-blue);
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .author-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-right: 20px;
+            background-color: var(--python-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .author-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Article Content */
+        .article-content {
             background-color: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 50px;
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, rgba(55, 118, 171, 0.1) 0%, rgba(255, 212, 59, 0.1) 100%);
+            border-left: 5px solid var(--python-blue);
+            padding: 25px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 30px 0;
+        }
+
+        body.dark-mode .intro-box {
+            background: linear-gradient(135deg, rgba(55, 118, 171, 0.2) 0%, rgba(255, 212, 59, 0.2) 100%);
+        }
+
+        .intro-box h3 {
+            color: var(--python-dark);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        body.dark-mode .intro-box h3 {
+            color: var(--python-yellow);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 40px 0 20px;
+            color: var(--python-dark);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        body.dark-mode h2 {
+            color: var(--python-yellow);
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            margin: 30px 0 15px;
+            color: var(--python-blue);
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        ul, ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .code-block {
+            margin: 30px 0;
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .post-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .post-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .post-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .post-card:hover .post-image img {
-            transform: scale(1.05);
-        }
-
-        .post-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .post-category {
-            display: inline-block;
-            background-color: var(--python-blue);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            align-self: flex-start;
-        }
-
-        .post-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--text-color);
-            line-height: 1.4;
-        }
-
-        .post-excerpt {
-            color: var(--text-light);
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .post-meta {
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            padding-top: 15px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        body.dark-mode .post-meta {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Code Example */
-        .code-section {
-            padding: 60px 0;
-            background-color: rgba(55, 118, 171, 0.05);
-            border-radius: var(--radius);
-            margin: 40px 0;
-        }
-
-        body.dark-mode .code-section {
-            background-color: rgba(55, 118, 171, 0.1);
         }
 
         .code-header {
+            background-color: var(--python-dark);
+            color: white;
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
         }
 
-        .code-title {
-            font-size: 1.8rem;
-            color: var(--python-dark);
+        .code-header span {
+            font-weight: 600;
         }
 
-        body.dark-mode .code-title {
-            color: var(--python-yellow);
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         pre {
-            border-radius: var(--radius);
-            overflow-x: auto;
-            box-shadow: var(--shadow);
+            margin: 0;
+            border-radius: 0;
         }
 
         .hljs {
-            border-radius: var(--radius);
             padding: 25px;
             font-size: 1rem;
             line-height: 1.5;
+            background-color: #282c34;
+        }
+
+        .note {
+            background-color: rgba(255, 212, 59, 0.1);
+            border-left: 4px solid var(--python-yellow);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        body.dark-mode .note {
+            background-color: rgba(255, 212, 59, 0.15);
+        }
+
+        .note h4 {
+            color: var(--python-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        body.dark-mode .note h4 {
+            color: var(--python-yellow);
+        }
+
+        .note h4 i {
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        .article-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 50px 0;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            padding: 15px 25px;
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--text-color);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            width: 48%;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            color: var(--python-blue);
+        }
+
+        .nav-btn i {
+            font-size: 1.5rem;
+            margin: 0 15px;
+        }
+
+        .nav-content h4 {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .nav-content h3 {
+            font-size: 1.2rem;
+            margin: 0;
+            color: inherit;
         }
 
         /* Footer */
         footer {
             background-color: var(--python-dark);
             color: white;
-            padding: 60px 0 30px;
-            margin-top: 80px;
+            padding: 40px 0 20px;
+            margin-top: 60px;
         }
 
         .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            color: var(--python-yellow);
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background-color: var(--python-yellow);
-            bottom: 0;
-            left: 0;
-        }
-
-        .footer-column p {
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: inline-flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            transition: var(--transition);
+            margin-bottom: 30px;
         }
 
-        .social-links a:hover {
-            background-color: var(--python-yellow);
-            color: var(--python-dark);
-            transform: translateY(-5px);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
         }
 
         .footer-links a {
             color: white;
             text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
             transition: var(--transition);
-            opacity: 0.9;
         }
 
         .footer-links a:hover {
             color: var(--python-yellow);
-            padding-left: 5px;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             opacity: 0.8;
             font-size: 0.9rem;
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2.2rem;
             }
             
-            .posts-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            .article-content {
+                padding: 30px;
             }
-        }
-
-        @media (max-width: 768px) {
-            .header-container {
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .article-navigation {
                 flex-direction: column;
                 gap: 20px;
             }
             
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
+            .nav-btn {
+                width: 100%;
             }
             
-            nav li {
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .footer-links a {
                 margin: 0 10px;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
             }
         }
 
         @media (max-width: 576px) {
-            .posts-grid {
-                grid-template-columns: 1fr;
+            .article-title {
+                font-size: 1.8rem;
             }
             
-            .hero {
-                padding: 60px 0;
+            .article-content {
+                padding: 20px;
             }
             
-            .blog-section {
-                padding: 60px 0;
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -482,161 +461,349 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <i class="fab fa-python"></i>
-                <span>PythonBlog</span>
+                <a href="#">
+                    <i class="fab fa-python"></i>
+                    <span>PythonBlog</span>
+                </a>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#"><i class="fas fa-home"></i> Главная</a></li>
-                    <li><a href="#"><i class="fas fa-newspaper"></i> Статьи</a></li>
-                    <li><a href="#"><i class="fas fa-book"></i> Уроки</a></li>
-                    <li><a href="#"><i class="fas fa-project-diagram"></i> Проекты</a></li>
-                    <li><a href="#"><i class="fas fa-question-circle"></i> О нас</a></li>
-                </ul>
-            </nav>
             <button class="theme-toggle" id="themeToggle">
                 <i class="fas fa-moon"></i>
             </button>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Article Header -->
+    <section class="article-header">
         <div class="container">
-            <h1>Блог о программировании на Python</h1>
-            <p>Изучайте Python вместе с нами: от основ до продвинутых тем, практические примеры, советы и лучшие практики для разработчиков всех уровней.</p>
-            <div class="python-badge">
-                <i class="fab fa-python"></i> Python 3.11+
+            <div class="article-category">Продвинутый Python</div>
+            <h1 class="article-title">Декораторы в Python: полное руководство с примерами</h1>
+            <div class="article-meta">
+                <span><i class="far fa-calendar"></i> 12 июня 2023</span>
+                <span><i class="far fa-clock"></i> 12 минут чтения</span>
+                <span><i class="far fa-eye"></i> 2.5K просмотров</span>
+            </div>
+            <div class="author-info">
+                <div class="author-avatar">АП</div>
+                <div class="author-details">
+                    <h4>Алексей Петров</h4>
+                    <p>Senior Python разработчик с 8-летним опытом. Специализируется на веб-разработке и архитектуре приложений.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
+    <!-- Article Content -->
     <main class="container">
-        <!-- Blog Posts Section -->
-        <section class="blog-section">
-            <h2 class="section-title">Последние статьи</h2>
-            <div class="posts-grid">
-                <!-- Post 1 -->
-                <article class="post-card">
-                    <div class="post-image">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Асинхронное программирование в Python">
-                    </div>
-                    <div class="post-content">
-                        <span class="post-category">Продвинутый уровень</span>
-                        <h3 class="post-title">Асинхронное программирование с asyncio</h3>
-                        <p class="post-excerpt">Глубокое погружение в мир асинхронного программирования на Python. Изучите asyncio, корутины и конкурентное выполнение задач на практических примерах.</p>
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar"></i> 15 июня 2023</span>
-                            <span><i class="far fa-clock"></i> 8 мин чтения</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Post 2 -->
-                <article class="post-card">
-                    <div class="post-image">
-                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Декораторы в Python">
-                    </div>
-                    <div class="post-content">
-                        <span class="post-category">Средний уровень</span>
-                        <h3 class="post-title">Магия декораторов в Python</h3>
-                        <p class="post-excerpt">Узнайте, как создавать и использовать декораторы для расширения функциональности вашего кода. Практические примеры и лучшие практики.</p>
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar"></i> 8 июня 2023</span>
-                            <span><i class="far fa-clock"></i> 6 мин чтения</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Post 3 -->
-                <article class="post-card">
-                    <div class="post-image">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1174&q=80" alt="Data Science с Python">
-                    </div>
-                    <div class="post-content">
-                        <span class="post-category">Data Science</span>
-                        <h3 class="post-title">Визуализация данных с Pandas и Matplotlib</h3>
-                        <p class="post-excerpt">Создавайте информативные и красивые визуализации данных с помощью библиотек Pandas и Matplotlib. Подробное руководство с примерами.</p>
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar"></i> 1 июня 2023</span>
-                            <span><i class="far fa-clock"></i> 10 мин чтения</span>
-                        </div>
-                    </div>
-                </article>
+        <article class="article-content">
+            <div class="intro-box">
+                <h3>Ключевые моменты статьи</h3>
+                <p>Декораторы — одна из самых мощных и элегантных особенностей Python. В этой статье мы разберем, как работают декораторы, научимся создавать свои собственные и применять их в реальных проектах.</p>
             </div>
-        </section>
 
-        <!-- Code Example Section -->
-        <section class="code-section">
-            <div class="code-header">
-                <h3 class="code-title">Пример кода: Генератор чисел Фибоначчи</h3>
-                <div class="python-badge">Python</div>
+            <h2>Что такое декораторы?</h2>
+            <p>Декораторы в Python — это функции, которые принимают другую функцию в качестве аргумента, добавляют к ней некоторую функциональность и возвращают модифицированную функцию. По сути, декораторы позволяют "обернуть" одну функцию другой, расширяя её поведение без изменения исходного кода.</p>
+            
+            <p>Это реализация паттерна проектирования "Декоратор", который позволяет динамически добавлять новое поведение объектам. В Python декораторы широко используются для:</p>
+            
+            <ul>
+                <li>Логирования вызовов функций</li>
+                <li>Измерения времени выполнения</li>
+                <li>Кеширования результатов (мемоизация)</li>
+                <li>Проверки прав доступа</li>
+                <li>Валидации аргументов</li>
+                <li>Повторных попыток выполнения (retry)</li>
+            </ul>
+
+            <h2>Базовый синтаксис декораторов</h2>
+            <p>Простейший декоратор — это функция, которая принимает функцию и возвращает функцию. Вот как это выглядит:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Пример 1: Простейший декоратор</span>
+                    <button class="copy-btn">Копировать код</button>
+                </div>
+                <pre><code class="language-python">
+def simple_decorator(func):
+    """Простой декоратор, который выводит сообщение при вызове функции"""
+    def wrapper():
+        print(f"Функция {func.__name__} была вызвана")
+        return func()
+    return wrapper
+
+@simple_decorator
+def say_hello():
+    print("Привет, мир!")
+
+# Теперь при вызове say_hello() будет выполняться обернутая версия
+say_hello()
+# Вывод:
+# Функция say_hello была вызвана
+# Привет, мир!
+                </code></pre>
             </div>
-            <pre><code class="language-python">
-def fibonacci_generator(n):
-    """Генератор последовательности Фибоначчи"""
-    a, b = 0, 1
-    count = 0
-    while count < n:
-        yield a
-        a, b = b, a + b
-        count += 1
 
-# Использование генератора
-print("Первые 10 чисел Фибоначчи:")
-for num in fibonacci_generator(10):
-    print(num, end=" ")
+            <div class="note">
+                <h4><i class="fas fa-lightbulb"></i> Важно</h4>
+                <p>Символ <code>@</code> — это синтаксический сахар в Python. Запись <code>@simple_decorator</code> перед определением функции эквивалентна <code>say_hello = simple_decorator(say_hello)</code>.</p>
+            </div>
 
-# Использование спискового включения
-fib_list = [num for num in fibonacci_generator(10)]
-print(f"\nСписок: {fib_list}")
+            <h2>Декораторы с аргументами</h2>
+            <p>Часто нам нужно, чтобы декораторы принимали собственные аргументы. Для этого нужно создать функцию, которая возвращает декоратор:</p>
 
-# Использование функции next()
-gen = fibonacci_generator(5)
-print(f"Первое число: {next(gen)}")
-print(f"Второе число: {next(gen)}")
-            </code></pre>
-        </section>
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Пример 2: Декоратор с аргументами</span>
+                    <button class="copy-btn">Копировать код</button>
+                </div>
+                <pre><code class="language-python">
+def repeat(times):
+    """Декоратор, который повторяет выполнение функции заданное количество раз"""
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for i in range(times):
+                print(f"Попытка {i+1} из {times}")
+                result = func(*args, **kwargs)
+            return result
+        return wrapper
+    return decorator
+
+@repeat(times=3)
+def greet(name):
+    print(f"Привет, {name}!")
+    return f"Приветствие отправлено для {name}"
+
+result = greet("Анна")
+print(f"Результат: {result}")
+
+# Вывод:
+# Попытка 1 из 3
+# Привет, Анна!
+# Попытка 2 из 3
+# Привет, Анна!
+# Попытка 3 из 3
+# Привет, Анна!
+# Результат: Приветствие отправлено для Анна
+                </code></pre>
+            </div>
+
+            <h2>Практические примеры декораторов</h2>
+            <h3>1. Декоратор для измерения времени выполнения</h3>
+            <p>Один из самых полезных декораторов в практике разработки:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Пример 3: Таймер выполнения</span>
+                    <button class="copy-btn">Копировать код</button>
+                </div>
+                <pre><code class="language-python">
+import time
+from functools import wraps
+
+def timer(func):
+    """Декоратор, измеряющий время выполнения функции"""
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.perf_counter()
+        result = func(*args, **kwargs)
+        end_time = time.perf_counter()
+        elapsed_time = end_time - start_time
+        print(f"Функция {func.__name__} выполнена за {elapsed_time:.4f} секунд")
+        return result
+    return wrapper
+
+@timer
+def calculate_factorial(n):
+    """Вычисление факториала числа"""
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+
+# Использование
+factorial_100 = calculate_factorial(100)
+print(f"Факториал 100: {factorial_100}")
+                </code></pre>
+            </div>
+
+            <h3>2. Декоратор для кеширования (мемоизация)</h3>
+            <p>Идеально подходит для рекурсивных функций или вычислений с дорогими операциями:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Пример 4: Кеширующий декоратор</span>
+                    <button class="copy-btn">Копировать код</button>
+                </div>
+                <pre><code class="language-python">
+from functools import wraps
+
+def cache(func):
+    """Декоратор для кеширования результатов функции"""
+    cache_dict = {}
+    
+    @wraps(func)
+    def wrapper(*args):
+        if args in cache_dict:
+            print(f"Возвращаем результат из кеша для {args}")
+            return cache_dict[args]
+        
+        result = func(*args)
+        cache_dict[args] = result
+        print(f"Вычисляем и кешируем результат для {args}")
+        return result
+    
+    return wrapper
+
+@cache
+def fibonacci(n):
+    """Вычисление n-го числа Фибоначчи"""
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+# Использование
+print(fibonacci(10))
+print(fibonacci(10))  # Второй вызов использует кеш
+                </code></pre>
+            </div>
+
+            <h2>Несколько декораторов для одной функции</h2>
+            <p>В Python можно применять несколько декораторов к одной функции. Они применяются в порядке от ближайшего к функции к самому дальнему:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Пример 5: Несколько декораторов</span>
+                    <button class="copy-btn">Копировать код</button>
+                </div>
+                <pre><code class="language-python">
+def decorator1(func):
+    def wrapper():
+        print("Декоратор 1: до вызова функции")
+        result = func()
+        print("Декоратор 1: после вызова функции")
+        return result
+    return wrapper
+
+def decorator2(func):
+    def wrapper():
+        print("Декоратор 2: до вызова функции")
+        result = func()
+        print("Декоратор 2: после вызова функции")
+        return result
+    return wrapper
+
+@decorator1
+@decorator2
+def say_hello():
+    print("Привет из оригинальной функции!")
+
+say_hello()
+
+# Вывод:
+# Декоратор 1: до вызова функции
+# Декоратор 2: до вызова функции
+# Привет из оригинальной функции!
+# Декоратор 2: после вызова функции
+# Декоратор 1: после вызова функции
+                </code></pre>
+            </div>
+
+            <h2>Декораторы классов</h2>
+            <p>Начиная с Python 3.7, появилась возможность использовать декораторы не только для функций, но и для классов:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Пример 6: Декоратор для класса</span>
+                    <button class="copy-btn">Копировать код</button>
+                </div>
+<pre><code class="language-python">
+def singleton(cls):
+    """Декоратор, который превращает класс в Singleton"""
+    instances = {}
+    
+    def get_instance(*args, **kwargs):
+        if cls not in instances:
+            instances[cls] = cls(*args, **kwargs)
+        return instances[cls]
+    
+    return get_instance
+
+@singleton
+class DatabaseConnection:
+    def __init__(self, connection_string):
+        self.connection_string = connection_string
+        self.connection = self.connect()
+    
+    def connect(self):
+        print(f"Устанавливаем соединение с {self.connection_string}")
+        return f"Соединение с {self.connection_string}"
+    
+    def query(self, sql):
+        print(f"Выполняем запрос: {sql}")
+        return "Результат запроса"
+
+# Проверяем, что создается только один экземпляр
+db1 = DatabaseConnection("postgresql://localhost/mydb")
+db2 = DatabaseConnection("postgresql://localhost/mydb")
+
+print(f"db1 is db2: {db1 is db2}")  # True - это один и тот же объект
+</code></pre>
+            </div>
+
+            <div class="note">
+                <h4><i class="fas fa-exclamation-triangle"></i> Распространенные ошибки</h4>
+                <p>При создании декораторов не забывайте использовать <code>@wraps(func)</code> из модуля <code>functools</code>. Это сохраняет метаданные оригинальной функции (имя, документацию), что важно для отладки и использования интроспекции.</p>
+            </div>
+
+            <h2>Заключение</h2>
+            <p>Декораторы — это мощный инструмент в арсенале Python-разработчика. Они позволяют писать чистый, повторно используемый код и реализовывать сквозную функциональность (cross-cutting concerns) без дублирования кода.</p>
+            
+            <p>Освоив декораторы, вы сможете:</p>
+            <ul>
+                <li>Создавать более модульный и поддерживаемый код</li>
+                <li>Реализовывать аспектно-ориентированное программирование в Python</li>
+                <li>Улучшать производительность с помощью кеширования</li>
+                <li>Добавлять логирование, мониторинг и отладку к существующему коду</li>
+                <li>Создавать выразительные API для своих библиотек</li>
+            </ul>
+            
+            <p>Начните с простых декораторов и постепенно переходите к более сложным конструкциям. Практикуйтесь, экспериментируйте, и вы быстро освоите этот элегантный инструмент Python!</p>
+        </article>
+
+        <!-- Article Navigation -->
+        <div class="article-navigation">
+            <a href="#" class="nav-btn">
+                <i class="fas fa-arrow-left"></i>
+                <div class="nav-content">
+                    <h4>Предыдущая статья</h4>
+                    <h3>Генераторы в Python</h3>
+                </div>
+            </a>
+            <a href="#" class="nav-btn" style="text-align: right;">
+                <div class="nav-content">
+                    <h4>Следующая статья</h4>
+                    <h3>Контекстные менеджеры</h3>
+                </div>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3>PythonBlog</h3>
-                    <p>Блог о программировании на Python для всех уровней. Уроки, статьи, примеры кода и советы от опытных разработчиков.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-vk"></i></a>
-                    </div>
+                <div class="footer-logo">
+                    <i class="fab fa-python"></i> PythonBlog
                 </div>
-                <div class="footer-column">
-                    <h3>Категории</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Основы Python</a></li>
-                        <li><a href="#">Продвинутые темы</a></li>
-                        <li><a href="#">Веб-разработка</a></li>
-                        <li><a href="#">Data Science</a></li>
-                        <li><a href="#">Автоматизация</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Полезные ссылки</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">О проекте</a></li>
-                        <li><a href="#">Контакты</a></li>
-                        <li><a href="#">Политика конфиденциальности</a></li>
-                        <li><a href="#">Условия использования</a></li>
-                        <li><a href="#">Поддержать проект</a></li>
-                    </ul>
+                <div class="footer-links">
+                    <a href="#">Главная</a>
+                    <a href="#">Статьи</a>
+                    <a href="#">О проекте</a>
+                    <a href="#">Контакты</a>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 PythonBlog. Все права защищены. Код с любовью к Python.</p>
+                <p>&copy; 2023 PythonBlog. Все права защищены. Статья подготовлена для сообщества Python-разработчиков.</p>
             </div>
         </div>
     </footer>
@@ -673,27 +840,44 @@ print(f"Второе число: {next(gen)}")
             }
         });
         
-        // Анимация появления карточек при прокрутке
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Копирование кода
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const codeBlock = this.closest('.code-block').querySelector('code');
+                const textArea = document.createElement('textarea');
+                textArea.value = codeBlock.textContent;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                // Визуальный фидбек
+                const originalText = this.textContent;
+                this.textContent = 'Скопировано!';
+                this.style.backgroundColor = 'rgba(76, 175, 80, 0.3)';
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.backgroundColor = '';
+                }, 1500);
+            });
+        });
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+        // Плавная прокрутка для якорей
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
                 }
             });
-        }, observerOptions);
-        
-        // Применяем анимацию к карточкам статей
-        document.querySelectorAll('.post-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(card);
         });
     </script>
 </body>
