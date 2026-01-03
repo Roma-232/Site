@@ -401,6 +401,23 @@
             background: var(--primary-light);
         }
 
+        .check-lesson-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: 15px;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .check-lesson-btn:hover {
+            background: #00B398;
+        }
+
         @keyframes checkmark {
             0% { transform: scale(0); opacity: 0; }
             50% { transform: scale(1.2); }
@@ -482,18 +499,18 @@
                 <div>
                     <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Тестирование ПО с нуля до Junior QA</h1>
                     <p style="font-size: 1.1rem; opacity: 0.9; max-width: 700px;">
-                        15 практических уроков с тестами и заданиями для полного освоения профессии тестировщика
+                        17 практических уроков по вашей программе обучения с тестами и заданиями
                     </p>
                     
                     <div class="course-meta">
                         <div class="meta-item">
-                            <i class="fas fa-clock"></i> 30 часов
+                            <i class="fas fa-clock"></i> 17 недель
                         </div>
                         <div class="meta-item">
-                            <i class="fas fa-book"></i> 15 уроков
+                            <i class="fas fa-book"></i> 17 уроков
                         </div>
                         <div class="meta-item">
-                            <i class="fas fa-tasks"></i> 45+ тестов
+                            <i class="fas fa-tasks"></i> 50+ тестов
                         </div>
                         <div class="meta-item">
                             <i class="fas fa-certificate"></i> Сертификат
@@ -517,15 +534,15 @@
         <div class="course-layout">
             <!-- Левая колонка: Уроки -->
             <div class="lessons-container">
-                <!-- Урок 1 -->
+                <!-- Урок 1: Модуль 1, Неделя 1 -->
                 <div class="lesson active" id="lesson1" data-lesson="1">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">1</div>
-                            <div class="lesson-title">Основы тестирования: QA, QC и жизненные циклы</div>
+                            <div class="lesson-title">Модуль 1, Неделя 1: Введение в профессию и жизненный цикл ПО</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2 часа
+                            <i class="far fa-clock"></i> 4 часа
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -535,109 +552,76 @@
                     <div class="lesson-content">
                         <div class="lesson-section theory">
                             <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>QA (Quality Assurance)</strong> — обеспечение качества, процесс-ориентированный подход для предотвращения дефектов.</p>
-                            <p><strong>QC (Quality Control)</strong> — контроль качества, продукт-ориентированный подход для выявления дефектов.</p>
+                            <p><strong>Цель модуля:</strong> Сформировать у ученика мышление тестировщика. Не просто «нажимать кнопки», а понимать, зачем, что и как проверять.</p>
                             
-                            <h4>Жизненные циклы:</h4>
+                            <h4>Ключевые темы:</h4>
                             <ul>
-                                <li><strong>SDLC</strong> — Software Development Life Cycle: анализ, проектирование, разработка, тестирование, внедрение</li>
-                                <li><strong>STLC</strong> — Software Testing Life Cycle: планирование, проектирование тестов, выполнение, завершение</li>
+                                <li>QA/QE/QC/Test Engineer - различия в подходах</li>
+                                <li>Место QA в команде</li>
+                                <li>SDLC (Software Development Life Cycle)</li>
+                                <li>Waterfall и Agile/Scrum модели</li>
+                                <li>Уровни тестирования: Unit, Integration, System, Acceptance</li>
                             </ul>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
+                            <h3><i class="fas fa-tasks"></i> Практическое задание №1</h3>
+                            <p><strong>Задание:</strong> Анализ реального продукта (Telegram, Spotify, банковское приложение)</p>
+                            <ol>
+                                <li>Опишите роль тестировщиков в его разработке</li>
+                                <li>Предположите, по какой модели велась разработка последнего обновления</li>
+                                <li>Приведите примеры для каждого уровня тестирования</li>
+                            </ol>
                             
                             <div class="quiz-question" data-correct="b">
-                                <p>1. Что такое QA (Quality Assurance) абоба пврпаорпаврпоравпоаврппрарпоапаопроапро......</p>
-                               
-                                
+                                <p>1. Что означает аббревиатура SDLC?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q1_a" name="q1" value="a">
+                                        <label for="q1_a">Software Debugging Life Cycle</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q1_b" name="q1" value="b">
+                                        <label for="q1_b">Software Development Life Cycle</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q1_c" name="q1" value="c">
+                                        <label for="q1_c">Software Design Life Cycle</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
 
                             <div class="quiz-question" data-correct="c">
-                                <p>2. Чем отличается SDLC от STLC?</p>
-                                
+                                <p>2. В какой модели разработки тестирование происходит в конце цикла?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q2_a" name="q2" value="a">
+                                        <label for="q2_a">Agile</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q2_b" name="q2" value="b">
+                                        <label for="q2_b">Scrum</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q2_c" name="q2" value="c">
+                                        <label for="q2_c">Waterfall</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
-
-                            <div class="quiz-question" data-correct="a">
-                                <p>3. Кто обычно занимается QC (Quality Control)?</p>
-                                
-                                
-                            </div>
-
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(1)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Урок 2 -->
+                <!-- Урок 2: Модуль 1, Неделя 2 -->
                 <div class="lesson" id="lesson2" data-lesson="2">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">2</div>
-                            <div class="lesson-title">Виды и уровни тестирования ПО</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <h4>По доступу к коду:</h4>
-                            <ul>
-                                <li><strong>Чёрный ящик</strong> — тестирование без знания внутренней структуры</li>
-                                <li><strong>Белый ящик</strong> — тестирование с доступом к коду</li>
-                                <li><strong>Серый ящик</strong> — частичное знание внутренней структуры</li>
-                            </ul>
-                            
-                            <h4>Уровни тестирования:</h4>
-                            <ol>
-                                <li>Модульное (Unit)</li>
-                                <li>Интеграционное (Integration)</li>
-                                <li>Системное (System)</li>
-                                <li>Приемочное (Acceptance)</li>
-                            </ol>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                           
-                            
-                            <div class="quiz-question" data-correct="b">
-                                <p>1. Тестировщик проверяет работу формы входа, не зная как реализована проверка пароля.</p>
-                               
-                               
-                            </div>
-
-                            <div class="quiz-question" data-correct="a">
-                                <p>2. Разработчик пишет тесты для отдельной функции calculatePrice().</p>
-                                
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="c">
-                                <p>3. Заказчик проверяет готовый продукт перед запуском.</p>
-                                
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Урок 3 -->
-                <div class="lesson" id="lesson3" data-lesson="3">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">3</div>
-                            <div class="lesson-title">Тест-дизайн: Эквивалентное Разделение и BVA</div>
+                            <div class="lesson-title">Модуль 1, Неделя 2: Тест-анализ и тест-дизайн. Чек-листы</div>
                         </div>
                         <div class="lesson-duration">
                             <i class="far fa-clock"></i> 3 часа
@@ -650,55 +634,160 @@
                     <div class="lesson-content">
                         <div class="lesson-section theory">
                             <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Тест-дизайн</strong> — создание тестовых случаев с использованием специальных техник.</p>
-                            
-                            <h4>Основные техники:</h4>
+                            <p><strong>Ключевые темы:</strong></p>
                             <ul>
-                                <li><strong>Эквивалентное Разделение (EP)</strong> — группировка входных данных в классы</li>
-                                <li><strong>Анализ Граничных Значений (BVA)</strong> — тестирование значений на границах диапазонов</li>
+                                <li>Тест-анализ: работа с требованиями</li>
+                                <li>Виды требований: BR, User Stories, функциональные</li>
+                                <li>Техники тест-дизайна: Эквивалентное Разделение, Анализ Граничных Значений</li>
+                                <li>Чек-листы vs Тест-кейсы</li>
                             </ul>
                             
-                            <p><strong>Пример:</strong> Поле "Возраст" от 18 до 65 лет.</p>
-                            <p>Валидные: 18, 19, 64, 65</p>
-                            <p>Невалидные: 17, 66</p>
+                            <p><strong>Пример BVA:</strong> поле "возраст" от 18 до 60 лет → тестируем: 17, 18, 19, 59, 60, 61</p>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Практическое задание №2</h3>
+                            <p><strong>User Story:</strong> «Как авторизованный пользователь, я хочу иметь возможность сменить аватарку в своём профиле»</p>
+                            <p><strong>Требования:</strong> файл не более 10МБ, форматы JPG, PNG</p>
                             
-                            
-                            <div class="quiz-question" data-correct="b">
-                                <p>1. Поле принимает значения от 1 до 100. Какие значения выбрать для BVA?</p>
-                                
-                                
-                            </div>
-
                             <div class="quiz-question" data-correct="c">
-                                <p>2. Для поля "Процент скидки" (5-20%) сколько классов эквивалентности?</p>
-                               
-                                
+                                <p>1. Сколько классов эквивалентности для поля "Размер файла"?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q2_1_a" name="q2_1" value="a">
+                                        <label for="q2_1_a">1 класс (валидные данные)</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q2_1_b" name="q2_1" value="b">
+                                        <label for="q2_1_b">2 класса (валидные и невалидные)</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q2_1_c" name="q2_1" value="c">
+                                        <label for="q2_1_c">3 класса (меньше 10МБ, ровно 10МБ, больше 10МБ)</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
 
                             <div class="quiz-question" data-correct="a">
-                                <p>3. Какая техника помогает сократить количество тестов?</p>
-                                
-                                
+                                <p>2. Какие значения нужно проверить по технике BVA для файла размером до 10МБ?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q2_2_a" name="q2_2" value="a">
+                                        <label for="q2_2_a">9.9МБ, 10МБ, 10.1МБ</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q2_2_b" name="q2_2" value="b">
+                                        <label for="q2_2_b">5МБ, 10МБ, 15МБ</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q2_2_c" name="q2_2" value="c">
+                                        <label for="q2_2_c">1МБ, 10МБ, 20МБ</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
-
-                           
+                            
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(2)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Урок 4 -->
+                <!-- Урок 3: Модуль 1, Неделя 3 -->
+                <div class="lesson" id="lesson3" data-lesson="3">
+                    <div class="lesson-header">
+                        <div style="display: flex; align-items: center; flex-grow: 1;">
+                            <div class="lesson-number">3</div>
+                            <div class="lesson-title">Модуль 1, Неделя 3: Тест-кейсы и баг-репорты</div>
+                        </div>
+                        <div class="lesson-duration">
+                            <i class="far fa-clock"></i> 3 часа
+                        </div>
+                        <div class="lesson-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="lesson-content">
+                        <div class="lesson-section theory">
+                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
+                            <p><strong>Структура тест-кейса:</strong></p>
+                            <ul>
+                                <li>ID, Название, Предусловия</li>
+                                <li>Шаги, Ожидаемый результат</li>
+                                <li>Постусловия, Приоритет, Статус</li>
+                            </ul>
+                            
+                            <p><strong>Баг-репорт в Jira:</strong></p>
+                            <ul>
+                                <li>Заголовок (Summary)</li>
+                                <li>Шаги воспроизведения</li>
+                                <li>Фактический и Ожидаемый результат</li>
+                                <li>Severity: Blocker, Critical, Major, Minor, Trivial</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="lesson-section practice-task">
+                            <h3><i class="fas fa-tasks"></i> Практическое задание №3</h3>
+                            <p><strong>Задание:</strong> Работа на учебном стенде с "сломанным" веб-приложением</p>
+                            <ol>
+                                <li>Написать 3 тест-кейса для функционала "Смена аватарки"</li>
+                                <li>Найти и зарегистрировать 5 различных багов</li>
+                                <li>Оформить баг-репорты в формате Jira</li>
+                            </ol>
+                            
+                            <div class="quiz-question" data-correct="c">
+                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q3_1_a" name="q3_1" value="a">
+                                        <label for="q3_1_a">Minor</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q3_1_b" name="q3_1" value="b">
+                                        <label for="q3_1_b">Major</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q3_1_c" name="q3_1" value="c">
+                                        <label for="q3_1_c">Blocker</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+
+                            <div class="quiz-question" data-correct="a">
+                                <p>2. Что должно быть в ожидаемом результате тест-кейса?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q3_2_a" name="q3_2" value="a">
+                                        <label for="q3_2_a">Конкретное поведение системы после выполнения шагов</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q3_2_b" name="q3_2" value="b">
+                                        <label for="q3_2_b">Общее описание функционала</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q3_2_c" name="q3_2" value="c">
+                                        <label for="q3_2_c">Список всех возможных вариантов</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                            
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(3)">Проверить ответы</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Урок 4: Модуль 1, Неделя 4 -->
                 <div class="lesson" id="lesson4" data-lesson="4">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">4</div>
-                            <div class="lesson-title">Чек-листы и тест-кейсы: документация</div>
+                            <div class="lesson-title">Модуль 1, Неделя 4: Тестовая документация и основы работы с командой</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2 часа
+                            <i class="far fa-clock"></i> 3 часа
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -708,48 +797,84 @@
                     <div class="lesson-content">
                         <div class="lesson-section theory">
                             <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Чек-лист</strong> — список пунктов для проверки (что проверить).</p>
-                            <p><strong>Тест-кейс</strong> — детальная инструкция с шагами (как проверить).</p>
+                            <p><strong>Тест-план (IEEE 829):</strong></p>
+                            <ul>
+                                <li>Идентификатор, Введение, Объекты тестирования</li>
+                                <li>Функции для тестирования, Подход</li>
+                                <li>Критерии начала/окончания тестов</li>
+                                <li>Окружение, Риски, Результаты</li>
+                            </ul>
                             
-                            <h4>Структура тест-кейса:</h4>
-                            <ol>
-                                <li>ID и название</li>
-                                <li>Предварительные условия</li>
-                                <li>Шаги выполнения</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Фактический результат</li>
-                            </ol>
+                            <p><strong>Основы коммуникации:</strong></p>
+                            <ul>
+                                <li>Как правильно задавать вопросы разработчику</li>
+                                <li>Эскалация проблем</li>
+                                <li>«Правило трёх C» для баг-репорта: Clear, Concise, Complete</li>
+                            </ul>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Итоговое задание модуля 1</h3>
+                            <p><strong>Задание:</strong> Симуляция реальной задачи - функционал "Добавление товара в корзину"</p>
+                            <ol>
+                                <li>Составить Тест-план (2-3 страницы)</li>
+                                <li>Протестировать функционал на учебном стенде</li>
+                                <li>Создать набор артефактов: Чек-лист, 5 тест-кейсов, 3 баг-репорта</li>
+                                <li>Написать итоговый отчёт о тестировании</li>
+                            </ol>
                             
-                            <div class="quiz-question" data-correct="a">
-                                <p>1. Когда использовать чек-лист вместо тест-кейса?</p>
-                                
-                                
-                            </div>
-
                             <div class="quiz-question" data-correct="b">
-                                <p>2. Что должно быть в ожидаемом результате тест-кейса?</p>
-                               
-                               
+                                <p>1. Что такое "Правило трёх C" для баг-репорта?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q4_1_a" name="q4_1" value="a">
+                                        <label for="q4_1_a">Correct, Complete, Consistent</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q4_1_b" name="q4_1" value="b">
+                                        <label for="q4_1_b">Clear, Concise, Complete</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q4_1_c" name="q4_1" value="c">
+                                        <label for="q4_1_c">Comprehensive, Clear, Correct</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
 
+                            <div class="quiz-question" data-correct="c">
+                                <p>2. Какая вкладка в браузерных DevTools показывает сетевые запросы?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q4_2_a" name="q4_2" value="a">
+                                        <label for="q4_2_a">Console</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q4_2_b" name="q4_2" value="b">
+                                        <label for="q4_2_b">Elements</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q4_2_c" name="q4_2" value="c">
+                                        <label for="q4_2_c">Network</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(4)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Урок 5 -->
+                <!-- Урок 5: Модуль 2, Неделя 5 -->
                 <div class="lesson" id="lesson5" data-lesson="5">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">5</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
+                            <div class="lesson-title">Модуль 2, Неделя 5: Базы данных и SQL для QA</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
+                            <i class="far fa-clock"></i> 4 часа
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -759,48 +884,79 @@
                     <div class="lesson-content">
                         <div class="lesson-section theory">
                             <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
+                            <p><strong>Цель модуля:</strong> Выйти за рамки UI-тестирования. Проверять данные и взаимодействие между системами.</p>
                             
-                            <h4>Обязательные поля:</h4>
+                            <h4>Основы SQL:</h4>
                             <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
+                                <li>SELECT, FROM, WHERE – основа всего</li>
+                                <li>Операторы сравнения и логические операторы</li>
+                                <li>JOIN (INNER, LEFT/RIGHT) - ключевая тема для QA</li>
+                                <li>Агрегирующие функции (COUNT, SUM, AVG) и GROUP BY</li>
                             </ul>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Практическое задание №4</h3>
+                            <p><strong>Схема БД интернет-магазина:</strong> Users, Orders, Products, OrderItems</p>
+                            <p><strong>Задание:</strong></p>
+                            <ol>
+                                <li>Написать 10 запросов нарастающей сложности</li>
+                                <li>Кейс: "Пользователь через UI создал заказ, но на экране он не отображается"</li>
+                                <li>Найти "потерянный" заказ в БД</li>
+                            </ol>
                             
+                            <div class="quiz-question" data-correct="a">
+                                <p>1. Какой JOIN вернет все записи из левой таблицы, даже если нет совпадений в правой?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q5_1_a" name="q5_1" value="a">
+                                        <label for="q5_1_a">LEFT JOIN</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q5_1_b" name="q5_1" value="b">
+                                        <label for="q5_1_b">INNER JOIN</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q5_1_c" name="q5_1" value="c">
+                                        <label for="q5_1_c">RIGHT JOIN</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+
                             <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                               
+                                <p>2. Какой оператор используется для поиска по шаблону?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q5_2_a" name="q5_2" value="a">
+                                        <label for="q5_2_a">IN</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q5_2_b" name="q5_2" value="b">
+                                        <label for="q5_2_b">BETWEEN</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q5_2_c" name="q5_2" value="c">
+                                        <label for="q5_2_c">LIKE</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
-
-                            <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                                
-                            </div>
-
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(5)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Урок 6-15 (сокращённо для примера) -->
+                <!-- Урок 6: Модуль 2, Неделя 6 -->
                 <div class="lesson" id="lesson6" data-lesson="6">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">6</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
+                            <div class="lesson-title">Модуль 2, Неделя 6: Клиент-сервер. Тестирование API (часть 1)</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
+                            <i class="far fa-clock"></i> 3 часа
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -810,47 +966,78 @@
                     <div class="lesson-content">
                         <div class="lesson-section theory">
                             <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
-                            
-                            <h4>Обязательные поля:</h4>
+                            <p><strong>Основы HTTP/HTTPS:</strong></p>
                             <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
+                                <li>Методы: GET, POST, PUT, DELETE, PATCH</li>
+                                <li>Статус-коды: 200, 201, 400, 401, 403, 404, 500</li>
+                                <li>Заголовки (Headers), тело запроса/ответа (Body)</li>
+                                <li>REST API - "контракт" между системами</li>
                             </ul>
+                            
+                            <p><strong>Инструменты:</strong> Postman, Swagger/OpenAPI</p>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Практическое задание №5</h3>
+                            <p><strong>Задание:</strong> Работа с учебным API (документация в Swagger)</p>
+                            <ol>
+                                <li>Создать коллекцию в Postman</li>
+                                <li>Реализовать CRUD-сценарий для сущности "Товар"</li>
+                                <li>Проверить различные сценарии: валидные и невалидные данные</li>
+                            </ol>
                             
-                            <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                               
-                            </div>
-
                             <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                                
+                                <p>1. Какой статус-код означает "Успешно создано"?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q6_1_a" name="q6_1" value="a">
+                                        <label for="q6_1_a">200 OK</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q6_1_b" name="q6_1" value="b">
+                                        <label for="q6_1_b">201 Created</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q6_1_c" name="q6_1" value="c">
+                                        <label for="q6_1_c">204 No Content</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
 
+                            <div class="quiz-question" data-correct="a">
+                                <p>2. Какой метод HTTP используется для обновления существующего ресурса?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q6_2_a" name="q6_2" value="a">
+                                        <label for="q6_2_a">PUT или PATCH</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q6_2_b" name="q6_2" value="b">
+                                        <label for="q6_2_b">POST</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q6_2_c" name="q6_2" value="c">
+                                        <label for="q6_2_c">GET</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(6)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
-                
-                 <div class="lesson" id="lesson7" data-lesson="7">
+
+                <!-- Урок 7: Модуль 2, Неделя 7 -->
+                <div class="lesson" id="lesson7" data-lesson="7">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">7</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
+                            <div class="lesson-title">Модуль 2, Неделя 7: Тестирование API (часть 2) и DevTools</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
+                            <i class="far fa-clock"></i> 3 часа
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -860,47 +1047,84 @@
                     <div class="lesson-content">
                         <div class="lesson-section theory">
                             <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
-                            
-                            <h4>Обязательные поля:</h4>
+                            <p><strong>Авторизация в API:</strong></p>
                             <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
+                                <li>API Key, Bearer Token (JWT), Basic Auth</li>
+                                <li>Где и как передавать (Headers)</li>
+                            </ul>
+                            
+                            <p><strong>Форматы данных:</strong> JSON, XML</p>
+                            
+                            <p><strong>Браузерные DevTools:</strong></p>
+                            <ul>
+                                <li>Вкладка Network: анализ HTTP-запросов</li>
+                                <li>Фильтрация по типу (XHR/JS)</li>
+                                <li>Просмотр Request/Response Headers и Body</li>
                             </ul>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Практическое задание №6</h3>
+                            <p><strong>Задание:</strong> Комплексная задача - протестировать авторизованный сценарий</p>
+                            <ol>
+                                <li>Выполнить запрос на логин, извлечь токен</li>
+                                <li>Написать запросы, требующие авторизации</li>
+                                <li>Проанализировать API-вызовы через DevTools</li>
+                                <li>Создать 2 баг-репорта на основе ошибок API</li>
+                            </ol>
                             
                             <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                               
+                                <p>1. Где обычно передается Bearer Token в HTTP-запросе?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q7_1_a" name="q7_1" value="a">
+                                        <label for="q7_1_a">В теле запроса (Body)</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q7_1_b" name="q7_1" value="b">
+                                        <label for="q7_1_b">В URL параметрах</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q7_1_c" name="q7_1" value="c">
+                                        <label for="q7_1_c">В заголовках (Headers)</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
 
                             <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                                
+                                <p>2. Какой статус-код означает "Не авторизован"?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q7_2_a" name="q7_2" value="a">
+                                        <label for="q7_2_a">403 Forbidden</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q7_2_b" name="q7_2" value="b">
+                                        <label for="q7_2_b">401 Unauthorized</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q7_2_c" name="q7_2" value="c">
+                                        <label for="q7_2_c">404 Not Found</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
-
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(7)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
 
-                 <div class="lesson" id="lesson8" data-lesson="8">
+                <!-- Урок 8: Модуль 2, Неделя 8 -->
+                <div class="lesson" id="lesson8" data-lesson="8">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">8</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
+                            <div class="lesson-title">Модуль 2, Неделя 8: Основы автоматизации (без кода) и командная строка</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
+                            <i class="far fa-clock"></i> 3 часа
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -910,47 +1134,84 @@
                     <div class="lesson-content">
                         <div class="lesson-section theory">
                             <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
-                            
-                            <h4>Обязательные поля:</h4>
+                            <p><strong>Зачем автоматизировать?</strong></p>
                             <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
+                                <li>Регрессионное тестирование</li>
+                                <li>Быстрая проверка "дымящихся" сценариев</li>
+                                <li>Проверка API</li>
                             </ul>
+                            
+                            <p><strong>Инструменты:</strong></p>
+                            <ul>
+                                <li>Selenium IDE / Katalon Recorder</li>
+                                <li>Командная строка (Terminal)</li>
+                                <li>Git (git clone, git pull)</li>
+                            </ul>
+                            
+                            <p><strong>Основные команды терминала:</strong> cd, ls, pwd, cat, grep</p>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Практическое задание №7</h3>
+                            <p><strong>Задание:</strong></p>
+                            <ol>
+                                <li>Работа с терминалом: найти лог-файл, распаковать архив, найти ошибки</li>
+                                <li>В Selenium IDE записать сценарий логина и добавить проверки</li>
+                                <li>Клонировать учебный репозиторий с GitHub</li>
+                            </ol>
                             
+                            <div class="quiz-question" data-correct="a">
+                                <p>1. Какая команда используется для навигации по директориям в терминале?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q8_1_a" name="q8_1" value="a">
+                                        <label for="q8_1_a">cd</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q8_1_b" name="q8_1" value="b">
+                                        <label for="q8_1_b">ls</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q8_1_c" name="q8_1" value="c">
+                                        <label for="q8_1_c">pwd</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+
                             <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                               
+                                <p>2. Какая команда Git используется для получения кода из удаленного репозитория?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q8_2_a" name="q8_2" value="a">
+                                        <label for="q8_2_a">git push</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q8_2_b" name="q8_2" value="b">
+                                        <label for="q8_2_b">git commit</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q8_2_c" name="q8_2" value="c">
+                                        <label for="q8_2_c">git clone</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
-
-                            <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                                
-                            </div>
-
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(8)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
 
-                 <div class="lesson" id="lesson9" data-lesson="9">
+                <!-- Урок 9: Модуль 2, Неделя 9 -->
+                <div class="lesson" id="lesson9" data-lesson="9">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">9</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
+                            <div class="lesson-title">Модуль 2, Неделя 9: Введение в программирование для QA. Python (часть 1)</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
+                            <i class="far fa-clock"></i> 4 часа
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -960,47 +1221,83 @@
                     <div class="lesson-content">
                         <div class="lesson-section theory">
                             <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
+                            <p><strong>Почему Python?</strong> Простой синтаксис, читаемость, мощное комьюнити для тестирования.</p>
                             
-                            <h4>Обязательные поля:</h4>
+                            <h4>База синтаксиса Python:</h4>
                             <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
+                                <li>Переменные и типы данных (int, str, bool, list, dict)</li>
+                                <li>Условные операторы (if/elif/else)</li>
+                                <li>Циклы (for, while)</li>
+                                <li>Функции (def)</li>
                             </ul>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Итоговое задание модуля 2</h3>
+                            <p><strong>Проект:</strong> "Консольный помощник тестировщика"</p>
+                            <ol>
+                                <li><strong>SQL:</strong> Написать сложный запрос для аналитики</li>
+                                <li><strong>API:</strong> Создать коллекцию Postman с цепочкой запросов</li>
+                                <li><strong>Python:</strong> Написать 2-3 скрипта:
+                                    <ul>
+                                        <li>Проверка JSON-ответа на обязательные поля</li>
+                                        <li>Парсинг лог-файла и подсчет ошибок "ERROR"</li>
+                                    </ul>
+                                </li>
+                            </ol>
                             
-                            <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                               
-                            </div>
-
                             <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                                
+                                <p>1. Какой тип данных в Python используется для хранения пар ключ-значение?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q9_1_a" name="q9_1" value="a">
+                                        <label for="q9_1_a">list</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q9_1_b" name="q9_1" value="b">
+                                        <label for="q9_1_b">dict</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q9_1_c" name="q9_1" value="c">
+                                        <label for="q9_1_c">tuple</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
 
+                            <div class="quiz-question" data-correct="a">
+                                <p>2. Как объявляется функция в Python?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q9_2_a" name="q9_2" value="a">
+                                        <label for="q9_2_a">def function_name():</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q9_2_b" name="q9_2" value="b">
+                                        <label for="q9_2_b">function function_name() {}</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q9_2_c" name="q9_2" value="c">
+                                        <label for="q9_2_c">func function_name():</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(9)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
 
-                 <div class="lesson" id="lesson10" data-lesson="10">
+                <!-- Урок 10: Модуль 3, Неделя 10 -->
+                <div class="lesson" id="lesson10" data-lesson="10">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">10</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
+                            <div class="lesson-title">Модуль 3, Неделя 10: Python для QA (часть 2). Работа с файлами и запросами</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
+                            <i class="far fa-clock"></i> 4 часа
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -1010,47 +1307,78 @@
                     <div class="lesson-content">
                         <div class="lesson-section theory">
                             <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
+                            <p><strong>Цель модуля:</strong> Преодолеть страх перед кодом. Научиться писать поддерживаемые скрипты и первые UI-автотесты.</p>
                             
-                            <h4>Обязательные поля:</h4>
+                            <h4>Работа с файлами и HTTP:</h4>
                             <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
+                                <li>Чтение и запись текстовых файлов, JSON, CSV</li>
+                                <li>Модуль requests для работы с HTTP</li>
+                                <li>Обработка исключений (try/except)</li>
                             </ul>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Практическое задание №8</h3>
+                            <p><strong>Задание:</strong> Создание автотеста для API на Python</p>
+                            <ol>
+                                <li>Написать скрипт для авторизации на учебном API через библиотеку requests</li>
+                                <li>Проверить статус-код ответа 200 и наличие поля token</li>
+                                <li>Использовать токен для получения данных профиля</li>
+                                <li>Выводить результаты проверок в консоль</li>
+                            </ol>
                             
-                            <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                               
-                            </div>
-
                             <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                                
+                                <p>1. Какой метод используется для отправки POST-запроса в библиотеке requests?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q10_1_a" name="q10_1" value="a">
+                                        <label for="q10_1_a">requests.get()</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q10_1_b" name="q10_1" value="b">
+                                        <label for="q10_1_b">requests.post()</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q10_1_c" name="q10_1" value="c">
+                                        <label for="q10_1_c">requests.send()</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
 
+                            <div class="quiz-question" data-correct="c">
+                                <p>2. Какой блок используется для обработки ошибок в Python?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q10_2_a" name="q10_2" value="a">
+                                        <label for="q10_2_a">try/catch</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q10_2_b" name="q10_2" value="b">
+                                        <label for="q10_2_b">error/handle</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q10_2_c" name="q10_2" value="c">
+                                        <label for="q10_2_c">try/except</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(10)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Урок 11: Модуль 3, Неделя 11 -->
                 <div class="lesson" id="lesson11" data-lesson="11">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">11</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
+                            <div class="lesson-title">Модуль 3, Неделя 11: Введение в Pytest и автоматизацию UI с Selenium WebDriver</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
+                            <i class="far fa-clock"></i> 4 часа
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -1060,47 +1388,84 @@
                     <div class="lesson-content">
                         <div class="lesson-section theory">
                             <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
-                            
-                            <h4>Обязательные поля:</h4>
+                            <p><strong>Тестовый фреймворк Pytest:</strong></p>
                             <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
+                                <li>Фикстуры (@pytest.fixture)</li>
+                                <li>Параметризация тестов (@pytest.mark.parametrize)</li>
                             </ul>
+                            
+                            <p><strong>Selenium WebDriver:</strong></p>
+                            <ul>
+                                <li>Инициализация драйвера для Chrome/Firefox</li>
+                                <li>Поиск элементов: By.ID, By.XPATH, By.CSS_SELECTOR</li>
+                                <li>Основные команды: click(), send_keys(), get_text()</li>
+                            </ul>
+                            
+                            <p><strong>POM (Page Object Model):</strong> разделение логики теста и описания страниц.</p>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Практическое задание №9</h3>
+                            <p><strong>Задание:</strong> Первый UI-автотест на Pytest + Selenium</p>
+                            <ol>
+                                <li>Написать тест: открыть учебный стенд, залогиниться, проверить успешный вход</li>
+                                <li>Создать базовую структуру Page Object: класс LoginPage</li>
+                                <li>Настроить фикстуру Pytest для инициализации драйвера</li>
+                                <li>Использовать явные ожидания (WebDriverWait) для стабильности</li>
+                            </ol>
                             
-                            <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                               
+                            <div class="quiz-question" data-correct="a">
+                                <p>1. Что такое POM (Page Object Model)?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q11_1_a" name="q11_1" value="a">
+                                        <label for="q11_1_a">Паттерн для разделения логики теста и описания страниц</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q11_1_b" name="q11_1" value="b">
+                                        <label for="q11_1_b">Система управления тестовыми данными</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q11_1_c" name="q11_1" value="c">
+                                        <label for="q11_1_c">Фреймворк для отчетности</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
 
                             <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                                
+                                <p>2. Какой декоратор Pytest используется для создания фикстур?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q11_2_a" name="q11_2" value="a">
+                                        <label for="q11_2_a">@pytest.test</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q11_2_b" name="q11_2" value="b">
+                                        <label for="q11_2_b">@pytest.fixture</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q11_2_c" name="q11_2" value="c">
+                                        <label for="q11_2_c">@pytest.setup</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
-
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(11)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Урок 12: Модуль 3, Неделя 12 -->
                 <div class="lesson" id="lesson12" data-lesson="12">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">12</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
+                            <div class="lesson-title">Модуль 3, Неделя 12: Продвинутая работа с Selenium и Pytest</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
+                            <i class="far fa-clock"></i> 4 часа
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -1110,47 +1475,87 @@
                     <div class="lesson-content">
                         <div class="lesson-section theory">
                             <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
-                            
-                            <h4>Обязательные поля:</h4>
+                            <p><strong>Ожидания (Waits):</strong></p>
                             <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
+                                <li>Явные (WebDriverWait + expected_conditions)</li>
+                                <li>Неявные ожидания</li>
+                                <li>Борьба с флакующими тестами</li>
                             </ul>
+                            
+                            <p><strong>Сложные локаторы:</strong> CSS Selectors и XPath</p>
+                            
+                            <p><strong>Скриншоты и логи:</strong></p>
+                            <ul>
+                                <li>Автоматические скриншоты при падении теста</li>
+                                <li>HTML-отчеты (pytest-html)</li>
+                            </ul>
+                            
+                            <p><strong>Параметризация:</strong> запуск одного теста с разными наборами данных.</p>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Практическое задание №10</h3>
+                            <p><strong>Задание:</strong> Написание стабильного E2E-теста</p>
+                            <ol>
+                                <li>Реализовать тест "Добавление товара в корзину" с использованием POM</li>
+                                <li>Создать классы ProductPage и CartPage</li>
+                                <li>Добавить явные ожидания перед кликами и проверками</li>
+                                <li>Параметризовать тест для добавления двух разных товаров</li>
+                                <li>Настроить создание HTML-отчета (pytest-html)</li>
+                            </ol>
                             
+                            <div class="quiz-question" data-correct="a">
+                                <p>1. Какие ожидания рекомендуется использовать для стабильных тестов?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q12_1_a" name="q12_1" value="a">
+                                        <label for="q12_1_a">Явные ожидания (WebDriverWait)</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q12_1_b" name="q12_1" value="b">
+                                        <label for="q12_1_b">Неявные ожидания</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q12_1_c" name="q12_1" value="c">
+                                        <label for="q12_1_c">Обычные sleep()</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+
                             <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                               
+                                <p>2. Какой декоратор Pytest используется для параметризации тестов?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q12_2_a" name="q12_2" value="a">
+                                        <label for="q12_2_a">@pytest.data</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q12_2_b" name="q12_2" value="b">
+                                        <label for="q12_2_b">@pytest.variables</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q12_2_c" name="q12_2" value="c">
+                                        <label for="q12_2_c">@pytest.mark.parametrize</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
-
-                            <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                                
-                            </div>
-
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(12)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Урок 13: Модуль 3, Неделя 13 -->
                 <div class="lesson" id="lesson13" data-lesson="13">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">13</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
+                            <div class="lesson-title">Модуль 3, Неделя 13: Работа с Git (продолжение) и CI/CD для QA</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
+                            <i class="far fa-clock"></i> 3 часа
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -1160,47 +1565,84 @@
                     <div class="lesson-content">
                         <div class="lesson-section theory">
                             <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
-                            
-                            <h4>Обязательные поля:</h4>
+                            <p><strong>Основы Git для ежедневной работы:</strong></p>
                             <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
+                                <li>git status, git add, git commit, git push</li>
+                                <li>Ветки (git branch, git checkout)</li>
+                                <li>Pull/Merge Request</li>
+                            </ul>
+                            
+                            <p><strong>CI/CD (Continuous Integration / Continuous Delivery):</strong></p>
+                            <ul>
+                                <li>Зачем это QA? Быстрая обратная связь о качестве</li>
+                                <li>Интеграция автотестов в CI/CD</li>
+                                <li>Обзор GitHub Actions / GitLab CI / Jenkins</li>
                             </ul>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Практическое задание №11</h3>
+                            <p><strong>Задание:</strong> Создание своего тестового репозитория и настройка CI</p>
+                            <ol>
+                                <li>Создать публичный репозиторий на GitHub</li>
+                                <li>Запушить API-тесты на Python</li>
+                                <li>Настроить .github/workflows/ci.yml</li>
+                                <li>Файл CI должен: установить Python, зависимости (requests), запустить тестовый скрипт</li>
+                                <li>Посмотреть прохождение пайплайна в Actions</li>
+                            </ol>
                             
-                            <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                               
-                            </div>
-
                             <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                                
+                                <p>1. Что означает CI в контексте разработки ПО?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q13_1_a" name="q13_1" value="a">
+                                        <label for="q13_1_a">Continuous Inspection</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q13_1_b" name="q13_1" value="b">
+                                        <label for="q13_1_b">Continuous Integration</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q13_1_c" name="q13_1" value="c">
+                                        <label for="q13_1_c">Continuous Implementation</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
 
+                            <div class="quiz-question" data-correct="a">
+                                <p>2. Какая команда Git используется для отправки изменений в удаленный репозиторий?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q13_2_a" name="q13_2" value="a">
+                                        <label for="q13_2_a">git push</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q13_2_b" name="q13_2" value="b">
+                                        <label for="q13_2_b">git pull</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q13_2_c" name="q13_2" value="c">
+                                        <label for="q13_2_c">git commit</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(13)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Урок 14: Модуль 3, Неделя 14 -->
                 <div class="lesson" id="lesson14" data-lesson="14">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">14</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
+                            <div class="lesson-title">Модуль 3, Неделя 14: Итоговый проект по автоматизации</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
+                            <i class="far fa-clock"></i> 6 часов
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -1209,48 +1651,78 @@
                     
                     <div class="lesson-content">
                         <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
-                            
-                            <h4>Обязательные поля:</h4>
+                            <h3><i class="fas fa-brain"></i> Теория урока (консультационная)</h3>
+                            <p><strong>Лучшие практики структуры тестового проекта:</strong></p>
                             <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
+                                <li>Папки: pages, tests, conftest.py, утилиты</li>
+                                <li>Чтение и анализ результатов прогона тестов</li>
+                                <li>Подготовка к собеседованию: вопросы по автоматизации для Junior QA</li>
                             </ul>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Итоговый проект модуля 3</h3>
+                            <p><strong>Проект:</strong> Создание фреймворка для автотестирования учебного приложения</p>
+                            <ol>
+                                <li>Спроектировать и реализовать структуру проекта (папки pages, tests, conftest.py, утилиты)</li>
+                                <li>Написать 3-5 стабильных UI-теста, покрывающих ключевой сценарий (полный цикл от регистрации до оформления заказа)</li>
+                                <li>Написать 2-3 API-теста на Python, проверяющих бэкенд для того же сценария</li>
+                                <li>Объединить всё в CI: Настроить пайплайн, который при коммите запускает и API, и UI-тесты (UI-тесты в headless-режиме)</li>
+                                <li><strong>Результат:</strong> Ссылка на GitHub-репозиторий с кодом, README-файлом с инструкцией по запуску, и зеленым статусом пайплайна</li>
+                            </ol>
                             
                             <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                               
+                                <p>1. Что такое headless-режим в Selenium?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q14_1_a" name="q14_1" value="a">
+                                        <label for="q14_1_a">Режим без использования браузера</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q14_1_b" name="q14_1" value="b">
+                                        <label for="q14_1_b">Режим с ускоренным выполнением тестов</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q14_1_c" name="q14_1" value="c">
+                                        <label for="q14_1_c">Режим без графического интерфейса браузера</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
 
                             <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                                
+                                <p>2. Какая папка в структуре тестового проекта обычно содержит Page Objects?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q14_2_a" name="q14_2" value="a">
+                                        <label for="q14_2_a">tests/</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q14_2_b" name="q14_2" value="b">
+                                        <label for="q14_2_b">pages/</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q14_2_c" name="q14_2" value="c">
+                                        <label for="q14_2_c">utils/</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
-
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(14)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Урок 15: Модуль 4, Неделя 15 -->
                 <div class="lesson" id="lesson15" data-lesson="15">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">15</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
+                            <div class="lesson-title">Модуль 4, Неделя 15: Формирование команд и введение в проект</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
+                            <i class="far fa-clock"></i> 4 часа
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -1259,48 +1731,83 @@
                     
                     <div class="lesson-content">
                         <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
+                            <h3><i class="fas fa-brain"></i> Теория/Организация</h3>
+                            <p><strong>Цель модуля:</strong> Сымитировать опыт реальной работы в продуктовой команде по Scrum и подготовить студента к выходу на рынок труда.</p>
                             
-                            <h4>Обязательные поля:</h4>
+                            <p><strong>Проект:</strong> «Реализовать систему промокодов и личный кабинет с историей заказов»</p>
+                            
+                            <p><strong>Роли в команде (3-4 человека):</strong></p>
                             <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
+                                <li>QA Lead - координирует работу, общается с PO</li>
+                                <li>QA Engineers - выполняют тестирование, пишут тест-кейсы</li>
+                                <li>QA Automation Engineer (опционально) - пишет критически важные автотесты</li>
                             </ul>
+                            
+                            <p><strong>Инструменты:</strong> Jira/YouTrack, Confluence/Google Docs, Slack/Discord, Git</p>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Работа в спринте, День 1-3</h3>
+                            <p><strong>Задачи для команды:</strong></p>
+                            <ol>
+                                <li>Провести тест-анализ требований, задать уточняющие вопросы PO</li>
+                                <li>Создать Тест-стратегию/план на новую фичу</li>
+                                <li>Разбить функционал на тестируемые части и создать бэклог тестовых задач в Jira</li>
+                                <li>Начать разработку тестовой документации (чек-листы, тест-кейсы)</li>
+                            </ol>
                             
-                            <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                               
-                            </div>
-
                             <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                                
+                                <p>1. Кто такой Product Owner (PO) в Scrum?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q15_1_a" name="q15_1" value="a">
+                                        <label for="q15_1_a">Руководитель разработки</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q15_1_b" name="q15_1" value="b">
+                                        <label for="q15_1_b">Представитель заказчика/пользователей</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q15_1_c" name="q15_1" value="c">
+                                        <label for="q15_1_c">Менеджер проекта</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
 
+                            <div class="quiz-question" data-correct="a">
+                                <p>2. Что такое бэклог (backlog) в Scrum?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q15_2_a" name="q15_2" value="a">
+                                        <label for="q15_2_a">Упорядоченный список задач для реализации</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q15_2_b" name="q15_2" value="b">
+                                        <label for="q15_2_b">Список выполненных задач</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q15_2_c" name="q15_2" value="c">
+                                        <label for="q15_2_c">Отчет о проделанной работе</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(15)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Урок 16: Модуль 4, Неделя 16 -->
                 <div class="lesson" id="lesson16" data-lesson="16">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">16</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
+                            <div class="lesson-title">Модуль 4, Неделя 16: Работа в спринте и карьерный интенсив</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
+                            <i class="far fa-clock"></i> 5 часов
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -1309,48 +1816,90 @@
                     
                     <div class="lesson-content">
                         <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
+                            <h3><i class="fas fa-brain"></i> Теория/Процесс</h3>
+                            <p><strong>Ежедневные стендапы (Daily Stand-up):</strong> 15 минут, 3 вопроса:</p>
+                            <ol>
+                                <li>Что сделал вчера?</li>
+                                <li>Что сделает сегодня?</li>
+                                <li>Есть ли препятствия?</li>
+                            </ol>
                             
-                            <h4>Обязательные поля:</h4>
+                            <p><strong>Работа с артефактами:</strong></p>
                             <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
+                                <li>Тестирование на нескольких средах (Dev, Staging)</li>
+                                <li>Ведение баг-репортов, проведение баг-трижей</li>
+                                <li>Регрессионное тестирование</li>
+                            </ul>
+                            
+                            <p><strong>Карьерный блок:</strong></p>
+                            <ul>
+                                <li>Резюме — главный продающий текст</li>
+                                <li>LinkedIn и GitHub — цифровая репутация</li>
                             </ul>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Работа в спринте, День 4-7</h3>
+                            <p><strong>Активная фаза тестирования:</strong></p>
+                            <ol>
+                                <li>Выполнение тест-кейсов, интенсивный поиск багов</li>
+                                <li>Коммуникация с "разработчиками" (менторы) — уточнение багов</li>
+                                <li>Написание/доработка критически важных автотестов</li>
+                                <li>Подготовка к демо: статистика, ключевые риски</li>
+                            </ol>
                             
                             <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                               
+                                <p>1. Что такое баг-триж (bug triage)?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q16_1_a" name="q16_1" value="a">
+                                        <label for="q16_1_a">Процесс фиксации багов</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q16_1_b" name="q16_1" value="b">
+                                        <label for="q16_1_b">Тестирование на наличие багов</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q16_1_c" name="q16_1" value="c">
+                                        <label for="q16_1_c">Процесс оценки и приоритизации багов</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
 
-                            <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                                
+                            <div class="quiz-question" data-correct="a">
+                                <p>2. Какой раздел должен быть в резюме QA инженера?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q16_2_a" name="q16_2" value="a">
+                                        <label for="q16_2_a">Skills (Testing Techniques, Tools, Programming)</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q16_2_b" name="q16_2" value="b">
+                                        <label for="q16_2_b">Hobbies and Interests</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q16_2_c" name="q16_2" value="c">
+                                        <label for="q16_2_c">Family Information</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
-
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(16)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Урок 17: Модуль 4, Неделя 17 -->
                 <div class="lesson" id="lesson17" data-lesson="17">
                     <div class="lesson-header">
                         <div style="display: flex; align-items: center; flex-grow: 1;">
                             <div class="lesson-number">17</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
+                            <div class="lesson-title">Модуль 4, Неделя 17: Завершение спринта, демо и финальная подготовка к собеседованию</div>
                         </div>
                         <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
+                            <i class="far fa-clock"></i> 5 часов
                         </div>
                         <div class="lesson-arrow">
                             <i class="fas fa-chevron-down"></i>
@@ -1359,39 +1908,78 @@
                     
                     <div class="lesson-content">
                         <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
-                            
-                            <h4>Обязательные поля:</h4>
+                            <h3><i class="fas fa-brain"></i> Теория/Процесс</h3>
+                            <p><strong>Sprint Review (Демо-день):</strong></p>
                             <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
+                                <li>10 минут презентации + 5 минут Q&A</li>
+                                <li>Что протестировали? Какие ключевые баги нашли?</li>
+                                <li>Вердикт о готовности функционала к релизу</li>
+                            </ul>
+                            
+                            <p><strong>Sprint Retrospective:</strong> Что прошло хорошо? Что можно улучшить?</p>
+                            
+                            <p><strong>Карьерный блок:</strong></p>
+                            <ul>
+                                <li>Собеседование: этапы, типы вопросов</li>
+                                <li>Теоретические, поведенческие, практические кейсы</li>
+                                <li>Переговорная практика: зарплатные ожидания</li>
                             </ul>
                         </div>
                         
                         <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
+                            <h3><i class="fas fa-tasks"></i> Финальные задания модуля 4</h3>
+                            <p><strong>Индивидуальное итоговое задание:</strong></p>
+                            <ol>
+                                <li>Сдать полностью готовое резюме (в PDF)</li>
+                                <li>Ссылка на оформленный профиль LinkedIn</li>
+                                <li>Ссылка на GitHub-портфолио с кодом проекта по автоматизации</li>
+                            </ol>
                             
-                            <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                               
-                            </div>
-
+                            <p><strong>Мокап-собеседование:</strong> 30-минутное пробное собеседование с ментором или экспертом</p>
+                            
                             <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                                
+                                <p>1. Что такое STAR-метод в собеседовании?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q17_1_a" name="q17_1" value="a">
+                                        <label for="q17_1_a">Метод оценки технических навыков</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q17_1_b" name="q17_1" value="b">
+                                        <label for="q17_1_b">Метод ответа на поведенческие вопросы: Situation, Task, Action, Result</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q17_1_c" name="q17_1" value="c">
+                                        <label for="q17_1_c">Система тестирования при приеме на работу</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
                             </div>
 
+                            <div class="quiz-question" data-correct="c">
+                                <p>2. Какой вопрос НЕ стоит задавать компании на собеседовании?</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q17_2_a" name="q17_2" value="a">
+                                        <label for="q17_2_a">Какие есть возможности для профессионального роста?</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q17_2_b" name="q17_2" value="b">
+                                        <label for="q17_2_b">Какой процесс тестирования используется в команде?</label>
+                                    </div>
+                                    <div class="quiz-option">
+                                        <input type="radio" id="q17_2_c" name="q17_2" value="c">
+                                        <label for="q17_2_c">Сколько получают другие сотрудники на этой должности?</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
                             
+                            <button class="check-lesson-btn" onclick="checkLessonQuiz(17)">Проверить ответы</button>
                         </div>
                     </div>
                 </div>
+
                 <!-- Кнопки навигации -->
                 <div class="lesson-navigation">
                     <button class="nav-btn nav-btn-outline" id="prevBtn">
@@ -1413,7 +2001,7 @@
                             <span class="stat-label">Пройдено уроков</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-value" id="totalLessons">15</span>
+                            <span class="stat-value" id="totalLessons">17</span>
                             <span class="stat-label">Всего уроков</span>
                         </div>
                     </div>
@@ -1421,10 +2009,10 @@
                     <div style="margin-top: 20px;">
                         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                             <span>Общий прогресс</span>
-                            <span id="progressPercent">7%</span>
+                            <span id="progressPercent">6%</span>
                         </div>
                         <div style="height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;">
-                            <div id="sidebarProgress" style="height: 100%; background: var(--primary); width: 7%; border-radius: 4px;"></div>
+                            <div id="sidebarProgress" style="height: 100%; background: var(--primary); width: 6%; border-radius: 4px;"></div>
                         </div>
                     </div>
                     
@@ -1474,7 +2062,7 @@
                         <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: var(--light); border-radius: 8px;">
                             <i class="fas fa-graduation-cap" style="color: var(--secondary);"></i>
                             <span>Завершить курс</span>
-                            <span style="color: var(--gray); margin-left: auto;">1/15</span>
+                            <span style="color: var(--gray); margin-left: auto;">1/17</span>
                         </div>
                     </div>
                 </div>
@@ -1495,7 +2083,7 @@
     <script>
         // ========== ОСНОВНЫЕ ПЕРЕМЕННЫЕ ==========
         let currentLesson = 1;
-        const totalLessons = 15;
+        const totalLessons = 17;
         let completedLessons = 1;
         let totalTestsTaken = 0;
         let correctAnswers = 0;
