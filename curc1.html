@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Курс: Тестирование ПО с нуля до Junior QA</title>
+    <title>Курс: Кибербезопасность: от основ до SOC-аналитика и пентеста</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2D5BFF;
-            --primary-light: #E8EDFF;
-            --secondary: #FF6B6B;
-            --accent: #00C9A7;
-            --dark: #1A1A2E;
-            --light: #F8F9FF;
-            --gray: #6C757D;
-            --border: #E0E0E0;
-            --shadow: 0 5px 20px rgba(0,0,0,0.08);
-            --radius: 12px;
+            --primary: #1a237e;
+            --primary-light: #e8eaf6;
+            --secondary: #d32f2f;
+            --accent: #00bcd4;
+            --accent-dark: #00838f;
+            --dark: #0d1117;
+            --dark-light: #161b22;
+            --light: #f5f7ff;
+            --gray: #8b949e;
+            --border: #30363d;
+            --shadow: 0 5px 20px rgba(0,0,0,0.2);
+            --radius: 10px;
             --transition: all 0.3s ease;
         }
 
@@ -24,29 +26,49 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Segoe UI', system-ui, 'Fira Code', monospace;
         }
 
         body {
-            background-color: var(--light);
-            color: var(--dark);
+            background-color: var(--dark);
+            color: #f0f6fc;
             line-height: 1.6;
             padding-bottom: 50px;
         }
 
         .course-container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         .course-header {
-            background: linear-gradient(135deg, var(--primary), #1A3FD9);
+            background: linear-gradient(135deg, var(--dark-light), var(--primary));
             color: white;
             padding: 60px 0 40px;
             border-radius: 0 0 var(--radius) var(--radius);
             margin-bottom: 40px;
             box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+
+        .course-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .course-meta {
@@ -54,33 +76,55 @@
             gap: 20px;
             margin: 20px 0 30px;
             flex-wrap: wrap;
+            position: relative;
         }
 
         .meta-item {
-            background: rgba(255,255,255,0.15);
-            padding: 8px 16px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 18px;
             border-radius: 20px;
             display: flex;
             align-items: center;
             gap: 8px;
             font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .course-progress {
             width: 100%;
-            height: 6px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 3px;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
             margin-top: 30px;
             overflow: hidden;
+            position: relative;
         }
 
         .progress-bar {
-            width: 25%;
+            width: 5%;
             height: 100%;
-            background: var(--accent);
-            border-radius: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            border-radius: 4px;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         .course-layout {
@@ -89,47 +133,126 @@
             gap: 40px;
         }
 
-        @media (max-width: 992px) {
+        @media (max-width: 1100px) {
             .course-layout {
                 grid-template-columns: 1fr;
             }
         }
 
-        .lessons-container {
-            background: white;
+        /* Стили для модулей */
+        .module-container {
+            background: var(--dark-light);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             overflow: hidden;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
         }
 
-        .lesson {
-            border-bottom: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .lesson:last-child {
-            border-bottom: none;
-        }
-
-        .lesson-header {
+        .module-header {
+            background: linear-gradient(90deg, rgba(26,35,126,0.8), rgba(13,17,23,0.9));
             padding: 25px 30px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             user-select: none;
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
         }
 
-        .lesson-header:hover {
-            background-color: var(--primary-light);
+        .module-header:hover {
+            background: linear-gradient(90deg, rgba(26,35,126,0.9), rgba(13,17,23,1));
         }
 
-        .lesson.active .lesson-header {
-            background-color: var(--primary-light);
-            border-left: 4px solid var(--primary);
+        .module-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-grow: 1;
         }
 
-        .lesson-number {
+        .module-icon {
+            background: var(--primary);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .module-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .module-text p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .module-arrow {
+            color: var(--gray);
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .module.active .module-arrow {
+            transform: rotate(180deg);
+            color: var(--accent);
+        }
+
+        .module.active .module-header {
+            border-bottom-color: var(--accent);
+        }
+
+        .weeks-container {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .module.active .weeks-container {
+            max-height: 5000px;
+        }
+
+        /* Стили для недель (уроков) */
+        .week {
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .week:last-child {
+            border-bottom: none;
+        }
+
+        .week-header {
+            padding: 22px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            background: rgba(255,255,255,0.02);
+            transition: var(--transition);
+        }
+
+        .week-header:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .week.active .week-header {
+            background: rgba(0, 188, 212, 0.1);
+            border-left: 4px solid var(--accent);
+        }
+
+        .week-number {
             background: var(--primary);
             color: white;
             width: 36px;
@@ -141,59 +264,76 @@
             font-weight: bold;
             margin-right: 15px;
             flex-shrink: 0;
-        }
-
-        .lesson-title {
-            flex-grow: 1;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .lesson-duration {
-            color: var(--gray);
             font-size: 0.9rem;
+        }
+
+        .week-title {
+            flex-grow: 1;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .week-duration {
+            color: var(--gray);
+            font-size: 0.85rem;
             margin-left: 15px;
             display: flex;
             align-items: center;
             gap: 5px;
+            flex-shrink: 0;
         }
 
-        .lesson-arrow {
+        .week-arrow {
             color: var(--gray);
             transition: var(--transition);
+            margin-left: 15px;
         }
 
-        .lesson.active .lesson-arrow {
+        .week.active .week-arrow {
             transform: rotate(180deg);
-            color: var(--primary);
+            color: var(--accent);
         }
 
-        .lesson-content {
+        .week-content {
             padding: 0 30px;
             max-height: 0;
             overflow: hidden;
             transition: var(--transition);
         }
 
-        .lesson.active .lesson-content {
+        .week.active .week-content {
             padding: 0 30px 30px;
-            max-height: 5000px;
+            max-height: 8000px;
         }
 
         .lesson-section {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             padding: 25px;
-            background: var(--light);
+            background: rgba(255,255,255,0.03);
             border-radius: var(--radius);
-            border-left: 4px solid var(--accent);
+            border-left: 4px solid;
+            border-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .lesson-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .lesson-section h3 {
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .lesson-section h4 {
+            color: #c9d1d9;
+            margin: 15px 0 10px;
+            font-size: 1rem;
         }
 
         .lesson-section ul, .lesson-section ol {
@@ -203,38 +343,48 @@
 
         .lesson-section li {
             margin-bottom: 8px;
+            color: #c9d1d9;
         }
 
         .lesson-section p {
             margin-bottom: 15px;
-        }
-
-        .key-terms {
-            background: #FFF9E6;
-            border-left-color: #FFC107;
-        }
-
-        .practice-task {
-            background: #E8F5E9;
-            border-left-color: #4CAF50;
+            color: #c9d1d9;
         }
 
         .theory {
-            background: #E3F2FD;
             border-left-color: #2196F3;
         }
 
+        .practice-task {
+            border-left-color: #4CAF50;
+        }
+
+        .key-terms {
+            border-left-color: #FFC107;
+        }
+
+        .security-tip {
+            border-left-color: #9C27B0;
+            background: rgba(156, 39, 176, 0.05);
+        }
+
         .quiz-question {
-            background: white;
+            background: rgba(255,255,255,0.05);
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 15px;
             border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .quiz-question:hover {
+            border-color: var(--accent);
         }
 
         .quiz-question p {
             margin-bottom: 15px;
             font-weight: 500;
+            color: white;
         }
 
         .quiz-options {
@@ -252,16 +402,17 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            color: #c9d1d9;
         }
 
         .quiz-option:hover {
-            border-color: var(--primary);
-            background: var(--primary-light);
+            border-color: var(--accent);
+            background: rgba(0, 188, 212, 0.1);
         }
 
         .quiz-option.selected {
-            border-color: var(--accent);
-            background: #E8F5E9;
+            border-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
         }
 
         .quiz-option input[type="radio"] {
@@ -274,8 +425,8 @@
         }
 
         .btn {
-            padding: 10px 20px;
-            background: var(--primary);
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary), #0d1566);
             color: white;
             border: none;
             border-radius: 8px;
@@ -287,27 +438,31 @@
             gap: 8px;
             margin: 5px;
             text-decoration: none;
+            font-size: 0.95rem;
         }
 
         .btn:hover {
-            background: #1A3FD9;
+            background: linear-gradient(135deg, #0d1566, var(--primary));
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.4);
         }
 
         .btn-accent {
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
         }
 
         .btn-accent:hover {
-            background: #00B398;
+            background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
         }
 
         .btn-secondary {
-            background: var(--secondary);
+            background: linear-gradient(135deg, var(--secondary), #9a0007);
         }
 
         .btn-secondary:hover {
-            background: #FF5252;
+            background: linear-gradient(135deg, #9a0007, var(--secondary));
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
         }
 
         .course-sidebar {
@@ -317,15 +472,16 @@
         }
 
         .sidebar-card {
-            background: white;
+            background: var(--dark-light);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             padding: 25px;
             margin-bottom: 25px;
+            border: 1px solid var(--border);
         }
 
         .sidebar-card h3 {
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -342,14 +498,15 @@
 
         .stat {
             padding: 15px;
-            background: var(--light);
+            background: rgba(255,255,255,0.05);
             border-radius: var(--radius);
+            border: 1px solid var(--border);
         }
 
         .stat-value {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--accent);
             display: block;
             line-height: 1;
         }
@@ -360,13 +517,38 @@
             margin-top: 5px;
         }
 
+        .progress-section {
+            margin-top: 20px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar-small {
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
         .lesson-navigation {
             display: flex;
             justify-content: space-between;
             margin-top: 40px;
             padding: 30px;
             border-top: 1px solid var(--border);
-            background: white;
+            background: var(--dark-light);
         }
 
         .nav-btn {
@@ -374,7 +556,7 @@
             align-items: center;
             gap: 10px;
             padding: 12px 25px;
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), #0d1566);
             color: white;
             border: none;
             border-radius: var(--radius);
@@ -386,19 +568,19 @@
         }
 
         .nav-btn:hover {
-            background: #1A3FD9;
+            background: linear-gradient(135deg, #0d1566, var(--primary));
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(45, 91, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.4);
         }
 
         .nav-btn-outline {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
         }
 
         .nav-btn-outline:hover {
-            background: var(--primary-light);
+            background: rgba(0, 188, 212, 0.1);
         }
 
         @keyframes checkmark {
@@ -407,14 +589,18 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        .completed .lesson-number {
+        .completed .week-number {
             background: var(--accent);
             position: relative;
         }
 
-        .completed .lesson-number::after {
+        .completed .week-number::after {
             content: "✓";
             animation: checkmark 0.3s ease-out;
+        }
+
+        .completed .module-icon {
+            background: var(--accent);
         }
 
         .quiz-feedback {
@@ -422,18 +608,58 @@
             margin-top: 15px;
             border-radius: 8px;
             display: none;
+            font-size: 0.95rem;
         }
 
         .quiz-feedback.correct {
-            background: #E8F5E9;
+            background: rgba(76, 175, 80, 0.1);
             border: 1px solid #4CAF50;
-            color: #2E7D32;
+            color: #81c784;
         }
 
         .quiz-feedback.incorrect {
-            background: #FFEBEE;
+            background: rgba(244, 67, 54, 0.1);
             border: 1px solid #F44336;
-            color: #C62828;
+            color: #e57373;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .badge-practice {
+            background: #4CAF50;
+        }
+
+        .badge-theory {
+            background: #2196F3;
+        }
+
+        .terminal {
+            background: #0d1117;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #7ee787;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .terminal .prompt {
+            color: #ff7b72;
+        }
+
+        .terminal .command {
+            color: #79c0ff;
         }
 
         @media (max-width: 768px) {
@@ -441,15 +667,23 @@
                 padding: 40px 0 30px;
             }
             
-            .lesson-header {
+            .course-header h1 {
+                font-size: 2rem;
+            }
+            
+            .module-header {
                 padding: 20px;
             }
             
-            .lesson-content {
+            .week-header {
+                padding: 18px 20px;
+            }
+            
+            .week-content {
                 padding: 0 20px;
             }
             
-            .lesson.active .lesson-content {
+            .week.active .week-content {
                 padding: 0 20px 20px;
             }
             
@@ -471,6 +705,10 @@
                 width: 100%;
                 justify-content: center;
             }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -479,31 +717,34 @@
     <header class="course-header">
         <div class="course-container">
             <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
-                <div>
-                    <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Тестирование ПО с нуля до Junior QA</h1>
-                    <p style="font-size: 1.1rem; opacity: 0.9; max-width: 700px;">
-                        15 практических уроков с тестами и заданиями для полного освоения профессии тестировщика
+                <div style="flex: 1;">
+                    <h1>Кибербезопасность: от основ до SOC-аналитика и пентеста</h1>
+                    <p style="font-size: 1.1rem; opacity: 0.9; max-width: 800px;">
+                        4 модуля, 22 недели интенсивного практического курса с симуляцией SOC и CTF
                     </p>
                     
                     <div class="course-meta">
                         <div class="meta-item">
-                            <i class="fas fa-clock"></i> 30 часов
+                            <i class="fas fa-shield-alt"></i> 4 модуля
                         </div>
                         <div class="meta-item">
-                            <i class="fas fa-book"></i> 15 уроков
+                            <i class="fas fa-calendar-week"></i> 22 недели
                         </div>
                         <div class="meta-item">
-                            <i class="fas fa-tasks"></i> 45+ тестов
+                            <i class="fas fa-tasks"></i> 16+ практических заданий
                         </div>
                         <div class="meta-item">
-                            <i class="fas fa-certificate"></i> Сертификат
+                            <i class="fas fa-certificate"></i> Сертификат + портфолио
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-briefcase"></i> Карьерный блок
                         </div>
                     </div>
                 </div>
                 
-                <div style="text-align: right;">
+                <div style="text-align: right; min-width: 150px;">
                     <div style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 5px;">Ваш прогресс</div>
-                    <div style="font-size: 2rem; font-weight: bold;" id="progressHeader">0%</div>
+                    <div style="font-size: 2rem; font-weight: bold;" id="progressHeader">5%</div>
                 </div>
             </div>
             
@@ -515,1069 +756,417 @@
 
     <main class="course-container">
         <div class="course-layout">
-            <!-- Левая колонка: Уроки -->
-            <div class="lessons-container">
-                <!-- Урок 1 -->
-                <div class="lesson active" id="lesson1" data-lesson="1">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">1</div>
-                            <div class="lesson-title">Основы тестирования: QA, QC и жизненные циклы</div>
+            <!-- Левая колонка: Модули и недели -->
+            <div id="modulesContainer">
+                <!-- Модуль 1 -->
+                <div class="module-container module active" id="module1" data-module="1">
+                    <div class="module-header">
+                        <div class="module-title">
+                            <div class="module-icon">1</div>
+                            <div class="module-text">
+                                <h3>МОДУЛЬ 1: Фундамент. Сети, ОС и введение в кибербезопасность</h3>
+                                <p>5 недель • Построить прочную техническую основу и сформировать образ мышления Security Mindset</p>
+                            </div>
                         </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2 часа
-                        </div>
-                        <div class="lesson-arrow">
+                        <div class="module-arrow">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
                     
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>QA (Quality Assurance)</strong> — обеспечение качества, процесс-ориентированный подход для предотвращения дефектов.</p>
-                            <p><strong>QC (Quality Control)</strong> — контроль качества, продукт-ориентированный подход для выявления дефектов.</p>
+                    <div class="weeks-container">
+                        <!-- Неделя 1 -->
+                        <div class="week active" id="week1-1" data-week="1-1">
+                            <div class="week-header">
+                                <div style="display: flex; align-items: center; flex-grow: 1;">
+                                    <div class="week-number">1</div>
+                                    <div class="week-title">Введение в кибербезопасность и основы безопасности ОС</div>
+                                </div>
+                                <div class="week-duration">
+                                    <i class="far fa-clock"></i> 6 часов
+                                </div>
+                                <div class="week-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
                             
-                            <h4>Жизненные циклы:</h4>
-                            <ul>
-                                <li><strong>SDLC</strong> — Software Development Life Cycle: анализ, проектирование, разработка, тестирование, внедрение</li>
-                                <li><strong>STLC</strong> — Software Testing Life Cycle: планирование, проектирование тестов, выполнение, завершение</li>
-                            </ul>
+                            <div class="week-content">
+                                <div class="lesson-section theory">
+                                    <h3><i class="fas fa-brain"></i> Теория недели</h3>
+                                    
+                                    <h4>1. Кибербезопасность: что это и зачем?</h4>
+                                    <p>Контекст: от домашнего роутера до корпоративной сети. Основные цели: защита данных, систем, репутации, финансов.</p>
+                                    
+                                    <h4>2. Триада CIA (Конфиденциальность, Целостность, Доступность):</h4>
+                                    <ul>
+                                        <li><strong>Конфиденциальность (Confidentiality):</strong> Данные доступны только авторизованным субъектам. Угрозы: утечка, подслушивание. Защита: шифрование, контроль доступа.</li>
+                                        <li><strong>Целостность (Integrity):</strong> Гарантия, что данные не были изменены несанкционированно. Угрозы: модификация, подделка. Защита: хеши, цифровые подписи.</li>
+                                        <li><strong>Доступность (Availability):</strong> Системы и данные доступны, когда это необходимо. Угрозы: DDoS-атаки, отказ оборудования. Защита: резервирование, балансировка нагрузки.</li>
+                                    </ul>
+                                    <p><strong>Пример:</strong> Интернет-банк. Конфиденциальность = пароль, Целостность = сумма перевода не изменена, Доступность = сайт работает 24/7.</p>
+                                    
+                                    <h4>3. Основные концепции:</h4>
+                                    <p>Уязвимость (Vulnerability), Угроза (Threat), Атака (Attack), Риск (Risk). Простая формула: Угроза + Уязвимость = Риск реализации Атаки.</p>
+                                    
+                                    <h4>4. Безопасность на уровне операционных систем (Windows):</h4>
+                                    <ul>
+                                        <li>Пользователи и группы: Принцип наименьших привилегий. Встроенные группы (Администраторы, Пользователи, Гости).</li>
+                                        <li>Разрешения NTFS: Чтение, Запись, Выполнение, Полный доступ. Наследование разрешений.</li>
+                                        <li>Управление процессами и службами: Какие процессы должны работать? Какие службы запущены и от чьего имени?</li>
+                                    </ul>
+                                    
+                                    <h4>5. Журналы событий Windows (Event Viewer):</h4>
+                                    <p>Где искать следы? Категории логов (Security, System, Application). Ключевые идентификаторы событий (Event ID):</p>
+                                    <div class="terminal">
+                                        <span class="prompt">C:\></span> <span class="command">Ключевые Event IDs:</span><br>
+                                        4624 — Успешный вход<br>
+                                        4625 — Неудачная попытка входа<br>
+                                        4688 — Создание нового процесса<br>
+                                        7045 — Установка службы
+                                    </div>
+                                </div>
+                                
+                                <div class="lesson-section practice-task">
+                                    <h3><i class="fas fa-tasks"></i> Практическое задание №1: Аудит рабочей станции</h3>
+                                    
+                                    <h4>Среда:</h4>
+                                    <p>Предоставляется доступ к удаленной виртуальной машине с Windows Server.</p>
+                                    
+                                    <h4>Задание:</h4>
+                                    <ol>
+                                        <li>Создать нового пользователя с минимальными привилегиями, назначить пароль по политике (мин. 8 символов, сложность).</li>
+                                        <li>Провести инвентаризацию: выписать все запущенные службы, отсортировать их по "имени входа". Найти службы, работающие от имени SYSTEM.</li>
+                                        <li>Проанализировать журнал Security за последний час. Найти все события 4625 (неудачный вход). Определить, с какого IP-адреса и на какую учетную запись были атаки.</li>
+                                        <li>Создать простой файл, настроить на него разрешения NTFS: полный доступ для Администраторов, чтение для Пользователей.</li>
+                                    </ol>
+                                    
+                                    <h4>Итог:</h4>
+                                    <p>Отчет в формате "Заметки аудитора" с выводами о базовой безопасности системы.</p>
+                                    
+                                    <button class="btn btn-accent" onclick="markAsComplete('week1-1')">
+                                        <i class="fas fa-check-circle"></i> Отметить как выполненное
+                                    </button>
+                                </div>
+                                
+                                <div class="lesson-section key-terms">
+                                    <h3><i class="fas fa-key"></i> Ключевые термины недели</h3>
+                                    <p><strong>CIA Triad</strong> • <strong>Уязвимость</strong> • <strong>Угроза</strong> • <strong>Риск</strong> • <strong>NTFS</strong> • <strong>Event Viewer</strong> • <strong>Event ID</strong> • <strong>Принцип наименьших привилегий</strong></p>
+                                </div>
+                                
+                                <div class="lesson-section security-tip">
+                                    <h3><i class="fas fa-lightbulb"></i> Security Tip</h3>
+                                    <p>Всегда проверяйте журналы событий после любых подозрительных активностей. Event ID 4625 может указывать на попытку брутфорса паролей к вашей системе.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Неделя 2 -->
+                        <div class="week" id="week1-2" data-week="1-2">
+                            <div class="week-header">
+                                <div style="display: flex; align-items: center; flex-grow: 1;">
+                                    <div class="week-number">2</div>
+                                    <div class="week-title">Основы компьютерных сетей. Модель OSI/TCP-IP</div>
+                                </div>
+                                <div class="week-duration">
+                                    <i class="far fa-clock"></i> 8 часов
+                                </div>
+                                <div class="week-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="week-content">
+                                <div class="lesson-section theory">
+                                    <h3><i class="fas fa-brain"></i> Теория недели</h3>
+                                    
+                                    <h4>1. Зачем security-специалисту сети?</h4>
+                                    <p>Понимать путь данных = уметь его защищать, контролировать и расследовать инциденты.</p>
+                                    
+                                    <h4>2. Модель OSI 7 уровней и стек TCP/IP:</h4>
+                                    <ul>
+                                        <li><strong>Уровень 3: Сетевой</strong> (IP, ICMP). IP-адресация (IPv4), маски подсети, шлюзы. ICMP — пинг, трассировка.</li>
+                                        <li><strong>Уровень 4: Транспортный</strong> (TCP, UDP).
+                                            <ul>
+                                                <li>TCP: Установка соединения (three-way handshake: SYN, SYN-ACK, ACK), гарантированная доставка. Порты — "двери" для служб (80-HTTP, 443-HTTPS, 22-SSH, 3389-RDP).</li>
+                                                <li>UDP: Бессоединный, быстрый, без гарантий. Пример: DNS, видеостриминг.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Уровень 7: Прикладной</strong> (HTTP/HTTPS, DNS, DHCP, SMTP).</li>
+                                    </ul>
+                                    
+                                    <h4>3. Ключевые протоколы с точки зрения безопасности:</h4>
+                                    <ul>
+                                        <li><strong>DNS:</strong> Преобразование доменных имен в IP. Уязвимость к спуфингу и отравлению кэша.</li>
+                                        <li><strong>HTTP/HTTPS:</strong> Чем отличается безопасный протокол (шифрование TLS/SSL). Понятие сертификатов.</li>
+                                        <li><strong>ARP:</strong> Протокол разрешения адресов в локальной сети. Уязвимость к ARP-спуфингу.</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="lesson-section practice-task">
+                                    <h3><i class="fas fa-tasks"></i> Практическое задание №2: Сетевой разведчик</h3>
+                                    
+                                    <h4>Инструменты:</h4>
+                                    <p>Командная строка (Windows cmd/powershell или Linux bash), простой сетевой анализатор.</p>
+                                    
+                                    <h4>Задание:</h4>
+                                    <ol>
+                                        <li>Используя ipconfig / ifconfig, определить свой IP-адрес, шлюз, маску подсети и DNS-сервер.</li>
+                                        <li>С помощью ping и tracert построить путь до нескольких сайтов (google.com, ya.ru). Проанализировать хопы.</li>
+                                        <li>С помощью netstat -an вывести список всех активных сетевых подключений. Определить, какие порты слушают (LISTENING), а какие установлены (ESTABLISHED).</li>
+                                        <li>Анализ заранее записанного Pcap-файла в Wireshark: Ответить на вопросы: Какой IP-адрес атакует? На какой порт? Какой протокол используется?</li>
+                                    </ol>
+                                    
+                                    <h4>Итог:</h4>
+                                    <p>Заполненный "лабораторный журнал" с ответами на вопросы и скриншотами.</p>
+                                    
+                                    <button class="btn btn-accent" onclick="markAsComplete('week1-2')">
+                                        <i class="fas fa-check-circle"></i> Отметить как выполненное
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Недели 3-5 (сокращённо) -->
+                        <div class="week" id="week1-3" data-week="1-3">
+                            <div class="week-header">
+                                <div style="display: flex; align-items: center; flex-grow: 1;">
+                                    <div class="week-number">3</div>
+                                    <div class="week-title">Основы Linux для безопасников. Системные логи</div>
+                                </div>
+                                <div class="week-duration">
+                                    <i class="far fa-clock"></i> 7 часов
+                                </div>
+                                <div class="week-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="week-content">
+                                <div class="lesson-section theory">
+                                    <h3><i class="fas fa-brain"></i> Теория недели</h3>
+                                    <p>Почему Linux критически важен в security? Большинство серверов, сетевого оборудования и инструментов pentest/анализа работают на Linux.</p>
+                                    <!-- Содержимое недели 3 -->
+                                </div>
+                                
+                                <div class="lesson-section practice-task">
+                                    <h3><i class="fas fa-tasks"></i> Практическое задание №3: Расследование на Linux-сервере</h3>
+                                    <!-- Описание задания -->
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            
-                            <div class="quiz-question" data-correct="b">
-                                <p>1. Что такое QA (Quality Assurance)?</p>
-                                
+                        <div class="week" id="week1-4" data-week="1-4">
+                            <div class="week-header">
+                                <div style="display: flex; align-items: center; flex-grow: 1;">
+                                    <div class="week-number">4</div>
+                                    <div class="week-title">Принципы сетевой безопасности. Фаерволы и VPN</div>
+                                </div>
+                                <div class="week-duration">
+                                    <i class="far fa-clock"></i> 6 часов
+                                </div>
+                                <div class="week-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
                             </div>
-
-                            <div class="quiz-question" data-correct="c">
-                                <p>2. Чем отличается SDLC от STLC?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="a">
-                                <p>3. Кто обычно занимается QC (Quality Control)?</p>
-                                
-                            </div>
-
                             
+                            <div class="week-content">
+                                <!-- Содержимое недели 4 -->
+                            </div>
+                        </div>
+                        
+                        <div class="week" id="week1-5" data-week="1-5">
+                            <div class="week-header">
+                                <div style="display: flex; align-items: center; flex-grow: 1;">
+                                    <div class="week-number">5</div>
+                                    <div class="week-title">Введение в криптографию. Жизненный цикл кибератаки</div>
+                                </div>
+                                <div class="week-duration">
+                                    <i class="far fa-clock"></i> 8 часов
+                                </div>
+                                <div class="week-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="week-content">
+                                <!-- Содержимое недели 5 -->
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Урок 2 -->
-                <div class="lesson" id="lesson2" data-lesson="2">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">2</div>
-                            <div class="lesson-title">Виды и уровни тестирования ПО</div>
+                <!-- Модуль 2 -->
+                <div class="module-container module" id="module2" data-module="2">
+                    <div class="module-header">
+                        <div class="module-title">
+                            <div class="module-icon">2</div>
+                            <div class="module-text">
+                                <h3>МОДУЛЬ 2: Защита периметра и атаки на веб</h3>
+                                <p>5 недель • Научиться находить и эксплуатировать типовые уязвимости в веб-приложениях</p>
+                            </div>
                         </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
-                        </div>
-                        <div class="lesson-arrow">
+                        <div class="module-arrow">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
                     
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <h4>По доступу к коду:</h4>
-                            <ul>
-                                <li><strong>Чёрный ящик</strong> — тестирование без знания внутренней структуры</li>
-                                <li><strong>Белый ящик</strong> — тестирование с доступом к коду</li>
-                                <li><strong>Серый ящик</strong> — частичное знание внутренней структуры</li>
-                            </ul>
-                            
-                            <h4>Уровни тестирования:</h4>
-                            <ol>
-                                <li>Модульное (Unit)</li>
-                                <li>Интеграционное (Integration)</li>
-                                <li>Системное (System)</li>
-                                <li>Приемочное (Acceptance)</li>
-                            </ol>
+                    <div class="weeks-container">
+                        <!-- Недели 6-10 (заглушки) -->
+                        <div class="week" id="week2-1" data-week="2-1">
+                            <div class="week-header">
+                                <div style="display: flex; align-items: center; flex-grow: 1;">
+                                    <div class="week-number">6</div>
+                                    <div class="week-title">Углубленная работа с сетевым трафиком и сканирование уязвимостей</div>
+                                </div>
+                                <div class="week-duration">
+                                    <i class="far fa-clock"></i> 9 часов
+                                </div>
+                                <div class="week-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                           
-                            
-                            <div class="quiz-question" data-correct="b">
-                                <p>1. Тестировщик проверяет работу формы входа, не зная как реализована проверка пароля.</p>
-                                
+                        <div class="week" id="week2-2" data-week="2-2">
+                            <div class="week-header">
+                                <div style="display: flex; align-items: center; flex-grow: 1;">
+                                    <div class="week-number">7</div>
+                                    <div class="week-title">Веб-архитектура и OWASP Top-10: Инъекции</div>
+                                </div>
+                                <div class="week-duration">
+                                    <i class="far fa-clock"></i> 10 часов
+                                </div>
+                                <div class="week-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
                             </div>
-
-                            <div class="quiz-question" data-correct="a">
-                                <p>2. Разработчик пишет тесты для отдельной функции calculatePrice().</p>
-                                
+                        </div>
+                        
+                        <div class="week" id="week2-3" data-week="2-3">
+                            <div class="week-header">
+                                <div style="display: flex; align-items: center; flex-grow: 1;">
+                                    <div class="week-number">8</div>
+                                    <div class="week-title">OWASP Top-10: XSS, CSRF, безопасность сессий</div>
+                                </div>
+                                <div class="week-duration">
+                                    <i class="far fa-clock"></i> 8 часов
+                                </div>
+                                <div class="week-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
                             </div>
-
-                            <div class="quiz-question" data-correct="c">
-                                <p>3. Заказчик проверяет готовый продукт перед запуском.</p>
-                                
+                        </div>
+                        
+                        <div class="week" id="week2-4" data-week="2-4">
+                            <div class="week-header">
+                                <div style="display: flex; align-items: center; flex-grow: 1;">
+                                    <div class="week-number">9</div>
+                                    <div class="week-title">Веб-фреймворки, безопасность API и автоматизированное сканирование</div>
+                                </div>
+                                <div class="week-duration">
+                                    <i class="far fa-clock"></i> 9 часов
+                                </div>
+                                <div class="week-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
                             </div>
-
-                            
+                        </div>
+                        
+                        <div class="week" id="week2-5" data-week="2-5">
+                            <div class="week-header">
+                                <div style="display: flex; align-items: center; flex-grow: 1;">
+                                    <div class="week-number">10</div>
+                                    <div class="week-title">Криптография на практике, подготовка к сертификациям и итог модуля</div>
+                                </div>
+                                <div class="week-duration">
+                                    <i class="far fa-clock"></i> 12 часов
+                                </div>
+                                <div class="week-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Урок 3 -->
-                <div class="lesson" id="lesson3" data-lesson="3">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">3</div>
-                            <div class="lesson-title">Тест-дизайн: Эквивалентное Разделение и BVA</div>
+                <!-- Модуль 3 -->
+                <div class="module-container module" id="module3" data-module="3">
+                    <div class="module-header">
+                        <div class="module-title">
+                            <div class="module-icon">3</div>
+                            <div class="module-text">
+                                <h3>МОДУЛЬ 3: SOC Analyst L1: Анализ угроз и реагирование на инциденты</h3>
+                                <p>6 недель • Перейти от роли «нападающего» к роли «защитника». Научить расследовать киберинциденты</p>
+                            </div>
                         </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 3 часа
-                        </div>
-                        <div class="lesson-arrow">
+                        <div class="module-arrow">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
                     
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Тест-дизайн</strong> — создание тестовых случаев с использованием специальных техник.</p>
-                            
-                            <h4>Основные техники:</h4>
-                            <ul>
-                                <li><strong>Эквивалентное Разделение (EP)</strong> — группировка входных данных в классы</li>
-                                <li><strong>Анализ Граничных Значений (BVA)</strong> — тестирование значений на границах диапазонов</li>
-                            </ul>
-                            
-                            <p><strong>Пример:</strong> Поле "Возраст" от 18 до 65 лет.</p>
-                            <p>Валидные: 18, 19, 64, 65</p>
-                            <p>Невалидные: 17, 66</p>
+                    <div class="weeks-container">
+                        <!-- Недели 11-16 (заглушки) -->
+                        <div class="week" id="week3-1" data-week="3-1">
+                            <div class="week-header">
+                                <div style="display: flex; align-items: center; flex-grow: 1;">
+                                    <div class="week-number">11</div>
+                                    <div class="week-title">Введение в SOC и основы работы с SIEM (Splunk)</div>
+                                </div>
+                                <div class="week-duration">
+                                    <i class="far fa-clock"></i> 10 часов
+                                </div>
+                                <div class="week-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            
-                            <div class="quiz-question" data-correct="b">
-                                <p>1. Поле принимает значения от 1 до 100. Какие значения выбрать для BVA?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="c">
-                                <p>2. Для поля "Процент скидки" (5-20%) сколько классов эквивалентности?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="a">
-                                <p>3. Какая техника помогает сократить количество тестов?</p>
-                                
-                            </div>
-
-                            
-                        </div>
+                        <!-- Остальные недели модуля 3 -->
                     </div>
                 </div>
 
-                <!-- Урок 4 -->
-                <div class="lesson" id="lesson4" data-lesson="4">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">4</div>
-                            <div class="lesson-title">Чек-листы и тест-кейсы: документация</div>
+                <!-- Модуль 4 -->
+                <div class="module-container module" id="module4" data-module="4">
+                    <div class="module-header">
+                        <div class="module-title">
+                            <div class="module-icon">4</div>
+                            <div class="module-text">
+                                <h3>МОДУЛЬ 4: Активная защита и основы пентеста</h3>
+                                <p>4 недели • Систематизировать навыки атаки в рамках легального этического тестирования на проникновение</p>
+                            </div>
                         </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2 часа
-                        </div>
-                        <div class="lesson-arrow">
+                        <div class="module-arrow">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
                     
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Чек-лист</strong> — список пунктов для проверки (что проверить).</p>
-                            <p><strong>Тест-кейс</strong> — детальная инструкция с шагами (как проверить).</p>
-                            
-                            <h4>Структура тест-кейса:</h4>
-                            <ol>
-                                <li>ID и название</li>
-                                <li>Предварительные условия</li>
-                                <li>Шаги выполнения</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Фактический результат</li>
-                            </ol>
+                    <div class="weeks-container">
+                        <!-- Недели 17-20 (заглушки) -->
+                        <div class="week" id="week4-1" data-week="4-1">
+                            <div class="week-header">
+                                <div style="display: flex; align-items: center; flex-grow: 1;">
+                                    <div class="week-number">17</div>
+                                    <div class="week-title">Методология пентеста и активная разведка (OSINT & Footprinting)</div>
+                                </div>
+                                <div class="week-duration">
+                                    <i class="far fa-clock"></i> 12 часов
+                                </div>
+                                <div class="week-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            <div class="quiz-question" data-correct="a">
-                                <p>1. Когда использовать чек-лист вместо тест-кейса?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="b">
-                                <p>2. Что должно быть в ожидаемом результате тест-кейса?</p>
-                                
-                            </div>
-
-                            
-                        </div>
+                        <!-- Остальные недели модуля 4 -->
                     </div>
                 </div>
 
-                <!-- Урок 5 -->
-                <div class="lesson" id="lesson5" data-lesson="5">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">5</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
-                            
-                            <h4>Обязательные поля:</h4>
-                            <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Урок 6-15 (сокращённо для примера) -->
-                <!-- Урок 1 -->
-                <div class="lesson active" id="lesson6" data-lesson="6">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">6</div>
-                            <div class="lesson-title">Основы тестирования: QA, QC и жизненные циклы</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>QA (Quality Assurance)</strong> — обеспечение качества, процесс-ориентированный подход для предотвращения дефектов.</p>
-                            <p><strong>QC (Quality Control)</strong> — контроль качества, продукт-ориентированный подход для выявления дефектов.</p>
-                            
-                            <h4>Жизненные циклы:</h4>
-                            <ul>
-                                <li><strong>SDLC</strong> — Software Development Life Cycle: анализ, проектирование, разработка, тестирование, внедрение</li>
-                                <li><strong>STLC</strong> — Software Testing Life Cycle: планирование, проектирование тестов, выполнение, завершение</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            
-                            <div class="quiz-question" data-correct="b">
-                                <p>1. Что такое QA (Quality Assurance)?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="c">
-                                <p>2. Чем отличается SDLC от STLC?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="a">
-                                <p>3. Кто обычно занимается QC (Quality Control)?</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Урок 2 -->
-                <div class="lesson" id="lesson7" data-lesson="7">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">7</div>
-                            <div class="lesson-title">Виды и уровни тестирования ПО</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <h4>По доступу к коду:</h4>
-                            <ul>
-                                <li><strong>Чёрный ящик</strong> — тестирование без знания внутренней структуры</li>
-                                <li><strong>Белый ящик</strong> — тестирование с доступом к коду</li>
-                                <li><strong>Серый ящик</strong> — частичное знание внутренней структуры</li>
-                            </ul>
-                            
-                            <h4>Уровни тестирования:</h4>
-                            <ol>
-                                <li>Модульное (Unit)</li>
-                                <li>Интеграционное (Integration)</li>
-                                <li>Системное (System)</li>
-                                <li>Приемочное (Acceptance)</li>
-                            </ol>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                           
-                            
-                            <div class="quiz-question" data-correct="b">
-                                <p>1. Тестировщик проверяет работу формы входа, не зная как реализована проверка пароля.</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="a">
-                                <p>2. Разработчик пишет тесты для отдельной функции calculatePrice().</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="c">
-                                <p>3. Заказчик проверяет готовый продукт перед запуском.</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Урок 3 -->
-                <div class="lesson" id="lesson8" data-lesson="8">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">8</div>
-                            <div class="lesson-title">Тест-дизайн: Эквивалентное Разделение и BVA</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 3 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Тест-дизайн</strong> — создание тестовых случаев с использованием специальных техник.</p>
-                            
-                            <h4>Основные техники:</h4>
-                            <ul>
-                                <li><strong>Эквивалентное Разделение (EP)</strong> — группировка входных данных в классы</li>
-                                <li><strong>Анализ Граничных Значений (BVA)</strong> — тестирование значений на границах диапазонов</li>
-                            </ul>
-                            
-                            <p><strong>Пример:</strong> Поле "Возраст" от 18 до 65 лет.</p>
-                            <p>Валидные: 18, 19, 64, 65</p>
-                            <p>Невалидные: 17, 66</p>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            
-                            <div class="quiz-question" data-correct="b">
-                                <p>1. Поле принимает значения от 1 до 100. Какие значения выбрать для BVA?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="c">
-                                <p>2. Для поля "Процент скидки" (5-20%) сколько классов эквивалентности?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="a">
-                                <p>3. Какая техника помогает сократить количество тестов?</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Урок 4 -->
-                <div class="lesson" id="lesson9" data-lesson="9">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">9</div>
-                            <div class="lesson-title">Чек-листы и тест-кейсы: документация</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Чек-лист</strong> — список пунктов для проверки (что проверить).</p>
-                            <p><strong>Тест-кейс</strong> — детальная инструкция с шагами (как проверить).</p>
-                            
-                            <h4>Структура тест-кейса:</h4>
-                            <ol>
-                                <li>ID и название</li>
-                                <li>Предварительные условия</li>
-                                <li>Шаги выполнения</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Фактический результат</li>
-                            </ol>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            <div class="quiz-question" data-correct="a">
-                                <p>1. Когда использовать чек-лист вместо тест-кейса?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="b">
-                                <p>2. Что должно быть в ожидаемом результате тест-кейса?</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Урок 5 -->
-                <div class="lesson" id="lesson10" data-lesson="10">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">10</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
-                            
-                            <h4>Обязательные поля:</h4>
-                            <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-
-                 <!-- Урок 1 -->
-                <div class="lesson active" id="lesson11" data-lesson="11">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">11</div>
-                            <div class="lesson-title">Основы тестирования: QA, QC и жизненные циклы</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>QA (Quality Assurance)</strong> — обеспечение качества, процесс-ориентированный подход для предотвращения дефектов.</p>
-                            <p><strong>QC (Quality Control)</strong> — контроль качества, продукт-ориентированный подход для выявления дефектов.</p>
-                            
-                            <h4>Жизненные циклы:</h4>
-                            <ul>
-                                <li><strong>SDLC</strong> — Software Development Life Cycle: анализ, проектирование, разработка, тестирование, внедрение</li>
-                                <li><strong>STLC</strong> — Software Testing Life Cycle: планирование, проектирование тестов, выполнение, завершение</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            
-                            <div class="quiz-question" data-correct="b">
-                                <p>1. Что такое QA (Quality Assurance)?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="c">
-                                <p>2. Чем отличается SDLC от STLC?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="a">
-                                <p>3. Кто обычно занимается QC (Quality Control)?</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Урок 2 -->
-                <div class="lesson" id="lesson12" data-lesson="12">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">12</div>
-                            <div class="lesson-title">Виды и уровни тестирования ПО</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <h4>По доступу к коду:</h4>
-                            <ul>
-                                <li><strong>Чёрный ящик</strong> — тестирование без знания внутренней структуры</li>
-                                <li><strong>Белый ящик</strong> — тестирование с доступом к коду</li>
-                                <li><strong>Серый ящик</strong> — частичное знание внутренней структуры</li>
-                            </ul>
-                            
-                            <h4>Уровни тестирования:</h4>
-                            <ol>
-                                <li>Модульное (Unit)</li>
-                                <li>Интеграционное (Integration)</li>
-                                <li>Системное (System)</li>
-                                <li>Приемочное (Acceptance)</li>
-                            </ol>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                           
-                            
-                            <div class="quiz-question" data-correct="b">
-                                <p>1. Тестировщик проверяет работу формы входа, не зная как реализована проверка пароля.</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="a">
-                                <p>2. Разработчик пишет тесты для отдельной функции calculatePrice().</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="c">
-                                <p>3. Заказчик проверяет готовый продукт перед запуском.</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Урок 3 -->
-                <div class="lesson" id="lesson13" data-lesson="13">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">13</div>
-                            <div class="lesson-title">Тест-дизайн: Эквивалентное Разделение и BVA</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 3 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Тест-дизайн</strong> — создание тестовых случаев с использованием специальных техник.</p>
-                            
-                            <h4>Основные техники:</h4>
-                            <ul>
-                                <li><strong>Эквивалентное Разделение (EP)</strong> — группировка входных данных в классы</li>
-                                <li><strong>Анализ Граничных Значений (BVA)</strong> — тестирование значений на границах диапазонов</li>
-                            </ul>
-                            
-                            <p><strong>Пример:</strong> Поле "Возраст" от 18 до 65 лет.</p>
-                            <p>Валидные: 18, 19, 64, 65</p>
-                            <p>Невалидные: 17, 66</p>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            
-                            <div class="quiz-question" data-correct="b">
-                                <p>1. Поле принимает значения от 1 до 100. Какие значения выбрать для BVA?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="c">
-                                <p>2. Для поля "Процент скидки" (5-20%) сколько классов эквивалентности?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="a">
-                                <p>3. Какая техника помогает сократить количество тестов?</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Урок 4 -->
-                <div class="lesson" id="lesson14" data-lesson="14">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">14</div>
-                            <div class="lesson-title">Чек-листы и тест-кейсы: документация</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Чек-лист</strong> — список пунктов для проверки (что проверить).</p>
-                            <p><strong>Тест-кейс</strong> — детальная инструкция с шагами (как проверить).</p>
-                            
-                            <h4>Структура тест-кейса:</h4>
-                            <ol>
-                                <li>ID и название</li>
-                                <li>Предварительные условия</li>
-                                <li>Шаги выполнения</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Фактический результат</li>
-                            </ol>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            <div class="quiz-question" data-correct="a">
-                                <p>1. Когда использовать чек-лист вместо тест-кейса?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="b">
-                                <p>2. Что должно быть в ожидаемом результате тест-кейса?</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Урок 5 -->
-                <div class="lesson" id="lesson15" data-lesson="15">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">15</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
-                            
-                            <h4>Обязательные поля:</h4>
-                            <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-
-                 <!-- Урок 1 -->
-                <div class="lesson active" id="lesson16" data-lesson="16">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">16</div>
-                            <div class="lesson-title">Основы тестирования: QA, QC и жизненные циклы</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>QA (Quality Assurance)</strong> — обеспечение качества, процесс-ориентированный подход для предотвращения дефектов.</p>
-                            <p><strong>QC (Quality Control)</strong> — контроль качества, продукт-ориентированный подход для выявления дефектов.</p>
-                            
-                            <h4>Жизненные циклы:</h4>
-                            <ul>
-                                <li><strong>SDLC</strong> — Software Development Life Cycle: анализ, проектирование, разработка, тестирование, внедрение</li>
-                                <li><strong>STLC</strong> — Software Testing Life Cycle: планирование, проектирование тестов, выполнение, завершение</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            
-                            <div class="quiz-question" data-correct="b">
-                                <p>1. Что такое QA (Quality Assurance)?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="c">
-                                <p>2. Чем отличается SDLC от STLC?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="a">
-                                <p>3. Кто обычно занимается QC (Quality Control)?</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Урок 2 -->
-                <div class="lesson" id="lesson17" data-lesson="17">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">17</div>
-                            <div class="lesson-title">Виды и уровни тестирования ПО</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <h4>По доступу к коду:</h4>
-                            <ul>
-                                <li><strong>Чёрный ящик</strong> — тестирование без знания внутренней структуры</li>
-                                <li><strong>Белый ящик</strong> — тестирование с доступом к коду</li>
-                                <li><strong>Серый ящик</strong> — частичное знание внутренней структуры</li>
-                            </ul>
-                            
-                            <h4>Уровни тестирования:</h4>
-                            <ol>
-                                <li>Модульное (Unit)</li>
-                                <li>Интеграционное (Integration)</li>
-                                <li>Системное (System)</li>
-                                <li>Приемочное (Acceptance)</li>
-                            </ol>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                           
-                            
-                            <div class="quiz-question" data-correct="b">
-                                <p>1. Тестировщик проверяет работу формы входа, не зная как реализована проверка пароля.</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="a">
-                                <p>2. Разработчик пишет тесты для отдельной функции calculatePrice().</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="c">
-                                <p>3. Заказчик проверяет готовый продукт перед запуском.</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Урок 3 -->
-                <div class="lesson" id="lesson18" data-lesson="18">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">18</div>
-                            <div class="lesson-title">Тест-дизайн: Эквивалентное Разделение и BVA</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 3 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Тест-дизайн</strong> — создание тестовых случаев с использованием специальных техник.</p>
-                            
-                            <h4>Основные техники:</h4>
-                            <ul>
-                                <li><strong>Эквивалентное Разделение (EP)</strong> — группировка входных данных в классы</li>
-                                <li><strong>Анализ Граничных Значений (BVA)</strong> — тестирование значений на границах диапазонов</li>
-                            </ul>
-                            
-                            <p><strong>Пример:</strong> Поле "Возраст" от 18 до 65 лет.</p>
-                            <p>Валидные: 18, 19, 64, 65</p>
-                            <p>Невалидные: 17, 66</p>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            
-                            <div class="quiz-question" data-correct="b">
-                                <p>1. Поле принимает значения от 1 до 100. Какие значения выбрать для BVA?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="c">
-                                <p>2. Для поля "Процент скидки" (5-20%) сколько классов эквивалентности?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="a">
-                                <p>3. Какая техника помогает сократить количество тестов?</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Урок 4 -->
-                <div class="lesson" id="lesson19" data-lesson="19">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">19</div>
-                            <div class="lesson-title">Чек-листы и тест-кейсы: документация</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Чек-лист</strong> — список пунктов для проверки (что проверить).</p>
-                            <p><strong>Тест-кейс</strong> — детальная инструкция с шагами (как проверить).</p>
-                            
-                            <h4>Структура тест-кейса:</h4>
-                            <ol>
-                                <li>ID и название</li>
-                                <li>Предварительные условия</li>
-                                <li>Шаги выполнения</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Фактический результат</li>
-                            </ol>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            <div class="quiz-question" data-correct="a">
-                                <p>1. Когда использовать чек-лист вместо тест-кейса?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="b">
-                                <p>2. Что должно быть в ожидаемом результате тест-кейса?</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Урок 5 -->
-                <div class="lesson" id="lesson20" data-lesson="20">
-                    <div class="lesson-header">
-                        <div style="display: flex; align-items: center; flex-grow: 1;">
-                            <div class="lesson-number">20</div>
-                            <div class="lesson-title">Баг-репорты: описание дефектов</div>
-                        </div>
-                        <div class="lesson-duration">
-                            <i class="far fa-clock"></i> 2.5 часа
-                        </div>
-                        <div class="lesson-arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lesson-content">
-                        <div class="lesson-section theory">
-                            <h3><i class="fas fa-brain"></i> Теория урока</h3>
-                            <p><strong>Баг-репорт</strong> — документ, описывающий найденный дефект.</p>
-                            
-                            <h4>Обязательные поля:</h4>
-                            <ul>
-                                <li>Заголовок (кратко и понятно)</li>
-                                <li>Шаги воспроизведения</li>
-                                <li>Фактический результат</li>
-                                <li>Ожидаемый результат</li>
-                                <li>Окружение (браузер, ОС, версия)</li>
-                                <li>Серьезность (Severity)</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="lesson-section practice-task">
-                            <h3><i class="fas fa-tasks"></i> Практический тест</h3>
-                            
-                            <div class="quiz-question" data-correct="c">
-                                <p>1. Какая серьезность (Severity) у бага: "Приложение крашится при нажатии кнопки Сохранить"?</p>
-                                
-                            </div>
-
-                            <div class="quiz-question" data-correct="b">
-                                <p>2. Что важнее для шагов воспроизведения?</p>
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
                 <!-- Кнопки навигации -->
                 <div class="lesson-navigation">
                     <button class="nav-btn nav-btn-outline" id="prevBtn">
-                        <i class="fas fa-arrow-left"></i> Предыдущий урок
+                        <i class="fas fa-arrow-left"></i> Предыдущая неделя
                     </button>
                     <button class="nav-btn" id="nextBtn">
-                        Следующий урок <i class="fas fa-arrow-right"></i>
+                        Следующая неделя <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
             </div>
@@ -1588,51 +1177,51 @@
                     <h3><i class="fas fa-road"></i> Прогресс курса</h3>
                     <div class="stats-grid">
                         <div class="stat">
-                            <span class="stat-value" id="completedLessons">1</span>
-                            <span class="stat-label">Пройдено уроков</span>
+                            <span class="stat-value" id="completedWeeks">1</span>
+                            <span class="stat-label">Пройдено недель</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-value" id="totalLessons">15</span>
-                            <span class="stat-label">Всего уроков</span>
+                            <span class="stat-value" id="totalWeeks">22</span>
+                            <span class="stat-label">Всего недель</span>
                         </div>
                     </div>
                     
-                    <div style="margin-top: 20px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <div class="progress-section">
+                        <div class="progress-label">
                             <span>Общий прогресс</span>
-                            <span id="progressPercent">7%</span>
+                            <span id="progressPercent">5%</span>
                         </div>
-                        <div style="height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;">
-                            <div id="sidebarProgress" style="height: 100%; background: var(--primary); width: 7%; border-radius: 4px;"></div>
+                        <div class="progress-bar-small">
+                            <div id="sidebarProgress" style="width: 5%;" class="progress-fill"></div>
                         </div>
                     </div>
                     
-                    <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                            <span>Правильные ответы</span>
-                            <span id="correctAnswers">0%</span>
+                    <div class="progress-section">
+                        <div class="progress-label">
+                            <span>Завершено модулей</span>
+                            <span id="completedModules">0/4</span>
                         </div>
-                        <div style="height: 6px; background: var(--border); border-radius: 3px; overflow: hidden;">
-                            <div id="answersProgress" style="height: 100%; background: var(--accent); width: 0%; border-radius: 3px;"></div>
+                        <div class="progress-bar-small">
+                            <div id="modulesProgress" style="width: 0%;" class="progress-fill"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="sidebar-card">
-                    <h3><i class="fas fa-tasks"></i> Статистика тестов</h3>
+                    <h3><i class="fas fa-tasks"></i> Статистика заданий</h3>
                     <div style="text-align: center; padding: 15px;">
-                        <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary);" id="totalTests">0</div>
-                        <div style="color: var(--gray); font-size: 0.9rem;">пройдено тестов</div>
+                        <div style="font-size: 2.5rem; font-weight: bold; color: var(--accent);" id="totalAssignments">1</div>
+                        <div style="color: var(--gray); font-size: 0.9rem;">выполнено заданий</div>
                     </div>
                     
                     <div style="margin-top: 15px;">
                         <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                            <span style="color: var(--accent);">Правильно</span>
-                            <span id="correctCount">0</span>
+                            <span style="color: #4CAF50;">Выполнено</span>
+                            <span id="completedAssignments">1</span>
                         </div>
                         <div style="display: flex; justify-content: space-between;">
-                            <span style="color: var(--secondary);">Неправильно</span>
-                            <span id="incorrectCount">0</span>
+                            <span style="color: var(--gray);">Осталось</span>
+                            <span id="remainingAssignments">15</span>
                         </div>
                     </div>
                 </div>
@@ -1640,20 +1229,20 @@
                 <div class="sidebar-card">
                     <h3><i class="fas fa-trophy"></i> Достижения</h3>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: var(--light); border-radius: 8px;">
-                            <i class="fas fa-play-circle" style="color: var(--primary);"></i>
-                            <span>Первый урок пройден</span>
-                            <i class="fas fa-check" style="color: var(--accent); margin-left: auto;"></i>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid var(--border);">
+                            <i class="fas fa-shield-alt" style="color: var(--primary);"></i>
+                            <span>Основы безопасности</span>
+                            <i class="fas fa-check" style="color: #4CAF50; margin-left: auto;"></i>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: var(--light); border-radius: 8px;">
-                            <i class="fas fa-star" style="color: #FFC107;"></i>
-                            <span>5 тестов на 100%</span>
-                            <span style="color: var(--gray); margin-left: auto;">0/5</span>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid var(--border);">
+                            <i class="fas fa-network-wired" style="color: #FFC107;"></i>
+                            <span>Сетевой аналитик</span>
+                            <span style="color: var(--gray); margin-left: auto;">0%</span>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: var(--light); border-radius: 8px;">
-                            <i class="fas fa-graduation-cap" style="color: var(--secondary);"></i>
-                            <span>Завершить курс</span>
-                            <span style="color: var(--gray); margin-left: auto;">1/15</span>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid var(--border);">
+                            <i class="fas fa-user-secret" style="color: var(--secondary);"></i>
+                            <span>SOC Аналитик L1</span>
+                            <span style="color: var(--gray); margin-left: auto;">0%</span>
                         </div>
                     </div>
                 </div>
@@ -1663,8 +1252,8 @@
                     <button class="btn" onclick="resetProgress()" style="width: 100%; margin-bottom: 10px;">
                         <i class="fas fa-redo"></i> Сбросить прогресс
                     </button>
-                    <button class="btn btn-secondary" onclick="showAnswers()" style="width: 100%;">
-                        <i class="fas fa-eye"></i> Показать все ответы
+                    <button class="btn btn-secondary" onclick="exportProgress()" style="width: 100%;">
+                        <i class="fas fa-download"></i> Экспорт прогресса
                     </button>
                 </div>
             </div>
@@ -1673,198 +1262,217 @@
 
     <script>
         // ========== ОСНОВНЫЕ ПЕРЕМЕННЫЕ ==========
-        let currentLesson = 1;
-        const totalLessons = 15;
-        let completedLessons = 1;
-        let totalTestsTaken = 0;
-        let correctAnswers = 0;
-        let incorrectAnswers = 0;
-        let lessonResults = {}; // Хранит результаты по каждому уроку
+        let currentWeek = '1-1'; // Текущая неделя (формат: модуль-неделя)
+        let currentModule = 1;
+        const totalWeeks = 22;
+        const totalModules = 4;
+        let completedWeeks = new Set(['1-1']); // Множество пройденных недель
+        let completedAssignments = 1;
+        const totalAssignments = 16;
+        
+        // Карта недель по модулям
+        const weeksByModule = {
+            1: 5, // Модуль 1: 5 недель
+            2: 5, // Модуль 2: 5 недель
+            3: 6, // Модуль 3: 6 недель
+            4: 4  // Модуль 4: 4 недели
+        };
 
-        // ========== УПРАВЛЕНИЕ УРОКАМИ ==========
-        function toggleLesson(lessonNumber) {
-            console.log('Переключение на урок:', lessonNumber);
+        // ========== УПРАВЛЕНИЕ МОДУЛЯМИ И НЕДЕЛЯМИ ==========
+        function toggleModule(moduleNumber) {
+            console.log('Переключение модуля:', moduleNumber);
             
-            // Закрываем все уроки
-            document.querySelectorAll('.lesson').forEach(lesson => {
-                lesson.classList.remove('active');
-                const content = lesson.querySelector('.lesson-content');
-                if (content) {
-                    content.style.maxHeight = '0';
-                }
-            });
-            
-            // Открываем выбранный урок
-            const lesson = document.getElementById(`lesson${lessonNumber}`);
-            if (lesson) {
-                lesson.classList.add('active');
-                const content = lesson.querySelector('.lesson-content');
-                if (content) {
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                }
-                currentLesson = lessonNumber;
+            // Переключаем модуль
+            const module = document.getElementById(`module${moduleNumber}`);
+            if (module) {
+                const isActive = module.classList.contains('active');
                 
-                // Помечаем как пройденный при первом открытии
-                if (!lesson.classList.contains('completed')) {
-                    lesson.classList.add('completed');
-                    completedLessons = Math.max(completedLessons, lessonNumber);
-                    updateProgress();
+                // Закрываем все модули
+                document.querySelectorAll('.module').forEach(mod => {
+                    mod.classList.remove('active');
+                    const weeksContainer = mod.querySelector('.weeks-container');
+                    if (weeksContainer) {
+                        weeksContainer.style.maxHeight = '0';
+                    }
+                });
+                
+                // Открываем выбранный модуль
+                if (!isActive) {
+                    module.classList.add('active');
+                    const weeksContainer = module.querySelector('.weeks-container');
+                    if (weeksContainer) {
+                        weeksContainer.style.maxHeight = weeksContainer.scrollHeight + 'px';
+                    }
+                    currentModule = moduleNumber;
+                } else {
+                    currentModule = null;
                 }
             }
             
             updateNavigation();
-            setupQuizListeners(lessonNumber);
         }
 
-        function nextLesson() {
-            console.log('Следующий урок, текущий:', currentLesson);
-            if (currentLesson < totalLessons) {
-                toggleLesson(currentLesson + 1);
-                // Прокручиваем к уроку
-                document.getElementById(`lesson${currentLesson}`).scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            } else {
-                alert('🎉 Поздравляем! Вы завершили курс! Скачайте сертификат в настройках.');
-            }
-        }
-
-        function prevLesson() {
-            console.log('Предыдущий урок, текущий:', currentLesson);
-            if (currentLesson > 1) {
-                toggleLesson(currentLesson - 1);
-                // Прокручиваем к уроку
-                document.getElementById(`lesson${currentLesson}`).scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-
-        // ========== УПРАВЛЕНИЕ ТЕСТАМИ ==========
-        function setupQuizListeners(lessonNumber) {
-            const lesson = document.getElementById(`lesson${lessonNumber}`);
-            if (!lesson) return;
+        function toggleWeek(weekId) {
+            console.log('Переключение недели:', weekId);
             
-            // Добавляем обработчики для вариантов ответов
-            lesson.querySelectorAll('.quiz-option').forEach(option => {
-                option.addEventListener('click', function() {
-                    const radio = this.querySelector('input[type="radio"]');
-                    if (radio) {
-                        radio.checked = true;
-                        // Снимаем выделение со всех вариантов
-                        this.closest('.quiz-question').querySelectorAll('.quiz-option').forEach(opt => {
-                            opt.classList.remove('selected');
-                        });
-                        // Выделяем выбранный вариант
-                        this.classList.add('selected');
+            // Парсим ID недели
+            const [moduleNum, weekNum] = weekId.split('-').map(Number);
+            
+            // Открываем родительский модуль
+            if (moduleNum !== currentModule) {
+                toggleModule(moduleNum);
+            }
+            
+            // Закрываем все недели в текущем модуле
+            const module = document.getElementById(`module${moduleNum}`);
+            if (module) {
+                module.querySelectorAll('.week').forEach(week => {
+                    week.classList.remove('active');
+                    const content = week.querySelector('.week-content');
+                    if (content) {
+                        content.style.maxHeight = '0';
                     }
                 });
-            });
+                
+                // Открываем выбранную неделю
+                const week = document.getElementById(`week${weekId}`);
+                if (week) {
+                    week.classList.add('active');
+                    const content = week.querySelector('.week-content');
+                    if (content) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+                    currentWeek = weekId;
+                    
+                    // Помечаем как просмотренную
+                    if (!week.classList.contains('viewed')) {
+                        week.classList.add('viewed');
+                    }
+                }
+            }
             
-            // Скрываем предыдущие результаты
-            lesson.querySelectorAll('.quiz-feedback').forEach(feedback => {
-                feedback.style.display = 'none';
-                feedback.className = 'quiz-feedback';
-            });
+            updateNavigation();
         }
 
-        function checkLessonQuiz(lessonNumber) {
-            const lesson = document.getElementById(`lesson${lessonNumber}`);
-            if (!lesson) return;
-            
-            let lessonCorrect = 0;
-            let lessonTotal = 0;
-            
-            // Проверяем каждый вопрос в уроке
-            lesson.querySelectorAll('.quiz-question').forEach((question, index) => {
-                lessonTotal++;
-                const correctAnswer = question.dataset.correct;
-                const selectedOption = question.querySelector('input[type="radio"]:checked');
-                const feedback = question.querySelector('.quiz-feedback');
+        function markAsComplete(weekId) {
+            const week = document.getElementById(`week${weekId}`);
+            if (week && !week.classList.contains('completed')) {
+                week.classList.add('completed');
+                completedWeeks.add(weekId);
+                completedAssignments = Math.min(completedAssignments + 1, totalAssignments);
                 
-                if (selectedOption && selectedOption.value === correctAnswer) {
-                    // Правильный ответ
-                    lessonCorrect++;
-                    feedback.textContent = '✅ Правильно!';
-                    feedback.className = 'quiz-feedback correct';
-                } else {
-                    // Неправильный ответ
-                    feedback.textContent = `❌ Неправильно. Правильный ответ: ${getAnswerText(correctAnswer)}`;
-                    feedback.className = 'quiz-feedback incorrect';
-                }
-                feedback.style.display = 'block';
-            });
-            
-            // Обновляем статистику
-            if (lessonTotal > 0) {
-                totalTestsTaken += lessonTotal;
-                correctAnswers += lessonCorrect;
-                incorrectAnswers += (lessonTotal - lessonCorrect);
+                // Обновляем прогресс
+                updateProgress();
                 
-                // Сохраняем результат урока
-                lessonResults[lessonNumber] = {
-                    correct: lessonCorrect,
-                    total: lessonTotal,
-                    percentage: Math.round((lessonCorrect / lessonTotal) * 100)
-                };
-                
-                updateStatistics();
-                
-                // Показываем результат урока
-                if (lessonCorrect === lessonTotal) {
-                    alert(`🎉 Отлично! Все ${lessonTotal} ответов правильные!`);
-                } else {
-                    alert(`Результат урока: ${lessonCorrect} из ${lessonTotal} правильных ответов (${Math.round((lessonCorrect / lessonTotal) * 100)}%)`);
-                }
+                // Показываем уведомление
+                alert('✅ Задание отмечено как выполненное! Прогресс сохранен.');
             }
         }
 
-        function getAnswerText(answerValue) {
-            const answerMap = {
-                'a': 'A',
-                'b': 'B',
-                'c': 'C',
-                'd': 'D'
-            };
-            return answerMap[answerValue] || answerValue;
+        function nextWeek() {
+            const [currentMod, currentWk] = currentWeek.split('-').map(Number);
+            
+            // Определяем следующую неделю
+            let nextMod = currentMod;
+            let nextWk = currentWk + 1;
+            
+            // Если это последняя неделя модуля, переходим к следующему модулю
+            if (nextWk > weeksByModule[currentMod]) {
+                nextMod = currentMod + 1;
+                nextWk = 1;
+                
+                // Если это последний модуль, показываем сообщение о завершении
+                if (nextMod > totalModules) {
+                    alert('🎉 Поздравляем! Вы завершили курс! Теперь вы готовы к карьере в кибербезопасности.');
+                    return;
+                }
+            }
+            
+            const nextWeekId = `${nextMod}-${nextWk}`;
+            toggleWeek(nextWeekId);
+            
+            // Прокручиваем к неделе
+            document.getElementById(`week${nextWeekId}`).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        function prevWeek() {
+            const [currentMod, currentWk] = currentWeek.split('-').map(Number);
+            
+            // Определяем предыдущую неделю
+            let prevMod = currentMod;
+            let prevWk = currentWk - 1;
+            
+            // Если это первая неделя модуля, переходим к предыдущему модулю
+            if (prevWk < 1) {
+                prevMod = currentMod - 1;
+                if (prevMod < 1) return; // Не можем уйти ниже первого модуля
+                prevWk = weeksByModule[prevMod];
+            }
+            
+            const prevWeekId = `${prevMod}-${prevWk}`;
+            toggleWeek(prevWeekId);
+            
+            // Прокручиваем к неделе
+            document.getElementById(`week${prevWeekId}`).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         }
 
         // ========== ПРОГРЕСС И СТАТИСТИКА ==========
         function updateProgress() {
-            // Общий прогресс по урокам
-            const totalProgress = Math.round((completedLessons / totalLessons) * 100);
+            // Общий прогресс по неделям
+            const completedWeeksCount = completedWeeks.size;
+            const totalProgress = Math.round((completedWeeksCount / totalWeeks) * 100);
             
-            // Прогресс по ответам
-            const answerPercentage = totalTestsTaken > 0 ? Math.round((correctAnswers / totalTestsTaken) * 100) : 0;
+            // Прогресс по модулям
+            const completedModulesSet = new Set();
+            completedWeeks.forEach(weekId => {
+                const [modNum] = weekId.split('-').map(Number);
+                completedModulesSet.add(modNum);
+            });
+            const completedModulesCount = completedModulesSet.size;
+            const modulesProgress = Math.round((completedModulesCount / totalModules) * 100);
             
             // Обновляем UI
             document.getElementById('progressPercent').textContent = totalProgress + '%';
             document.getElementById('progressHeader').textContent = totalProgress + '%';
             document.getElementById('sidebarProgress').style.width = totalProgress + '%';
             document.getElementById('progressBar').style.width = totalProgress + '%';
-            document.getElementById('completedLessons').textContent = completedLessons;
-            document.getElementById('totalLessons').textContent = totalLessons;
             
-            // Обновляем статистику ответов
-            document.getElementById('correctAnswers').textContent = answerPercentage + '%';
-            document.getElementById('answersProgress').style.width = answerPercentage + '%';
+            document.getElementById('completedWeeks').textContent = completedWeeksCount;
+            document.getElementById('totalWeeks').textContent = totalWeeks;
+            
+            document.getElementById('completedModules').textContent = `${completedModulesCount}/${totalModules}`;
+            document.getElementById('modulesProgress').style.width = modulesProgress + '%';
+            
+            document.getElementById('totalAssignments').textContent = completedAssignments;
+            document.getElementById('completedAssignments').textContent = completedAssignments;
+            document.getElementById('remainingAssignments').textContent = totalAssignments - completedAssignments;
+            
+            // Обновляем статус модулей
+            for (let i = 1; i <= totalModules; i++) {
+                const module = document.getElementById(`module${i}`);
+                const moduleWeeks = weeksByModule[i];
+                let completedInModule = 0;
+                
+                // Считаем пройденные недели в модуле
+                completedWeeks.forEach(weekId => {
+                    const [modNum] = weekId.split('-').map(Number);
+                    if (modNum === i) completedInModule++;
+                });
+                
+                // Если все недели модуля пройдены, отмечаем модуль как завершенный
+                if (completedInModule === moduleWeeks && module) {
+                    module.querySelector('.module-icon').classList.add('completed');
+                }
+            }
             
             // Сохраняем прогресс
             saveProgress();
-        }
-
-        function updateStatistics() {
-            document.getElementById('totalTests').textContent = totalTestsTaken;
-            document.getElementById('correctCount').textContent = correctAnswers;
-            document.getElementById('incorrectCount').textContent = incorrectAnswers;
-            
-            const answerPercentage = totalTestsTaken > 0 ? Math.round((correctAnswers / totalTestsTaken) * 100) : 0;
-            document.getElementById('correctAnswers').textContent = answerPercentage + '%';
-            document.getElementById('answersProgress').style.width = answerPercentage + '%';
-            
-            updateProgress();
         }
 
         // ========== НАВИГАЦИЯ ==========
@@ -1872,125 +1480,125 @@
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
             
-            // Предыдущий урок
-            if (currentLesson === 1) {
+            if (!currentWeek) return;
+            
+            const [currentMod, currentWk] = currentWeek.split('-').map(Number);
+            
+            // Предыдущая неделя
+            if (currentMod === 1 && currentWk === 1) {
                 prevBtn.style.opacity = '0.5';
                 prevBtn.disabled = true;
             } else {
                 prevBtn.style.opacity = '1';
                 prevBtn.disabled = false;
-                prevBtn.innerHTML = `<i class="fas fa-arrow-left"></i> Урок ${currentLesson - 1}`;
+                prevBtn.innerHTML = `<i class="fas fa-arrow-left"></i> Неделя ${currentMod}-${currentWk-1 || weeksByModule[currentMod-1]}`;
             }
             
-            // Следующий урок
-            if (currentLesson === totalLessons) {
+            // Следующая неделя
+            if (currentMod === totalModules && currentWk === weeksByModule[totalModules]) {
                 nextBtn.innerHTML = `Завершить курс <i class="fas fa-graduation-cap"></i>`;
             } else {
-                nextBtn.innerHTML = `Урок ${currentLesson + 1} <i class="fas fa-arrow-right"></i>`;
+                const nextWk = currentWk === weeksByModule[currentMod] ? 1 : currentWk + 1;
+                const nextMod = currentWk === weeksByModule[currentMod] ? currentMod + 1 : currentMod;
+                nextBtn.innerHTML = `Неделя ${nextMod}-${nextWk} <i class="fas fa-arrow-right"></i>`;
             }
         }
 
         // ========== ДОПОЛНИТЕЛЬНЫЕ ФУНКЦИИ ==========
         function resetProgress() {
             if (confirm('Вы уверены, что хотите сбросить весь прогресс? Все результаты будут удалены.')) {
-                // Сбрасываем уроки
-                document.querySelectorAll('.lesson').forEach(lesson => {
-                    lesson.classList.remove('completed');
-                    lesson.classList.remove('active');
-                    const content = lesson.querySelector('.lesson-content');
+                // Сбрасываем недели
+                document.querySelectorAll('.week').forEach(week => {
+                    week.classList.remove('completed', 'viewed', 'active');
+                    const content = week.querySelector('.week-content');
                     if (content) content.style.maxHeight = '0';
                 });
                 
-                // Сбрасываем первый урок
-                document.getElementById('lesson1').classList.add('completed');
-                document.getElementById('lesson1').classList.add('active');
-                const content1 = document.getElementById('lesson1').querySelector('.lesson-content');
-                if (content1) content1.style.maxHeight = content1.scrollHeight + 'px';
+                // Сбрасываем модули
+                document.querySelectorAll('.module').forEach(module => {
+                    module.classList.remove('active');
+                    const weeksContainer = module.querySelector('.weeks-container');
+                    if (weeksContainer) weeksContainer.style.maxHeight = '0';
+                    module.querySelector('.module-icon').classList.remove('completed');
+                });
+                
+                // Открываем первую неделю первого модуля
+                document.getElementById('module1').classList.add('active');
+                document.getElementById('module1').querySelector('.weeks-container').style.maxHeight = 
+                    document.getElementById('module1').querySelector('.weeks-container').scrollHeight + 'px';
+                toggleWeek('1-1');
                 
                 // Сбрасываем переменные
-                currentLesson = 1;
-                completedLessons = 1;
-                totalTestsTaken = 0;
-                correctAnswers = 0;
-                incorrectAnswers = 0;
-                lessonResults = {};
-                
-                // Сбрасываем ответы в тестах
-                document.querySelectorAll('input[type="radio"]').forEach(radio => {
-                    radio.checked = false;
-                });
-                document.querySelectorAll('.quiz-option').forEach(option => {
-                    option.classList.remove('selected');
-                });
-                document.querySelectorAll('.quiz-feedback').forEach(feedback => {
-                    feedback.style.display = 'none';
-                });
+                currentWeek = '1-1';
+                currentModule = 1;
+                completedWeeks = new Set(['1-1']);
+                completedAssignments = 1;
                 
                 // Обновляем UI
                 updateProgress();
-                updateStatistics();
                 updateNavigation();
                 
                 // Очищаем localStorage
-                localStorage.removeItem('qa_course_full_progress');
+                localStorage.removeItem('cybersecurity_course_progress');
                 
                 alert('Прогресс сброшен. Начните обучение заново!');
             }
         }
 
-        function showAnswers() {
-            let message = 'Правильные ответы по всем урокам:\n\n';
+        function exportProgress() {
+            const progress = {
+                currentWeek: currentWeek,
+                completedWeeks: Array.from(completedWeeks),
+                completedAssignments: completedAssignments,
+                lastUpdated: new Date().toISOString()
+            };
             
-            for (let i = 1; i <= 5; i++) { // Показываем для первых 5 уроков
-                if (lessonResults[i]) {
-                    message += `Урок ${i}: ${lessonResults[i].correct}/${lessonResults[i].total} (${lessonResults[i].percentage}%)\n`;
-                } else {
-                    message += `Урок ${i}: не пройден\n`;
-                }
-            }
+            const dataStr = JSON.stringify(progress, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
             
-            message += '\nЧтобы увидеть правильные ответы, пройдите тесты в каждом уроке.';
-            alert(message);
+            const exportFileDefaultName = `cybersecurity-progress-${new Date().toISOString().slice(0,10)}.json`;
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            alert('Прогресс экспортирован в JSON файл.');
         }
 
         // ========== СОХРАНЕНИЕ И ЗАГРУЗКА ==========
         function saveProgress() {
             const progress = {
-                currentLesson: currentLesson,
-                completedLessons: completedLessons,
-                totalTestsTaken: totalTestsTaken,
-                correctAnswers: correctAnswers,
-                incorrectAnswers: incorrectAnswers,
-                lessonResults: lessonResults,
+                currentWeek: currentWeek,
+                completedWeeks: Array.from(completedWeeks),
+                completedAssignments: completedAssignments,
                 lastUpdated: new Date().toISOString()
             };
-            localStorage.setItem('qa_course_full_progress', JSON.stringify(progress));
+            localStorage.setItem('cybersecurity_course_progress', JSON.stringify(progress));
         }
 
         function loadProgress() {
-            const saved = localStorage.getItem('qa_course_full_progress');
+            const saved = localStorage.getItem('cybersecurity_course_progress');
             if (saved) {
                 try {
                     const data = JSON.parse(saved);
                     
                     // Восстанавливаем основные данные
-                    currentLesson = data.currentLesson || 1;
-                    completedLessons = data.completedLessons || 1;
-                    totalTestsTaken = data.totalTestsTaken || 0;
-                    correctAnswers = data.correctAnswers || 0;
-                    incorrectAnswers = data.incorrectAnswers || 0;
-                    lessonResults = data.lessonResults || {};
+                    currentWeek = data.currentWeek || '1-1';
+                    completedWeeks = new Set(data.completedWeeks || ['1-1']);
+                    completedAssignments = data.completedAssignments || 1;
                     
-                    // Восстанавливаем статусы уроков
-                    for (let i = 1; i <= completedLessons; i++) {
-                        const lesson = document.getElementById(`lesson${i}`);
-                        if (lesson) {
-                            lesson.classList.add('completed');
+                    // Восстанавливаем статусы недель
+                    completedWeeks.forEach(weekId => {
+                        const week = document.getElementById(`week${weekId}`);
+                        if (week) {
+                            week.classList.add('completed');
                         }
-                    }
+                    });
                     
-                    // Открываем текущий урок
-                    toggleLesson(currentLesson);
+                    // Открываем текущую неделю
+                    const [modNum, weekNum] = currentWeek.split('-').map(Number);
+                    toggleWeek(currentWeek);
                     
                     console.log('Прогресс загружен:', data);
                     
@@ -2002,34 +1610,40 @@
 
         // ========== ИНИЦИАЛИЗАЦИЯ ==========
         function initCourse() {
-            console.log('Инициализация курса...');
+            console.log('Инициализация курса по кибербезопасности...');
             
             // Загружаем сохраненный прогресс
             loadProgress();
             
-            // Обработчики для заголовков уроков
-            document.querySelectorAll('.lesson-header').forEach(header => {
+            // Обработчики для заголовков модулей
+            document.querySelectorAll('.module-header').forEach(header => {
                 header.addEventListener('click', function() {
-                    const lesson = this.closest('.lesson');
-                    const lessonNumber = parseInt(lesson.dataset.lesson);
-                    console.log('Клик по уроку:', lessonNumber);
-                    toggleLesson(lessonNumber);
+                    const module = this.closest('.module');
+                    const moduleNumber = parseInt(module.dataset.module);
+                    console.log('Клик по модулю:', moduleNumber);
+                    toggleModule(moduleNumber);
+                });
+            });
+            
+            // Обработчики для заголовков недель
+            document.querySelectorAll('.week-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    const week = this.closest('.week');
+                    const weekId = week.dataset.week;
+                    console.log('Клик по неделе:', weekId);
+                    toggleWeek(weekId);
                 });
             });
             
             // Обработчики для кнопок навигации
-            document.getElementById('prevBtn').addEventListener('click', prevLesson);
-            document.getElementById('nextBtn').addEventListener('click', nextLesson);
-            
-            // Настройка тестов для первого урока
-            setupQuizListeners(1);
+            document.getElementById('prevBtn').addEventListener('click', prevWeek);
+            document.getElementById('nextBtn').addEventListener('click', nextWeek);
             
             // Обновляем UI
             updateProgress();
-            updateStatistics();
             updateNavigation();
             
-            console.log('Курс инициализирован. Всего уроков:', totalLessons);
+            console.log('Курс инициализирован. Модулей:', totalModules, 'Недель:', totalWeeks);
         }
 
         // Запускаем при загрузке
